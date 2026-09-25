@@ -1,12 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
 import CTA from '../components/CTA.astro';
-import QuoteBanner from '../components/QuoteBanner.astro';
 import { Image } from 'astro:assets';
 import { site } from '../data/site';
-import imgGalloway from '../assets/img/steffi-hund-galloway-schnee.jpg';
-import imgPferd from '../assets/img/steffi-pferd-schnee.jpg';
-import imgHerde from '../assets/img/pferdeherde-gegenlicht.jpg';
+import imgReiten from '../assets/img/steffi-reitet-im-nebel.jpg';
+import imgSchwimmen from '../assets/img/steffi-schwimmt-mit-hunden.jpg';
+import imgEis from '../assets/img/hund-auf-zugefrorenem-see.jpg';
+import imgMaehne from '../assets/img/pferdemaehne-goldenes-licht.jpg';
+import imgTrommel from '../assets/img/rahmentrommel-auf-wiese.jpg';
 ---
 <Base title="Über mich" description={`${site.owner} – Tierkommunikatorin, Reitlehrerin und Trainerin. Mein Weg zu den Tieren, meine Ausbildung und der kleine Hof in ${site.city}, auf dem ich mit meinen Tieren lebe.`}>
   <section class="section">
@@ -18,7 +19,7 @@ import imgHerde from '../assets/img/pferdeherde-gegenlicht.jpg';
         <p>Viele unterschiedliche Tiere begleiten mich schon mein ganzes Leben. Sie sind seit langem mein Lebensmittelpunkt – nicht mein Hobby, sondern mein Zuhause.</p>
       </div>
       <figure class="photo photo--portrait" style="margin:0">
-        <Image src={imgPferd} alt="Steffi kniet lachend neben ihrem liegenden Pferd im Schnee" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
+        <Image src={imgReiten} alt="Steffi reitet im Morgennebel über die Wiese, die Bäume stehen als Silhouetten dahinter" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
       </figure>
     </div>
   </section>
@@ -33,35 +34,42 @@ import imgHerde from '../assets/img/pferdeherde-gegenlicht.jpg';
         <p>2020 kam die Ausbildung in <strong>schamanischen Heilmethoden bei Lisa Biritz</strong> dazu. Krafttierarbeit, Krafttierreisen und Energiearbeit für Tiere gehören seither ebenso zu meiner Arbeit wie die Tiergespräche.</p>
       </div>
       <figure class="photo photo--landscape" style="margin:0">
-        <Image src={imgGalloway} alt="Steffi mit Border Collie und Galloway-Rind im Schnee" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+        <Image src={imgSchwimmen} alt="Steffi schwimmt im See, ihre beiden Hunde schwimmen neben ihr" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
       </figure>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap grid grid--3">
-      <div class="card">
-        <span class="eyebrow">Tierkommunikatorin</span>
-        <h3>Tiergespräche</h3>
-        <p class="muted">Am Telefon, mit Foto und Namen deines Tieres – für alles, was euch beschäftigt.</p>
-        <a class="btn btn--ghost" href="/tiergespraech">Mehr erfahren</a>
+      <div class="card card--img">
+        <Image src={imgEis} alt="Ein Border Collie läuft über den zugefrorenen See, seine Spuren im Schnee" widths={[480, 800]} sizes="(min-width: 860px) 380px, 100vw" loading="lazy" />
+        <div class="card__body">
+          <span class="eyebrow">Tierkommunikatorin</span>
+          <h3>Tiergespräche</h3>
+          <p class="muted">Am Telefon, mit Foto und Namen deines Tieres – für alles, was euch beschäftigt.</p>
+          <a class="btn btn--ghost" href="/tiergespraech">Mehr erfahren</a>
+        </div>
       </div>
-      <div class="card">
-        <span class="eyebrow">Kursleiterin</span>
-        <h3>Tierkommunikation lernen</h3>
-        <p class="muted">Basis, Aufbau und Profi – hier am Hof, in kleiner Runde, mit meinen Tieren als Lehrern.</p>
-        <a class="btn btn--ghost" href="/kurse">Zu den Kursen</a>
+      <div class="card card--img">
+        <Image src={imgMaehne} alt="Die Mähne eines Schimmels leuchtet im goldenen Abendlicht" widths={[480, 800]} sizes="(min-width: 860px) 380px, 100vw" loading="lazy" />
+        <div class="card__body">
+          <span class="eyebrow">Kursleiterin</span>
+          <h3>Tierkommunikation lernen</h3>
+          <p class="muted">Basis, Aufbau und Profi – hier am Hof, in kleiner Runde, mit meinen Tieren als Lehrern.</p>
+          <a class="btn btn--ghost" href="/kurse">Zu den Kursen</a>
+        </div>
       </div>
-      <div class="card">
-        <span class="eyebrow">Krafttiere &amp; Energiearbeit</span>
-        <h3>Schamanische Heilarbeit</h3>
-        <p class="muted">Krafttierreisen, Energiearbeit für Tiere und monatliche Lernabende am Hof.</p>
-        <a class="btn btn--ghost" href="/kontakt">Nachfragen</a>
+      <div class="card card--img">
+        <Image src={imgTrommel} alt="Eine Rahmentrommel liegt auf der Sommerwiese" widths={[480, 800]} sizes="(min-width: 860px) 380px, 100vw" loading="lazy" />
+        <div class="card__body">
+          <span class="eyebrow">Krafttiere &amp; Energiearbeit</span>
+          <h3>Schamanische Heilarbeit</h3>
+          <p class="muted">Krafttierreisen, Energiearbeit für Tiere und monatliche Lernabende am Hof.</p>
+          <a class="btn btn--ghost" href="/kontakt">Nachfragen</a>
+        </div>
       </div>
     </div>
   </section>
-
-  <QuoteBanner image={imgHerde} alt="Pferdeherde im Morgenlicht" quote="Tiere begleiten mich, seit ich denken kann. Sie sind mein Lebensmittelpunkt." author="Steffi" position="center 45%" placeholder />
 
   <CTA title="Lust, mich und meine Tiere kennenzulernen?" text="Ob Tiergespräch, Kurs oder Lernabend – schreib mir einfach. Ich freue mich auf dich." />
 </Base>

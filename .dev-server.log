@@ -141,3 +141,4 @@
 10:12:53 [watch] src/layouts/Base.astro
 10:12:53 [200] /kurse 7ms
 10:12:53 [200] /_image 47ms
+10:31:58 [watch] /src/pages/kurse/index.astro?astro&type=style&index=0&lang.css

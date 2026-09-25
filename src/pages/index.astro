@@ -12,15 +12,19 @@ import { site } from '../data/site';
 
 import imgGalloway from '../assets/img/steffi-hund-galloway-schnee.jpg';
 import imgPferd from '../assets/img/steffi-pferd-schnee.jpg';
-import imgHerde from '../assets/img/pferdeherde-gegenlicht.jpg';
-import imgScheune from '../assets/img/hunde-fendt-scheune.jpg';
 import imgStuhl from '../assets/img/steffi-haengestuhl-pferde.jpg';
+import imgSee from '../assets/img/hunde-am-see-sonnenaufgang.jpg';
+import imgGalopp from '../assets/img/pferd-galopp-apfelbaum.jpg';
+import imgPferdekopf from '../assets/img/pferdekopf-nahaufnahme.jpg';
+import imgFendt from '../assets/img/vier-hunde-auf-fendt-scheune.jpg';
+import imgDreiPferde from '../assets/img/drei-pferde-galopp-wiese.jpg';
+import imgAbendrot from '../assets/img/see-abendrot-hund-silhouette.jpg';
 
 const slides = [
   { src: imgStuhl, alt: 'Steffi sitzt im Hängestuhl auf der Wiese, ein Pferd kommt zu ihr, ihr Hund steht daneben – Abendlicht', position: 'center 60%' },
   { src: imgGalloway, alt: 'Steffi kniet im Schnee, im Arm ihr Border Collie, daneben ein schwarzes Galloway-Rind', position: 'center 35%' },
-  { src: imgHerde, alt: 'Eine Pferdeherde im warmen Gegenlicht des Morgens', position: 'center 40%' },
-  { src: imgScheune, alt: 'Vier Border Collies sitzen auf einem alten Fendt-Traktor in der Scheune', position: 'center 25%' },
+  { src: imgSee, alt: 'Zwei Border Collies stehen auf Steinen im See, dahinter geht die Sonne auf', position: 'center 60%' },
+  { src: imgGalopp, alt: 'Ein Pferd galoppiert unter einem Apfelbaum, der Himmel leuchtet rosa', position: 'center 50%' },
 ];
 
 const steps = [
@@ -59,7 +63,7 @@ const faq = [
     <div class="wrap">
       <div class="grid grid--2">
         <article class="card card--img">
-          <Image src={imgPferd} alt="Steffi neben ihrem liegenden Pferd im Schnee" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+          <Image src={imgPferdekopf} alt="Nahaufnahme eines Schimmels, der über die Felder schaut" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
           <div class="card__body">
             <span class="eyebrow">Für dein Tier</span>
             <h3>Ein Tiergespräch</h3>
@@ -68,7 +72,7 @@ const faq = [
           </div>
         </article>
         <article class="card card--img">
-          <Image src={imgScheune} alt="Vier Border Collies auf einem alten Traktor in der Scheune" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+          <Image src={imgFendt} alt="Vier Border Collies sitzen auf dem alten Fendt in der Scheune" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
           <div class="card__body">
             <span class="eyebrow">Für dich</span>
             <h3>Tierkommunikation lernen</h3>
@@ -81,11 +85,11 @@ const faq = [
   </section>
 
   <QuoteBanner
-    image={imgHerde}
-    alt="Pferdeherde im Gegenlicht"
+    image={imgDreiPferde}
+    alt="Drei Pferde galoppieren über die Wiese"
     quote="Telepathie kann jeder von uns. Sie ist wie ein Muskel, den wir nur wieder trainieren müssen."
     author="Steffi"
-    position="center 45%"
+    position="center 55%"
     placeholder
   />
 
@@ -127,17 +131,17 @@ const faq = [
         <a class="btn btn--ghost" href="/ueber-mich">Meine Geschichte</a>
       </div>
       <figure class="photo photo--landscape" style="margin:0">
-        <Image src={imgGalloway} alt="Steffi mit Border Collie und Galloway-Rind im Schnee" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+        <Image src={imgPferd} alt="Steffi kniet lachend neben ihrem liegenden Pferd im Schnee" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
       </figure>
     </div>
   </section>
 
   <QuoteBanner
-    image={imgStuhl}
-    alt="Steffi im Hängestuhl, ein Pferd kommt zu ihr"
+    image={imgAbendrot}
+    alt="Abendrot über dem See, davor die Silhouette eines Hundes"
     quote="Wenn ich still werde, fangen die Tiere an zu erzählen."
     author="Steffi"
-    position="center 60%"
+    position="center 50%"
     placeholder
   />
 

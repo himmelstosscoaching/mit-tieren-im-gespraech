@@ -6,9 +6,11 @@ import QuoteBanner from '../../components/QuoteBanner.astro';
 import { Image } from 'astro:assets';
 import { kurse, weitereAngebote } from '../../data/kurse';
 import { site } from '../../data/site';
-import imgScheune from '../../assets/img/hunde-fendt-scheune.jpg';
-import imgWiese from '../../assets/img/hunde-fendt-wiese.jpg';
-import imgStuhl from '../../assets/img/steffi-haengestuhl-pferde.jpg';
+import imgZweiPferde from '../../assets/img/zwei-pferde-unter-baum-abend.jpg';
+import imgHerde from '../../assets/img/pferdeherde-gegenlicht.jpg';
+import imgSonnenuntergang from '../../assets/img/sonnenuntergang-feld-mit-hunden.jpg';
+import imgSprung from '../../assets/img/hund-springt-ueber-wasser.jpg';
+import imgSpirale from '../../assets/img/spirale-im-schnee.jpg';
 ---
 <Base title="Kurse: Tierkommunikation lernen" description={`Tierkommunikation lernen in drei Stufen – Basiskurs, Aufbaukurs, Profikurs – auf Steffis Hof in ${site.city} bei Tuttlingen. Kleine Gruppen, viele Übungen, echte Gespräche mit Tieren.`}>
   <section class="section">
@@ -20,7 +22,7 @@ import imgStuhl from '../../assets/img/steffi-haengestuhl-pferde.jpg';
         <p>Die Kurse sind für alle, die ihr Tier besser verstehen wollen, und für alle, die Tierkommunikation in ihre Arbeit einbinden möchten. Drei Stufen bauen aufeinander auf. Du kannst nach jeder Stufe aufhören – oder bis zum eigenen Beruf weitergehen.</p>
       </div>
       <figure class="photo photo--portrait" style="margin:0">
-        <Image src={imgScheune} alt="Vier Border Collies sitzen auf einem alten Fendt in der Scheune" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
+        <Image src={imgZweiPferde} alt="Zwei Pferde unter einem alten Baum im Abendlicht" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
       </figure>
     </div>
   </section>
@@ -55,22 +57,28 @@ import imgStuhl from '../../assets/img/steffi-haengestuhl-pferde.jpg';
 
   <section class="section">
     <div class="wrap grid grid--2" style="align-items:start">
-      <div class="card">
-        <span class="eyebrow">Für junge Menschen</span>
-        <h3>{weitereAngebote.jugendkurs.titel}</h3>
-        <p>{weitereAngebote.jugendkurs.text}</p>
-        <a class="btn btn--ghost" href="/kontakt">Anfragen</a>
+      <div class="card card--img">
+        <Image src={imgSprung} alt="Ein Border Collie springt im Morgenlicht über das Wasser" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+        <div class="card__body">
+          <span class="eyebrow">Für junge Menschen</span>
+          <h3>{weitereAngebote.jugendkurs.titel}</h3>
+          <p>{weitereAngebote.jugendkurs.text}</p>
+          <a class="btn btn--ghost" href="/kontakt">Anfragen</a>
+        </div>
       </div>
-      <div class="card">
-        <span class="eyebrow">Monatlich</span>
-        <h3>{weitereAngebote.lernabende.titel}</h3>
-        <p>{weitereAngebote.lernabende.text}</p>
-        <a class="btn btn--ghost" href="/kontakt">Ich möchte dabei sein</a>
+      <div class="card card--img">
+        <Image src={imgSpirale} alt="Eine große Spirale im Schnee, in der Mitte steht ein Mensch mit erhobenen Armen" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+        <div class="card__body">
+          <span class="eyebrow">Monatlich</span>
+          <h3>{weitereAngebote.lernabende.titel}</h3>
+          <p>{weitereAngebote.lernabende.text}</p>
+          <a class="btn btn--ghost" href="/kontakt">Ich möchte dabei sein</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <QuoteBanner image={imgStuhl} alt="Steffi im Hängestuhl mit Pferd und Hund im Abendlicht" quote="Du musst nichts Neues lernen. Du musst dich nur daran erinnern, dass du es schon kannst." author="Steffi" position="center 60%" placeholder />
+  <QuoteBanner image={imgSonnenuntergang} alt="Sonnenuntergang über dem Feld, die Hunde laufen durchs Gras" quote="Du musst nichts Neues lernen. Du musst dich nur daran erinnern, dass du es schon kannst." author="Steffi" position="center 45%" placeholder />
 
   <section class="section section--sand">
     <div class="wrap split split--img-right">
@@ -82,7 +90,7 @@ import imgStuhl from '../../assets/img/steffi-haengestuhl-pferde.jpg';
         <p class="muted">Bring ein Foto deines eigenen Tieres mit – im Basiskurs führen wir gemeinsam ein Gespräch mit ihm.</p>
       </div>
       <figure class="photo photo--landscape" style="margin:0">
-        <Image src={imgWiese} alt="Drei Hunde auf einem alten Traktor vor einer Steinmauer" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+        <Image src={imgHerde} alt="Die Pferdeherde im warmen Gegenlicht des Morgens" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
       </figure>
     </div>
   </section>

@@ -4,15 +4,15 @@ import CTA from '../../components/CTA.astro';
 import { Image } from 'astro:assets';
 import { kurse, type Kurs } from '../../data/kurse';
 import { site } from '../../data/site';
-import imgGalloway from '../../assets/img/steffi-hund-galloway-schnee.jpg';
-import imgPferd from '../../assets/img/steffi-pferd-schnee.jpg';
-import imgHerde from '../../assets/img/pferdeherde-gegenlicht.jpg';
+import imgBasis from '../../assets/img/hund-am-winter-see.jpg';
+import imgAufbau from '../../assets/img/pferd-schnee-sonnenuntergang.jpg';
+import imgProfi from '../../assets/img/see-abendrot-mit-hund.jpg';
 
 export function getStaticPaths() {
   return kurse.map((k) => ({ params: { slug: k.slug }, props: { kurs: k } }));
 }
 const { kurs } = Astro.props as { kurs: Kurs };
-const bild = { basiskurs: imgGalloway, aufbaukurs: imgHerde, profikurs: imgPferd }[kurs.slug];
+const bild = { basiskurs: imgBasis, aufbaukurs: imgAufbau, profikurs: imgProfi }[kurs.slug];
 const next = kurse.find((k) => k.stufe === kurs.stufe + 1);
 const prev = kurse.find((k) => k.stufe === kurs.stufe - 1);
 ---

@@ -5,8 +5,8 @@ import CTA from '../components/CTA.astro';
 import QuoteBanner from '../components/QuoteBanner.astro';
 import { Image } from 'astro:assets';
 import { site } from '../data/site';
-import imgPferd from '../assets/img/steffi-pferd-schnee.jpg';
-import imgGalloway from '../assets/img/steffi-hund-galloway-schnee.jpg';
+import imgKatze from '../assets/img/katze-nahaufnahme.jpg';
+import imgNebel from '../assets/img/spaziergang-mit-pferden-im-nebel.jpg';
 
 const steps = [
   { title: 'Du schreibst mir', text: 'Ein Foto deines Tieres, sein Name und das, was dich gerade beschäftigt. Wir machen einen Telefontermin aus.' },
@@ -28,7 +28,7 @@ const steps = [
         </div>
       </div>
       <figure class="photo photo--portrait" style="margin:0">
-        <Image src={imgPferd} alt="Steffi kniet lachend neben ihrem liegenden Pferd im Schnee" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
+        <Image src={imgKatze} alt="Eine getigerte Katze schaut aufmerksam nach unten" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
       </figure>
     </div>
   </section>
@@ -63,7 +63,7 @@ const steps = [
     </div>
   </section>
 
-  <QuoteBanner image={imgGalloway} alt="Steffi mit Hund und Galloway im Schnee" quote="Jedes Tier hat etwas zu sagen. Die Frage ist nur, ob wir zuhören." author="Steffi" position="center 30%" placeholder />
+  <QuoteBanner image={imgNebel} alt="Zwei Menschen gehen mit ihren Pferden durch den Morgennebel" quote="Jedes Tier hat etwas zu sagen. Die Frage ist nur, ob wir zuhören." author="Steffi" position="center 60%" placeholder />
 
   <section class="section">
     <div class="wrap">
