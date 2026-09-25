@@ -3,3 +3,4 @@ dist/
 .astro/
 .npm-install.log
 .DS_Store
+.netlify-site-id
