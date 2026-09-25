@@ -119,3 +119,22 @@
 09:15:06 [200] /impressum 3ms
 09:15:13 [200] /datenschutz 3ms
 09:15:18 [200] /kontakt 4ms
+10:09:09 [200] / 7ms
+10:09:16 [200] / 8ms
+10:09:25 [200] /_image 60ms
+10:10:53 [200] / 12ms
+10:10:53 [watch] /src/styles/global.css
+10:10:53 [watch] /src/components/Steps.astro?astro&type=style&index=0&lang.css
+10:10:53 [watch] src/components/Steps.astro
+10:10:53 [watch] /src/pages/kurse/index.astro?astro&type=style&index=0&lang.css
+10:10:53 [watch] src/pages/kontakt.astro
+10:10:53 [200] / 6ms
+10:11:09 [200] / 4ms
+10:11:46 [200] /_image 530ms
+10:11:46 [200] /_image 537ms
+10:11:46 [200] /_image 534ms
+10:11:46 [200] /kurse 3ms
+10:11:46 [200] /_image 633ms
+10:11:47 [200] /_image 1009ms
+10:11:47 [200] /_image 1097ms
+10:11:50 [200] /_image 307ms

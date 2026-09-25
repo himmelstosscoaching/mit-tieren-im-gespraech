@@ -8,7 +8,7 @@ export const site = {
   zip: '78576',
   city: 'Emmingen-Liptingen',
   region: 'bei Tuttlingen · zwischen Bodensee, Hegau und Schwarzwald',
-  email: '',        // TODO Steffi
+  email: 'steffi-himmelstoss@hotmail.de',
   phone: '',        // TODO Steffi
   instagram: 'https://www.instagram.com/mit_tieren_im_gespraech/',
   instagramHandle: '@mit_tieren_im_gespraech',

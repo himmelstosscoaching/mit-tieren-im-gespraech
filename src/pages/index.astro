@@ -110,9 +110,10 @@ const faq = [
         <h2>Lerne, mit Tieren zu sprechen.</h2>
         <p class="lead">Drei Stufen, die aufeinander aufbauen. Kleine Gruppen, viele Übungen, echte Gespräche – und meine Tiere direkt vor der Tür.</p>
       </div>
-      <div class="grid grid--3">
+      <div class="grid grid--3 scroller" data-scroller>
         {kurse.map((k) => <CourseCard kurs={k} />)}
       </div>
+      <div class="scroller__hint" aria-hidden="true">{kurse.map((k, i) => <span class:list={{ 'is-active': i === 0 }}></span>)}</div>
     </div>
   </section>
 

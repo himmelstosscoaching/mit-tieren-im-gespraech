@@ -27,9 +27,10 @@ import imgStuhl from '../../assets/img/steffi-haengestuhl-pferde.jpg';
 
   <section class="section section--sand">
     <div class="wrap">
-      <div class="grid grid--3">
+      <div class="grid grid--3 scroller" data-scroller>
         {kurse.map((k) => <CourseCard kurs={k} />)}
       </div>
+      <div class="scroller__hint" aria-hidden="true">{kurse.map((k, i) => <span class:list={{ 'is-active': i === 0 }}></span>)}</div>
 
       <div class="compare">
         <table>

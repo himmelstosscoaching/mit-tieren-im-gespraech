@@ -1,0 +1,37 @@
+---
+/** Feste Aktionsleiste am unteren Rand – nur auf dem Handy, erscheint nach dem Hero. */
+interface Props { href?: string; label?: string }
+const { href = '/kontakt', label = 'Tiergespräch anfragen' } = Astro.props;
+---
+<div class="mcta" data-mcta aria-hidden="true">
+  <a class="btn btn--primary mcta__btn" href={href}>{label}</a>
+</div>
+
+<style>
+  .mcta { display: none; }
+  @media (max-width: 859px) {
+    .mcta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 0.6rem var(--gutter) calc(0.6rem + env(safe-area-inset-bottom));
+      background: linear-gradient(to top, rgba(250,246,239,0.98) 60%, rgba(250,246,239,0)); transform: translateY(110%); transition: transform 0.3s ease; pointer-events: none; }
+    .mcta.is-visible { transform: none; pointer-events: auto; }
+    .mcta__btn { width: 100%; padding: 1rem; font-size: 1.05rem; box-shadow: 0 10px 30px -10px rgba(163, 79, 46, 0.6); }
+    body.has-mcta { padding-bottom: 4.5rem; }
+  }
+</style>
+
+<script>
+  const bar = document.querySelector('[data-mcta]');
+  if (bar) {
+    document.body.classList.add('has-mcta');
+    const footer = document.querySelector('footer');
+    const update = () => {
+      const pastHero = window.scrollY > window.innerHeight * 0.7;
+      const nearFooter = footer ? footer.getBoundingClientRect().top < window.innerHeight - 40 : false;
+      const show = pastHero && !nearFooter;
+      bar.classList.toggle('is-visible', show);
+      bar.setAttribute('aria-hidden', String(!show));
+    };
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+  }
+</script>

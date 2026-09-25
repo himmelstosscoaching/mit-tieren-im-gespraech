@@ -168,3 +168,41 @@ em { font-style: italic; }
   *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
   html { scroll-behavior: auto; }
 }
+
+/* ==========================================================================
+   Mobile-Feinschliff (2026-09-25)
+   ========================================================================== */
+/* Sanftes Einblenden */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.is-in { opacity: 1; transform: none; }
+.card.reveal:nth-child(2), .steps__item.reveal:nth-child(2) { transition-delay: 0.08s; }
+.card.reveal:nth-child(3), .steps__item.reveal:nth-child(3) { transition-delay: 0.16s; }
+.steps__item.reveal:nth-child(4) { transition-delay: 0.24s; }
+
+/* Kurs-Karten: auf dem Handy als Wisch-Karussell mit Blick auf die nächste Karte */
+@media (max-width: 859px) {
+  .scroller { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0.25rem var(--gutter) 1.25rem;
+    margin-inline: calc(-1 * var(--gutter)); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .scroller::-webkit-scrollbar { display: none; }
+  .scroller > * { flex: 0 0 82%; scroll-snap-align: center; }
+  .scroller__hint { display: flex; justify-content: center; gap: 0.4rem; margin-top: -0.25rem; }
+  .scroller__hint span { width: 7px; height: 7px; border-radius: 50%; background: var(--sand); }
+  .scroller__hint span.is-active { background: var(--clay); }
+}
+@media (min-width: 860px) { .scroller__hint { display: none; } }
+
+/* Hero-Buttons: auf schmalen Screens volle Breite */
+@media (max-width: 480px) {
+  .hero .btn-row { flex-direction: column; }
+  .hero .btn-row .btn { width: 100%; padding: 1rem; }
+}
+
+/* Vergleichstabelle nur auf großen Screens */
+@media (max-width: 859px) { .compare { display: none; } }
+
+/* Kleinere Innenabstände in Karten auf dem Handy */
+@media (max-width: 480px) {
+  .card { padding: 1.35rem; }
+  .card--img .card__body { padding: 1.35rem; }
+  .card--img img { aspect-ratio: 16 / 11; }
+}

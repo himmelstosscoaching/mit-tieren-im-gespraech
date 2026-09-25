@@ -18,4 +18,14 @@ const { steps } = Astro.props;
   .steps__item { background: var(--white); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow); position: relative; }
   .steps__num { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--moss-soft); color: var(--moss-deep); font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1rem; }
   .steps__item h3 { font-size: 1.25rem; }
+  @media (max-width: 859px) {
+    .steps { gap: 0; position: relative; padding-left: 0.4rem; }
+    .steps::before { content: ''; position: absolute; left: calc(0.4rem + 1.3rem - 1px); top: 1.5rem; bottom: 1.5rem; width: 2px; background: var(--moss-soft); }
+    .steps__item { background: transparent; box-shadow: none; padding: 0 0 1.75rem 3.4rem; border-radius: 0; }
+    .steps__item:last-child { padding-bottom: 0; }
+    .steps__num { position: absolute; left: 0; top: -0.15rem; margin: 0; box-shadow: 0 0 0 4px var(--cream); }
+    .section--sand .steps__num { box-shadow: 0 0 0 4px var(--cream-deep); }
+    .steps__item h3 { font-size: 1.2rem; margin-bottom: 0.2rem; }
+    .steps__item p { font-size: 0.98rem; }
+  }
 </style>
