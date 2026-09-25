@@ -22,7 +22,7 @@ export const kurse: Kurs[] = [
     kurz: 'Du lernst, was Tierkommunikation bedeutet, und führst schon am ersten Wochenende deine ersten Gespräche – auch mit deinem eigenen Tier.',
     beschreibung: [
       'Der Basiskurs ist dein Einstieg in die Tierkommunikation. Hier lernst du, was Tierkommunikation bedeutet und welche Möglichkeiten sie dir eröffnet.',
-      'Im Mittelpunkt stehen viele praktische Übungen und echte Gespräche mit Tieren. Wir probieren gemeinsam aus, über welchen Kanal du am leichtesten wahrnimmst – Bilder, Gefühle oder Worte.',
+      'Im Mittelpunkt stehen viele praktische Übungen und echte Gespräche mit Tieren. Wir probieren die verschiedenen Möglichkeiten aus – Bilder, Gefühle, Worte – und finden heraus, welcher Zugang für dich am besten funktioniert.',
       'Außerdem führen wir gemeinsam ein Gespräch mit mindestens einem deiner eigenen Tiere. Bring dafür ein Foto mit.',
     ],
     voraussetzung: 'Keine Vorkenntnisse nötig.',

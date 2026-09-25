@@ -142,3 +142,24 @@
 10:12:53 [200] /kurse 7ms
 10:12:53 [200] /_image 47ms
 10:31:58 [watch] /src/pages/kurse/index.astro?astro&type=style&index=0&lang.css
+10:33:21 [200] / 5ms
+10:33:21 [200] /_image 238ms
+10:33:25 [200] /_image 165ms
+10:33:25 [200] /_image 203ms
+10:33:25 [200] /_image 1037ms
+10:33:26 [200] /_image 1179ms
+10:33:26 [200] /_image 1153ms
+10:33:29 [200] /_image 544ms
+10:33:31 [200] /ueber-mich 3ms
+10:33:31 [200] /_image 69ms
+10:33:34 [200] /_image 70ms
+10:33:34 [200] /_image 71ms
+10:33:34 [200] /_image 76ms
+10:33:34 [200] /_image 82ms
+10:49:44 [200] /_image 46ms
+10:49:44 [200] /_image 54ms
+10:54:29 [watch] /src/pages/kurse/index.astro?astro&type=style&index=0&lang.css
+10:54:29 [200] /ueber-mich 6ms
+10:54:41 [200] /tiergespraech 3ms
+10:54:41 [200] /_image 65ms
+10:54:49 [200] /_image 581ms
