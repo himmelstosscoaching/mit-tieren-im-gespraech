@@ -4,3 +4,4 @@ dist/
 .npm-install.log
 .DS_Store
 .netlify-site-id
+.netlify-build-hook
