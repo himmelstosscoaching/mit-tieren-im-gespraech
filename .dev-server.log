@@ -138,3 +138,6 @@
 10:11:47 [200] /_image 1009ms
 10:11:47 [200] /_image 1097ms
 10:11:50 [200] /_image 307ms
+10:12:53 [watch] src/layouts/Base.astro
+10:12:53 [200] /kurse 7ms
+10:12:53 [200] /_image 47ms
