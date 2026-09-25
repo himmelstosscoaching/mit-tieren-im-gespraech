@@ -1,0 +1,21 @@
+---
+interface Step { title: string; text: string }
+interface Props { steps: Step[] }
+const { steps } = Astro.props;
+---
+<ol class="steps">
+  {steps.map((s, i) => (
+    <li class="steps__item">
+      <span class="steps__num">{i + 1}</span>
+      <h3>{s.title}</h3>
+      <p class="muted">{s.text}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: clamp(1.25rem, 3vw, 2rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); counter-reset: step; }
+  .steps__item { background: var(--white); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow); position: relative; }
+  .steps__num { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--moss-soft); color: var(--moss-deep); font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1rem; }
+  .steps__item h3 { font-size: 1.25rem; }
+</style>

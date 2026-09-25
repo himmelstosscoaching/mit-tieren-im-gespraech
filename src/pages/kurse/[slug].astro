@@ -1,0 +1,72 @@
+---
+import Base from '../../layouts/Base.astro';
+import CTA from '../../components/CTA.astro';
+import { Image } from 'astro:assets';
+import { kurse, type Kurs } from '../../data/kurse';
+import { site } from '../../data/site';
+import imgGalloway from '../../assets/img/steffi-hund-galloway-schnee.jpg';
+import imgPferd from '../../assets/img/steffi-pferd-schnee.jpg';
+import imgHerde from '../../assets/img/pferdeherde-gegenlicht.jpg';
+
+export function getStaticPaths() {
+  return kurse.map((k) => ({ params: { slug: k.slug }, props: { kurs: k } }));
+}
+const { kurs } = Astro.props as { kurs: Kurs };
+const bild = { basiskurs: imgGalloway, aufbaukurs: imgHerde, profikurs: imgPferd }[kurs.slug];
+const next = kurse.find((k) => k.stufe === kurs.stufe + 1);
+const prev = kurse.find((k) => k.stufe === kurs.stufe - 1);
+---
+<Base title={`${kurs.titel} Tierkommunikation`} description={`${kurs.titel} Tierkommunikation in ${site.city} bei Tuttlingen: ${kurs.kurz} ${kurs.preis} €.`}>
+  <section class="section">
+    <div class="wrap split" style="align-items:start">
+      <div>
+        <span class="eyebrow">Tierkommunikation · Stufe {kurs.stufe}</span>
+        <h1>{kurs.titel}</h1>
+        <p class="lead">{kurs.untertitel}</p>
+        {kurs.beschreibung.map((p) => <p>{p}</p>)}
+        <div class="btn-row" style="margin-top:1.5rem">
+          <a class="btn btn--primary" href={`/kontakt?kurs=${kurs.slug}`}>Platz anfragen</a>
+          <a class="btn btn--ghost" href="/kurse">Alle Kurse</a>
+        </div>
+      </div>
+      <div>
+        <figure class="photo photo--landscape" style="margin:0 0 1.5rem">
+          <Image src={bild} alt={`${kurs.titel} bei Steffi`} widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
+        </figure>
+        <dl class="facts">
+          <div><dt>Dauer</dt><dd>{kurs.dauer}</dd></div>
+          <div><dt>Zeiten</dt><dd>{kurs.zeiten.map((z) => <span style="display:block">{z}</span>)}</dd></div>
+          <div><dt>Voraussetzung</dt><dd>{kurs.voraussetzung}</dd></div>
+          <div><dt>Kosten</dt><dd><span class="price">{kurs.preis} €</span></dd></div>
+          <div><dt>Termine</dt><dd>{kurs.termine.map((t) => <span style="display:block">{t}</span>)}</dd></div>
+          <div><dt>Kursort</dt><dd>{site.street}, {site.zip} {site.city}</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  {(prev || next) && (
+    <section class="section section--sand section--tight">
+      <div class="wrap grid grid--2">
+        {prev && (
+          <div class="card">
+            <span class="eyebrow">Davor</span>
+            <h3>{prev.titel}</h3>
+            <p class="muted">{prev.kurz}</p>
+            <a class="btn btn--ghost" href={`/kurse/${prev.slug}`}>Zum {prev.titel}</a>
+          </div>
+        )}
+        {next && (
+          <div class="card">
+            <span class="eyebrow">Danach</span>
+            <h3>{next.titel}</h3>
+            <p class="muted">{next.kurz}</p>
+            <a class="btn btn--ghost" href={`/kurse/${next.slug}`}>Zum {next.titel}</a>
+          </div>
+        )}
+      </div>
+    </section>
+  )}
+
+  <CTA title={`Lust auf den ${kurs.titel}?`} text="Schreib mir, welcher Termin dich interessiert. Ich melde mich mit allen Details." primary={{ href: `/kontakt?kurs=${kurs.slug}`, label: 'Platz anfragen' }} />
+</Base>

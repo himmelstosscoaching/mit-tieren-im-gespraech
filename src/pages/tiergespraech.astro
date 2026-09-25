@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import Steps from '../components/Steps.astro';
+import CTA from '../components/CTA.astro';
+import QuoteBanner from '../components/QuoteBanner.astro';
+import { Image } from 'astro:assets';
+import { site } from '../data/site';
+import imgPferd from '../assets/img/steffi-pferd-schnee.jpg';
+import imgGalloway from '../assets/img/steffi-hund-galloway-schnee.jpg';
+
+const steps = [
+  { title: 'Du schreibst mir', text: 'Ein Foto deines Tieres, sein Name und das, was dich gerade beschäftigt. Wir machen einen Telefontermin aus.' },
+  { title: 'Ich verbinde mich', text: 'Ich nehme gedanklich Kontakt zu deinem Tier auf – es muss dafür nicht bei mir sein und auch nicht bei dir.' },
+  { title: 'Wir sprechen gemeinsam', text: 'Am Telefon gehen wir deine Fragen durch, etwa eine Stunde lang. Du hörst, was dein Tier zeigt, fühlt und sagt.' },
+  { title: 'Ihr geht weiter', text: 'Mit mehr Klarheit, oft mit konkreten nächsten Schritten – und mit dem Gefühl, einander besser zu verstehen.' },
+];
+---
+<Base title="Tiergespräch" description="Ein Tiergespräch am Telefon: Ich verbinde mich mit deinem Tier und wir sprechen gemeinsam über das, was euch beschäftigt – Krankheit, Verhalten, Veränderungen oder einfach die Frage, wie es ihm geht.">
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Tiergespräch</span>
+        <h1>Wie geht es deinem Tier wirklich?</h1>
+        <p class="lead">Ich möchte Tieren eine Stimme geben und ein Mitspracherecht. In einem Tiergespräch höre ich deinem Tier zu – und du bist dabei.</p>
+        <p>Im Alltag sprechen wir ständig mit unseren Tieren, oft ohne es zu merken. Ein bewusstes Tiergespräch geht einen Schritt weiter: Ich setze mich hin, öffne einen Raum, und wir beschäftigen uns gemeinsam mit dem, was gerade Thema ist.</p>
+        <div class="btn-row" style="margin-top:1.5rem">
+          <a class="btn btn--primary" href="/kontakt">Tiergespräch anfragen</a>
+        </div>
+      </div>
+      <figure class="photo photo--portrait" style="margin:0">
+        <Image src={imgPferd} alt="Steffi kniet lachend neben ihrem liegenden Pferd im Schnee" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap grid grid--2" style="align-items:start">
+      <div>
+        <span class="eyebrow">Wann?</span>
+        <h2>Ein Tiergespräch ist sinnvoll, wenn …</h2>
+        <ul class="checklist">
+          <li><strong>sich etwas verändert:</strong> ein Umzug, ein neues Familienmitglied, ein neues Tier, ein Abschied.</li>
+          <li><strong>dein Tier krank ist</strong> und du wissen willst, wie es ihm geht und was es braucht.</li>
+          <li><strong>ein Verhalten dir Sorgen macht</strong> und ihr es allein nicht gelöst bekommt.</li>
+          <li><strong>du einfach mehr über dein Tier wissen möchtest.</strong> Auch dann freut es sich über ein Gespräch.</li>
+        </ul>
+        <p class="muted">Kleine Themen lassen sich oft lösen, bevor sie zu einem Problem werden – das ist für mich das Wertvollste an der Tierkommunikation im Alltag.</p>
+      </div>
+      <div>
+        <span class="eyebrow">Was ich brauche</span>
+        <h2>Das schickst du mir vorab</h2>
+        <ul class="checklist">
+          <li><strong>Ein Foto deines Tieres</strong> – am besten allein, mit Blick in die Kamera.</li>
+          <li><strong>Seinen Namen</strong> und ein, zwei Sätze zu ihm.</li>
+          <li><strong>Deine Fragen</strong> – oder das, was dich gerade beschäftigt. Es müssen keine fertigen Fragen sein.</li>
+        </ul>
+        <div class="facts" style="margin-top:1.5rem">
+          <div><dt>Dauer</dt><dd>ca. 1 Stunde am Telefon</dd></div>
+          <div><dt>Ort</dt><dd>Egal, wo du und dein Tier seid – die Kommunikation ist nicht an einen Ort gebunden.</dd></div>
+          <div><dt>Preis</dt><dd><strong>Preis folgt</strong> <span class="muted">(wird noch ergänzt)</span></dd></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <QuoteBanner image={imgGalloway} alt="Steffi mit Hund und Galloway im Schnee" quote="Jedes Tier hat etwas zu sagen. Die Frage ist nur, ob wir zuhören." author="Steffi" position="center 30%" placeholder />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
+        <span class="eyebrow">Ablauf</span>
+        <h2>In vier Schritten ins Gespräch</h2>
+      </div>
+      <Steps steps={steps} />
+    </div>
+  </section>
+
+  <CTA title="Möchtest du wissen, was dein Tier dir sagen will?" text={`Schreib mir kurz, worum es geht. Ich melde mich persönlich bei dir und wir finden einen Termin.`} primary={{ href: '/kontakt', label: 'Tiergespräch anfragen' }} secondary={{ href: '/ueber-mich', label: 'Wer ist Steffi?' }} />
+</Base>

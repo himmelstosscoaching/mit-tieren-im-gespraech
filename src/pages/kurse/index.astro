@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+import CourseCard from '../../components/CourseCard.astro';
+import CTA from '../../components/CTA.astro';
+import QuoteBanner from '../../components/QuoteBanner.astro';
+import { Image } from 'astro:assets';
+import { kurse, weitereAngebote } from '../../data/kurse';
+import { site } from '../../data/site';
+import imgScheune from '../../assets/img/hunde-fendt-scheune.jpg';
+import imgWiese from '../../assets/img/hunde-fendt-wiese.jpg';
+import imgStuhl from '../../assets/img/steffi-haengestuhl-pferde.jpg';
+---
+<Base title="Kurse: Tierkommunikation lernen" description={`Tierkommunikation lernen in drei Stufen – Basiskurs, Aufbaukurs, Profikurs – auf Steffis Hof in ${site.city} bei Tuttlingen. Kleine Gruppen, viele Übungen, echte Gespräche mit Tieren.`}>
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Kurse</span>
+        <h1>Lerne, mit Tieren zu sprechen.</h1>
+        <p class="lead">Wir alle kommunizieren mit unseren Tieren. In meinen Kursen lernst du, es bewusster und klarer zu tun – mit deinen eigenen Tieren und mit fremden.</p>
+        <p>Die Kurse sind für alle, die ihr Tier besser verstehen wollen, und für alle, die Tierkommunikation in ihre Arbeit einbinden möchten. Drei Stufen bauen aufeinander auf. Du kannst nach jeder Stufe aufhören – oder bis zum eigenen Beruf weitergehen.</p>
+      </div>
+      <figure class="photo photo--portrait" style="margin:0">
+        <Image src={imgScheune} alt="Vier Border Collies sitzen auf einem alten Fendt in der Scheune" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="grid grid--3">
+        {kurse.map((k) => <CourseCard kurs={k} />)}
+      </div>
+
+      <div class="compare">
+        <table>
+          <thead>
+            <tr><th>Stufe</th><th>Dauer</th><th>Voraussetzung</th><th>Preis</th><th>Nächster Termin</th></tr>
+          </thead>
+          <tbody>
+            {kurse.map((k) => (
+              <tr>
+                <td><a href={`/kurse/${k.slug}`}><strong>{k.titel}</strong></a></td>
+                <td>{k.dauer}</td>
+                <td>{k.voraussetzung}</td>
+                <td>{k.preis} €</td>
+                <td>{k.termine[0]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap grid grid--2" style="align-items:start">
+      <div class="card">
+        <span class="eyebrow">Für junge Menschen</span>
+        <h3>{weitereAngebote.jugendkurs.titel}</h3>
+        <p>{weitereAngebote.jugendkurs.text}</p>
+        <a class="btn btn--ghost" href="/kontakt">Anfragen</a>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Monatlich</span>
+        <h3>{weitereAngebote.lernabende.titel}</h3>
+        <p>{weitereAngebote.lernabende.text}</p>
+        <a class="btn btn--ghost" href="/kontakt">Ich möchte dabei sein</a>
+      </div>
+    </div>
+  </section>
+
+  <QuoteBanner image={imgStuhl} alt="Steffi im Hängestuhl mit Pferd und Hund im Abendlicht" quote="Du musst nichts Neues lernen. Du musst dich nur daran erinnern, dass du es schon kannst." author="Steffi" position="center 60%" placeholder />
+
+  <section class="section section--sand">
+    <div class="wrap split split--img-right">
+      <div>
+        <span class="eyebrow">Kursort</span>
+        <h2>Bei mir zu Hause – mit meinen Tieren.</h2>
+        <p class="lead">Alle Kurse finden auf unserem Hof in {site.city} statt, {site.region}. Meine Hunde, Pferde und die anderen Tiere sind mit dabei – sie sind die besten Lehrer.</p>
+        <p><strong>{site.street}, {site.zip} {site.city}</strong></p>
+        <p class="muted">Bring ein Foto deines eigenen Tieres mit – im Basiskurs führen wir gemeinsam ein Gespräch mit ihm.</p>
+      </div>
+      <figure class="photo photo--landscape" style="margin:0">
+        <Image src={imgWiese} alt="Drei Hunde auf einem alten Traktor vor einer Steinmauer" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <CTA title="Unsicher, welcher Kurs passt?" text="Schreib mir kurz, wo du stehst und was du dir wünschst – ich sage dir ehrlich, womit du am besten anfängst." primary={{ href: '/kontakt', label: 'Frage stellen' }} />
+</Base>
+
+<style>
+  .compare { margin-top: 2.5rem; overflow-x: auto; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; min-width: 640px; }
+  th, td { text-align: left; padding: 1rem 1.25rem; border-bottom: 1px solid var(--sand); vertical-align: top; font-size: 0.97rem; }
+  th { font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); background: var(--cream-deep); }
+  tr:last-child td { border-bottom: 0; }
+  td a { text-decoration: none; }
+</style>

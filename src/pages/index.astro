@@ -1,0 +1,154 @@
+---
+import Base from '../layouts/Base.astro';
+import HeroSlider from '../components/HeroSlider.astro';
+import QuoteBanner from '../components/QuoteBanner.astro';
+import Steps from '../components/Steps.astro';
+import FAQ from '../components/FAQ.astro';
+import CTA from '../components/CTA.astro';
+import CourseCard from '../components/CourseCard.astro';
+import { Image } from 'astro:assets';
+import { kurse } from '../data/kurse';
+import { site } from '../data/site';
+
+import imgGalloway from '../assets/img/steffi-hund-galloway-schnee.jpg';
+import imgPferd from '../assets/img/steffi-pferd-schnee.jpg';
+import imgHerde from '../assets/img/pferdeherde-gegenlicht.jpg';
+import imgScheune from '../assets/img/hunde-fendt-scheune.jpg';
+import imgStuhl from '../assets/img/steffi-haengestuhl-pferde.jpg';
+
+const slides = [
+  { src: imgStuhl, alt: 'Steffi sitzt im Hängestuhl auf der Wiese, ein Pferd kommt zu ihr, ihr Hund steht daneben – Abendlicht', position: 'center 60%' },
+  { src: imgGalloway, alt: 'Steffi kniet im Schnee, im Arm ihr Border Collie, daneben ein schwarzes Galloway-Rind', position: 'center 35%' },
+  { src: imgHerde, alt: 'Eine Pferdeherde im warmen Gegenlicht des Morgens', position: 'center 40%' },
+  { src: imgScheune, alt: 'Vier Border Collies sitzen auf einem alten Fendt-Traktor in der Scheune', position: 'center 25%' },
+];
+
+const steps = [
+  { title: 'Du schreibst mir', text: 'Ein Foto deines Tieres, sein Name und das, was dich gerade beschäftigt – mehr brauche ich nicht.' },
+  { title: 'Ich verbinde mich', text: 'Ich nehme gedanklich Kontakt zu deinem Tier auf. Wo es gerade ist, spielt keine Rolle.' },
+  { title: 'Wir sprechen am Telefon', text: 'Gemeinsam gehen wir deine Fragen durch – etwa eine Stunde lang, in Ruhe und ohne Zeitdruck.' },
+  { title: 'Du nimmst etwas mit', text: 'Ein klareres Bild davon, wie es deinem Tier geht, was es braucht – und was ihr als Nächstes tun könnt.' },
+];
+
+const faq = [
+  { q: 'Muss mein Tier beim Gespräch dabei sein?', a: 'Nein. Die Kommunikation findet auf einer anderen Ebene statt und ist nicht an einen Ort gebunden. Ich brauche nur ein Foto und den Namen deines Tieres – dann kann ich mich mit ihm verbinden, egal wo es gerade ist.' },
+  { q: 'Wie sprechen Tiere überhaupt mit uns?', a: 'Die meisten Tiere kommunizieren über Bilder, Gefühle und Worte. Und genau wie bei uns Menschen gibt es Unterschiede: Manchen fällt es leichter, in Bildern zu sprechen, anderen in Worten. In den Kursen probieren wir alle Wege aus.' },
+  { q: 'Wann ist ein Tiergespräch sinnvoll?', a: 'Immer dann, wenn sich im Alltag etwas verändert – ein Umzug, ein neues Familienmitglied – oder wenn es ein Thema gibt, das ihr allein nicht gelöst bekommt, etwa eine Krankheit oder ein Verhalten, das dir Sorgen macht. Und auch einfach dann, wenn du mehr über dein Tier wissen möchtest. Dein Tier freut sich über das Gespräch.' },
+  { q: 'Kann ich Tierkommunikation selbst lernen?', a: 'Ja. Telepathie kann jeder von uns – sie ist wie ein Muskel, den wir nur wieder trainieren müssen, um sicherer und klarer zu werden. Genau das machen wir im Basiskurs, ganz praktisch, mit vielen Übungen und echten Gesprächen.' },
+  { q: 'Für wen sind die Kurse geeignet?', a: 'Für alle, die ihr Tier noch besser verstehen wollen – und für alle, die Tierkommunikation in ihre Arbeit mit Tieren einbinden möchten. Vorkenntnisse brauchst du für den Basiskurs nicht.' },
+  { q: 'Wo finden die Kurse statt?', a: `Bei mir zu Hause auf dem Hof in ${site.city}, ${site.street} – ${site.region}. Meine Tiere sind mit dabei.` },
+];
+---
+<Base title={site.name} description="Tiergespräche am Telefon und Kurse, in denen du Tierkommunikation selbst lernst – bei Steffi Himmelstoß auf einem kleinen Hof in Emmingen-Liptingen bei Tuttlingen, zwischen Bodensee und Schwarzwald." transparentHeader>
+  <HeroSlider
+    slides={slides}
+    eyebrow="Tierkommunikation · Emmingen-Liptingen"
+    title="Dein Tier hat dir etwas zu sagen."
+    text="Ich bin Steffi, Tierkommunikatorin auf einem kleinen Hof bei Tuttlingen. In Tiergesprächen höre ich deinem Tier zu – und in meinen Kursen lernst du, es selbst zu tun."
+  />
+
+  <section class="section">
+    <div class="wrap--narrow center">
+      <span class="eyebrow">Was ist Tierkommunikation?</span>
+      <h2>Ein Gespräch – nur ohne die Worte, die du kennst.</h2>
+      <p class="lead">Tierkommunikation ist telepathische Kommunikation mit einem Tier. Tiere sprechen in Bildern, Gefühlen und Worten – jedes auf seine eigene Weise, genau wie wir Menschen. Diese Fähigkeit steckt in jedem von uns. Sie ist wie ein Muskel: Man muss ihn nur wieder trainieren.</p>
+    </div>
+  </section>
+
+  <section class="section section--sand section--tight">
+    <div class="wrap">
+      <div class="grid grid--2">
+        <article class="card card--img">
+          <Image src={imgPferd} alt="Steffi neben ihrem liegenden Pferd im Schnee" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+          <div class="card__body">
+            <span class="eyebrow">Für dein Tier</span>
+            <h3>Ein Tiergespräch</h3>
+            <p>Wenn dein Tier krank ist, sich anders verhält, eine Veränderung ansteht – oder du einfach wissen willst, wie es ihm wirklich geht. Wir sprechen gemeinsam mit deinem Tier, am Telefon, etwa eine Stunde lang.</p>
+            <a class="btn btn--primary" href="/tiergespraech">Mehr zum Tiergespräch</a>
+          </div>
+        </article>
+        <article class="card card--img">
+          <Image src={imgScheune} alt="Vier Border Collies auf einem alten Traktor in der Scheune" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+          <div class="card__body">
+            <span class="eyebrow">Für dich</span>
+            <h3>Tierkommunikation lernen</h3>
+            <p>Vom ersten Wochenende bis zum eigenen Beruf: Im Basis-, Aufbau- und Profikurs lernst du in kleiner Runde, bewusst und klar mit Tieren zu sprechen – mit deinen und mit fremden.</p>
+            <a class="btn btn--primary" href="/kurse">Zu den Kursen</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <QuoteBanner
+    image={imgHerde}
+    alt="Pferdeherde im Gegenlicht"
+    quote="Telepathie kann jeder von uns. Sie ist wie ein Muskel, den wir nur wieder trainieren müssen."
+    author="Steffi"
+    position="center 45%"
+    placeholder
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
+        <span class="eyebrow">Ablauf</span>
+        <h2>So läuft ein Tiergespräch ab</h2>
+        <p class="lead">Kein Aufwand für dich, kein Termin vor Ort. Vier Schritte – und ihr seid im Gespräch.</p>
+      </div>
+      <Steps steps={steps} />
+      <div class="center" style="margin-top:2.5rem">
+        <a class="btn btn--primary" href="/kontakt">Tiergespräch anfragen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap">
+      <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
+        <span class="eyebrow">Kurse am Hof</span>
+        <h2>Lerne, mit Tieren zu sprechen.</h2>
+        <p class="lead">Drei Stufen, die aufeinander aufbauen. Kleine Gruppen, viele Übungen, echte Gespräche – und meine Tiere direkt vor der Tür.</p>
+      </div>
+      <div class="grid grid--3">
+        {kurse.map((k) => <CourseCard kurs={k} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split split--img-right">
+      <div>
+        <span class="eyebrow">Über mich</span>
+        <h2>Tiere sind mein Lebensmittelpunkt – seit ich denken kann.</h2>
+        <p class="lead">Ich lebe mit meinen Tieren auf einem kleinen Hof in Liptingen. Mit 16 bin ich nach Spanien gegangen, um mit Pferden zu leben und von ihnen zu lernen. Später kam die Ausbildung zur Tierkommunikatorin dazu – und damit ein weiterer Traum.</p>
+        <p>Heute führe ich Tiergespräche, gebe Kurse und arbeite mit Krafttieren und Energiearbeit. Und jeden Tag begleiten mich meine Hunde Smilla und Mila.</p>
+        <a class="btn btn--ghost" href="/ueber-mich">Meine Geschichte</a>
+      </div>
+      <figure class="photo photo--landscape" style="margin:0">
+        <Image src={imgGalloway} alt="Steffi mit Border Collie und Galloway-Rind im Schnee" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+      </figure>
+    </div>
+  </section>
+
+  <QuoteBanner
+    image={imgStuhl}
+    alt="Steffi im Hängestuhl, ein Pferd kommt zu ihr"
+    quote="Wenn ich still werde, fangen die Tiere an zu erzählen."
+    author="Steffi"
+    position="center 60%"
+    placeholder
+  />
+
+  <section class="section section--sand">
+    <div class="wrap--narrow">
+      <div class="center" style="margin-bottom:2rem">
+        <span class="eyebrow">Fragen</span>
+        <h2>Was du vielleicht wissen möchtest</h2>
+      </div>
+      <FAQ items={faq} />
+    </div>
+  </section>
+
+  <CTA secondary={{ href: '/kurse', label: 'Kurse ansehen' }} />
+</Base>

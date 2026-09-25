@@ -1,0 +1,79 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import { kurse } from '../data/kurse';
+---
+<Base title="Kontakt" description={`Schreib Steffi – für ein Tiergespräch, einen Kursplatz oder eine Frage. ${site.name}, ${site.city} bei Tuttlingen.`}>
+  <section class="section">
+    <div class="wrap split" style="align-items:start">
+      <div>
+        <span class="eyebrow">Kontakt</span>
+        <h1>Schreib mir.</h1>
+        <p class="lead">Egal, ob es um dein Tier geht, um einen Kurs oder einfach um eine Frage – ich melde mich persönlich bei dir.</p>
+        <dl class="facts" style="margin-top:2rem">
+          <div><dt>Adresse</dt><dd>{site.owner}<br />{site.street}<br />{site.zip} {site.city}</dd></div>
+          {site.phone && <div><dt>Telefon</dt><dd><a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a></dd></div>}
+          {site.email && <div><dt>E-Mail</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd></div>}
+          <div><dt>Instagram</dt><dd><a href={site.instagram} target="_blank" rel="noopener">{site.instagramHandle}</a></dd></div>
+          <div><dt>Anfahrt</dt><dd>{site.city} liegt {site.region}. <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${site.street}, ${site.zip} ${site.city}`)}`} target="_blank" rel="noopener">Route in Google Maps öffnen</a></dd></div>
+        </dl>
+      </div>
+
+      <form class="card form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="firma" action="/danke">
+        <input type="hidden" name="form-name" value="kontakt" />
+        <p class="hp"><label>Firma <input name="firma" tabindex="-1" autocomplete="off" /></label></p>
+
+        <div class="field">
+          <label for="anliegen">Worum geht es?</label>
+          <select id="anliegen" name="anliegen">
+            <option value="tiergespraech">Ein Tiergespräch</option>
+            {kurse.map((k) => <option value={k.slug}>{k.titel}</option>)}
+            <option value="lernabend">Lernabend am Hof</option>
+            <option value="sonstiges">Etwas anderes</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="name">Dein Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">E-Mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="telefon">Telefon <span class="muted">(optional, fürs Tiergespräch praktisch)</span></label>
+          <input id="telefon" name="telefon" type="tel" autocomplete="tel" />
+        </div>
+        <div class="field">
+          <label for="nachricht">Deine Nachricht</label>
+          <textarea id="nachricht" name="nachricht" rows="6" required placeholder="Erzähl mir kurz von deinem Tier oder deiner Frage."></textarea>
+        </div>
+        <label class="consent">
+          <input type="checkbox" name="datenschutz" required />
+          <span>Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Mehr dazu in der <a href="/datenschutz">Datenschutzerklärung</a>.</span>
+        </label>
+        <button class="btn btn--primary" type="submit">Nachricht senden</button>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Vorauswahl aus dem Link (?kurs=basiskurs) übernehmen
+  const kurs = new URLSearchParams(location.search).get('kurs');
+  const sel = document.getElementById('anliegen') as HTMLSelectElement | null;
+  if (kurs && sel && [...sel.options].some((o) => o.value === kurs)) sel.value = kurs;
+</script>
+
+<style>
+  .form { gap: 1.1rem; }
+  .field { display: grid; gap: 0.35rem; }
+  label { font-weight: 700; font-size: 0.95rem; }
+  input, select, textarea { font: inherit; padding: 0.8rem 0.95rem; border: 1.5px solid var(--sand); border-radius: 12px; background: var(--cream); color: var(--ink); width: 100%; }
+  input:focus, select:focus, textarea:focus { outline: 3px solid var(--gold); outline-offset: 2px; border-color: var(--moss); }
+  textarea { resize: vertical; }
+  .consent { display: flex; gap: 0.75rem; align-items: flex-start; font-weight: 400; font-size: 0.9rem; color: var(--ink-soft); }
+  .consent input { width: auto; margin-top: 0.3rem; }
+  .hp { position: absolute; left: -9999px; }
+  .form .btn { align-self: flex-start; }
+</style>

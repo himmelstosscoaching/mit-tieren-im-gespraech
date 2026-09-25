@@ -1,0 +1,19 @@
+---
+interface Props { title?: string; text?: string; primary?: { href: string; label: string }; secondary?: { href: string; label: string } }
+const {
+  title = 'Lass uns ins Gespräch kommen.',
+  text = 'Schreib mir, worum es geht – um dein Tier, um einen Kurs oder einfach um eine Frage. Ich melde mich persönlich bei dir.',
+  primary = { href: '/kontakt', label: 'Anfrage senden' },
+  secondary,
+} = Astro.props;
+---
+<section class="section section--moss">
+  <div class="wrap--narrow center">
+    <h2>{title}</h2>
+    <p class="lead">{text}</p>
+    <div class="btn-row" style="justify-content:center; margin-top:1.75rem">
+      <a class="btn btn--light" href={primary.href}>{primary.label}</a>
+      {secondary && <a class="btn btn--outline-light" href={secondary.href}>{secondary.label}</a>}
+    </div>
+  </div>
+</section>

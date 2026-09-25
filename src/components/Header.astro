@@ -1,0 +1,98 @@
+---
+import { site } from '../data/site';
+interface Props { transparent?: boolean }
+const { transparent = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const nav = [
+  { href: '/tiergespraech', label: 'Tiergespräch' },
+  { href: '/kurse', label: 'Kurse' },
+  { href: '/ueber-mich', label: 'Über mich' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
+---
+<header class:list={['header', { 'header--transparent': transparent }]} data-header>
+  <div class="wrap header__inner">
+    <a class="brand" href="/">
+      <span class="brand__name">{site.name}</span>
+      <span class="brand__sub">{site.owner}</span>
+    </a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" data-burger>
+      <span></span><span></span><span></span>
+      <span class="sr-only">Menü</span>
+    </button>
+    <nav class="nav" id="nav" data-nav>
+      <ul>
+        {nav.map((n) => (
+          <li><a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</a></li>
+        ))}
+        <li class="nav__cta"><a class="btn btn--primary" href="/kontakt">Anfrage senden</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 246, 239, 0.92);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border-bottom: 1px solid rgba(42, 41, 36, 0.06);
+    transition: background 0.25s ease, border-color 0.25s ease;
+  }
+  .header--transparent { position: fixed; left: 0; right: 0; background: transparent; border-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .header--transparent.is-scrolled { background: rgba(250, 246, 239, 0.92); border-color: rgba(42, 41, 36, 0.06); backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px); }
+  .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; }
+  .brand { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); line-height: 1.1; }
+  .brand__name { font-family: var(--font-display); font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 500; letter-spacing: -0.01em; }
+  .brand__sub { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-top: 0.2rem; }
+  .header--transparent:not(.is-scrolled) .brand { color: var(--cream); }
+  .header--transparent:not(.is-scrolled) .brand__sub { color: rgba(250, 246, 239, 0.8); }
+
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2rem); }
+  .nav a:not(.btn) { text-decoration: none; font-weight: 600; color: var(--ink); padding: 0.4rem 0; border-bottom: 2px solid transparent; }
+  .nav a:not(.btn):hover, .nav a[aria-current='page'] { border-bottom-color: var(--clay); color: var(--ink); }
+  .header--transparent:not(.is-scrolled) .nav a:not(.btn) { color: var(--cream); }
+  .nav .btn { padding: 0.65rem 1.2rem; font-size: 0.95rem; }
+
+  .burger { display: none; background: none; border: 0; width: 44px; height: 44px; padding: 8px; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; border-radius: 10px; }
+  .burger span:not(.sr-only) { display: block; height: 2px; width: 100%; background: var(--ink); border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
+  .header--transparent:not(.is-scrolled) .burger span:not(.sr-only) { background: var(--cream); }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+  @media (max-width: 859px) {
+    .burger { display: flex; }
+    .nav { position: fixed; inset: 76px 0 0 0; background: var(--cream); padding: 1.5rem var(--gutter) 2rem; transform: translateX(100%); transition: transform 0.25s ease; overflow: auto; }
+    .nav.is-open { transform: none; }
+    .nav ul { flex-direction: column; align-items: stretch; gap: 0; }
+    .nav li { border-bottom: 1px solid var(--sand); }
+    .nav a:not(.btn) { display: block; padding: 1rem 0; font-size: 1.25rem; font-family: var(--font-display); font-weight: 500; border-bottom: 0 !important; }
+    .header--transparent:not(.is-scrolled) .nav a:not(.btn) { color: var(--ink); }
+    .nav__cta { border-bottom: 0; padding-top: 1.25rem; }
+    .nav__cta .btn { width: 100%; padding: 1rem; font-size: 1.05rem; }
+    .header.is-open { background: var(--cream); border-color: var(--sand); }
+    .header.is-open .brand, .header.is-open .brand__sub { color: var(--ink); }
+    .header.is-open .burger span:not(.sr-only) { background: var(--ink); }
+    .header.is-open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .header.is-open .burger span:nth-child(2) { opacity: 0; }
+    .header.is-open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+</style>
+
+<script>
+  const header = document.querySelector('[data-header]');
+  const burger = document.querySelector('[data-burger]');
+  const nav = document.querySelector('[data-nav]');
+  if (header && burger && nav) {
+    burger.addEventListener('click', () => {
+      const open = nav.classList.toggle('is-open');
+      header.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 40);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+</script>

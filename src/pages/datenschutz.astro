@@ -1,0 +1,21 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Datenschutz" description="Datenschutzerklärung">
+  <section class="section">
+    <div class="wrap--narrow">
+      <h1>Datenschutzerklärung</h1>
+      <p><strong>Verantwortliche</strong><br />{site.owner}, {site.street}, {site.zip} {site.city}</p>
+      <h2>Hosting</h2>
+      <p>[Netlify, Inc. – Standardtext zu Server-Logfiles und Auftragsverarbeitung ergänzen]</p>
+      <h2>Kontaktformular</h2>
+      <p>Wenn du mir über das Formular schreibst, speichere ich deine Angaben (Name, E-Mail, ggf. Telefon, Nachricht) ausschließlich, um deine Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO. [Aufbewahrungsdauer ergänzen]</p>
+      <h2>Schriften</h2>
+      <p>[Vor Livegang: Schriften selbst hosten, dann diesen Absatz streichen. Bis dahin: Google Fonts, Hinweis auf Datenübertragung an Google.]</p>
+      <h2>Deine Rechte</h2>
+      <p>Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch, Beschwerde bei einer Aufsichtsbehörde.</p>
+      <p class="muted">Platzhalter in eckigen Klammern werden vor dem Livegang ergänzt.</p>
+    </div>
+  </section>
+</Base>

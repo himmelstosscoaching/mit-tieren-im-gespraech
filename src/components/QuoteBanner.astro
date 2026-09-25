@@ -1,0 +1,25 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { image: ImageMetadata; alt: string; quote: string; author?: string; position?: string; placeholder?: boolean }
+const { image, alt, quote, author, position = 'center', placeholder = false } = Astro.props;
+---
+<section class="quote" style={`--pos:${position}`}>
+  <Picture src={image} alt={alt} widths={[640, 1200, 2000]} sizes="100vw" formats={['avif', 'webp']} loading="lazy" decoding="async" />
+  <div class="quote__shade"></div>
+  <blockquote class="wrap quote__text">
+    <p>„{quote}“</p>
+    {author && <footer>— {author}</footer>}
+    {placeholder && <span class="quote__hint">Zitat-Vorschlag – hier kommt dein eigener Satz hin</span>}
+  </blockquote>
+</section>
+
+<style>
+  .quote { position: relative; min-height: clamp(420px, 60vh, 640px); display: grid; place-items: center; isolation: isolate; overflow: hidden; color: var(--cream); text-align: center; }
+  .quote :global(picture), .quote :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--pos); z-index: -2; }
+  .quote__shade { position: absolute; inset: 0; z-index: -1; background: linear-gradient(to bottom, rgba(26,30,22,0.25), rgba(26,30,22,0.55)); }
+  .quote__text { margin: 0; padding-block: 4rem; max-width: 900px; }
+  .quote__text p { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: clamp(1.6rem, 3.6vw, 2.7rem); line-height: 1.25; margin: 0 0 1rem; text-shadow: 0 2px 30px rgba(0,0,0,0.35); text-wrap: balance; }
+  .quote__hint { display: block; margin-top: 1.4rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(250,246,239,0.55); }
+  .quote__text footer { font-size: 0.85rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700; color: var(--gold); }
+</style>

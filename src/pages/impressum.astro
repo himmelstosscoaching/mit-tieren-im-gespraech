@@ -1,0 +1,15 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+<Base title="Impressum" description="Impressum">
+  <section class="section">
+    <div class="wrap--narrow">
+      <h1>Impressum</h1>
+      <p><strong>Angaben gemäß § 5 DDG</strong><br />{site.owner}<br />{site.street}<br />{site.zip} {site.city}</p>
+      <p><strong>Kontakt</strong><br />Telefon: [folgt]<br />E-Mail: [folgt]</p>
+      <p><strong>Umsatzsteuer</strong><br />[Kleinunternehmerregelung nach § 19 UStG – oder USt-IdNr. eintragen]</p>
+      <p class="muted">Platzhalter in eckigen Klammern werden vor dem Livegang ergänzt.</p>
+    </div>
+  </section>
+</Base>
