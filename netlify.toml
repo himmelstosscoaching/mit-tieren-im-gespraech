@@ -4,10 +4,3 @@
 
 [build.environment]
   NODE_VERSION = "22"
-
-# Vorschau-Phase: Suchmaschinen sollen die Test-Adresse nicht indexieren.
-# Vor dem Livegang unter der echten Domain diesen Block entfernen!
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "noindex"
