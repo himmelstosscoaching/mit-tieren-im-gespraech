@@ -3,19 +3,31 @@ import { site } from '../data/site';
 interface Props { transparent?: boolean }
 const { transparent = false } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const nav = [
+const nav: { href: string; label: string; sub?: { href: string; label: string }[] }[] = [
   { href: '/tiergespraech', label: 'Tiergespräch' },
-  { href: '/kurse', label: 'Kurse' },
+  { href: '/kurse', label: 'Ausbildung', sub: [
+    { href: '/kurse/basiskurs', label: 'Basiskurs' },
+    { href: '/kurse/aufbaukurs', label: 'Aufbaukurs' },
+    { href: '/kurse/profikurs', label: 'Profikurs' },
+    { href: '/kurse#jugendliche', label: 'Für Jugendliche' },
+    { href: '/kurse#extras', label: 'Lernabende' },
+  ] },
+  { href: '/krafttiere', label: 'Krafttiere' },
+  { href: '/reiten', label: 'Reiten' },
   { href: '/ueber-mich', label: 'Über mich' },
-  { href: '/kontakt', label: 'Kontakt' },
 ];
 const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
 ---
 <header class:list={['header', { 'header--transparent': transparent }]} data-header>
   <div class="wrap header__inner">
-    <a class="brand" href="/">
-      <span class="brand__name">{site.name}</span>
-      <span class="brand__sub">{site.owner}</span>
+    <a class="brand" href="/" aria-label={`${site.name} – zur Startseite`} title="Zur Startseite">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="3 3 18 18" width="26" height="26"><g fill="currentColor"><ellipse cx="12" cy="16.2" rx="4.6" ry="3.9"/><ellipse cx="6.2" cy="10.6" rx="1.9" ry="2.4"/><ellipse cx="17.8" cy="10.6" rx="1.9" ry="2.4"/><ellipse cx="9.4" cy="6.6" rx="1.9" ry="2.5"/><ellipse cx="14.6" cy="6.6" rx="1.9" ry="2.5"/></g></svg>
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">{site.name}</span>
+        <span class="brand__sub">{site.owner}</span>
+      </span>
     </a>
     <button class="burger" type="button" aria-expanded="false" aria-controls="nav" data-burger>
       <span></span><span></span><span></span>
@@ -24,7 +36,14 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     <nav class="nav" id="nav" data-nav>
       <ul>
         {nav.map((n) => (
-          <li><a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</a></li>
+          <li class:list={{ 'has-sub': n.sub }}>
+            <a href={n.href} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}{n.sub && <span class="caret" aria-hidden="true"> ▾</span>}</a>
+            {n.sub && (
+              <ul class="sub">
+                {n.sub.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+              </ul>
+            )}
+          </li>
         ))}
         <li class="nav__cta"><a class="btn btn--primary" href="/kontakt">Anfrage senden</a></li>
       </ul>
@@ -35,29 +54,42 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
 <style>
   .header {
     position: sticky; top: 0; z-index: 50;
-    background: rgba(250, 246, 239, 0.92);
+    background: rgba(250, 248, 249, 0.92);
     backdrop-filter: saturate(140%) blur(10px);
     -webkit-backdrop-filter: saturate(140%) blur(10px);
-    border-bottom: 1px solid rgba(42, 41, 36, 0.06);
+    border-bottom: 1px solid rgba(38, 40, 58, 0.06);
     transition: background 0.25s ease, border-color 0.25s ease;
   }
   .header--transparent { position: fixed; left: 0; right: 0; background: transparent; border-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
-  .header--transparent.is-scrolled { background: rgba(250, 246, 239, 0.92); border-color: rgba(42, 41, 36, 0.06); backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px); }
+  .header--transparent.is-scrolled { background: rgba(250, 248, 249, 0.92); border-color: rgba(38, 40, 58, 0.06); backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px); }
   .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; }
-  .brand { display: flex; flex-direction: column; text-decoration: none; color: var(--ink); line-height: 1.1; }
+  .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--navy); line-height: 1.1; }
+  .brand__text { display: flex; flex-direction: column; }
+  .brand__mark { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--rose); color: var(--navy); transition: transform 0.2s ease; }
+  .brand:hover .brand__mark { transform: scale(1.08); }
+  .brand:hover .brand__name { text-decoration: underline; text-decoration-color: var(--rose); text-underline-offset: 4px; }
   .brand__name { font-family: var(--font-display); font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 500; letter-spacing: -0.01em; }
   .brand__sub { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-top: 0.2rem; }
   .header--transparent:not(.is-scrolled) .brand { color: var(--cream); }
   .header--transparent:not(.is-scrolled) .brand__sub { color: rgba(250, 246, 239, 0.8); }
 
   .nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2rem); }
-  .nav a:not(.btn) { text-decoration: none; font-weight: 600; color: var(--ink); padding: 0.4rem 0; border-bottom: 2px solid transparent; }
-  .nav a:not(.btn):hover, .nav a[aria-current='page'] { border-bottom-color: var(--clay); color: var(--ink); }
+  .nav a:not(.btn) { text-decoration: none; font-weight: 600; color: var(--navy); padding: 0.4rem 0; border-bottom: 2px solid transparent; }
+  .nav a:not(.btn):hover, .nav a[aria-current='page'] { border-bottom-color: var(--clay); color: var(--navy); }
   .header--transparent:not(.is-scrolled) .nav a:not(.btn) { color: var(--cream); }
   .nav .btn { padding: 0.65rem 1.2rem; font-size: 0.95rem; }
+  .caret { font-size: 0.75em; }
+  .has-sub { position: relative; }
+  .sub { position: absolute; top: 100%; left: -1rem; min-width: 210px; padding: 0.6rem 0 !important; margin-top: 0.4rem !important;
+    background: var(--white); border-radius: 14px; box-shadow: var(--shadow); display: flex !important; flex-direction: column; align-items: stretch !important; gap: 0 !important;
+    opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s; }
+  .sub::before { content: ''; position: absolute; left: 0; right: 0; top: -0.8rem; height: 0.8rem; }
+  .has-sub:hover .sub, .has-sub:focus-within .sub { opacity: 1; visibility: visible; transform: none; }
+  .nav .sub a:not(.btn) { display: block; padding: 0.55rem 1.1rem; border-bottom: 0; color: var(--navy) !important; font-weight: 600; white-space: nowrap; }
+  .nav .sub a:not(.btn):hover { background: var(--cream-deep); }
 
   .burger { display: none; background: none; border: 0; width: 44px; height: 44px; padding: 8px; cursor: pointer; flex-direction: column; justify-content: center; gap: 5px; border-radius: 10px; }
-  .burger span:not(.sr-only) { display: block; height: 2px; width: 100%; background: var(--ink); border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
+  .burger span:not(.sr-only) { display: block; height: 2px; width: 100%; background: var(--navy); border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
   .header--transparent:not(.is-scrolled) .burger span:not(.sr-only) { background: var(--cream); }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
@@ -68,12 +100,16 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     .nav ul { flex-direction: column; align-items: stretch; gap: 0; }
     .nav li { border-bottom: 1px solid var(--sand); }
     .nav a:not(.btn) { display: block; padding: 1rem 0; font-size: 1.25rem; font-family: var(--font-display); font-weight: 500; border-bottom: 0 !important; }
-    .header--transparent:not(.is-scrolled) .nav a:not(.btn) { color: var(--ink); }
+    .header--transparent:not(.is-scrolled) .nav a:not(.btn) { color: var(--navy); }
     .nav__cta { border-bottom: 0; padding-top: 1.25rem; }
+    .caret { display: none; }
+    .sub { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: none; min-width: 0; margin: -0.5rem 0 0.75rem !important; padding: 0 0 0 1rem !important; }
+    .sub li { border-bottom: 0 !important; }
+    .nav .sub a:not(.btn) { font-family: var(--font-body); font-size: 1.05rem; padding: 0.45rem 0; }
     .nav__cta .btn { width: 100%; padding: 1rem; font-size: 1.05rem; }
     .header.is-open { background: var(--cream); border-color: var(--sand); }
-    .header.is-open .brand, .header.is-open .brand__sub { color: var(--ink); }
-    .header.is-open .burger span:not(.sr-only) { background: var(--ink); }
+    .header.is-open .brand, .header.is-open .brand__sub { color: var(--navy); }
+    .header.is-open .burger span:not(.sr-only) { background: var(--navy); }
     .header.is-open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .header.is-open .burger span:nth-child(2) { opacity: 0; }
     .header.is-open .burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -91,6 +127,10 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
       burger.setAttribute('aria-expanded', String(open));
       document.body.style.overflow = open ? 'hidden' : '';
     });
+    nav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => {
+      nav.classList.remove('is-open'); header.classList.remove('is-open');
+      burger.setAttribute('aria-expanded', 'false'); document.body.style.overflow = '';
+    }));
     const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 40);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });

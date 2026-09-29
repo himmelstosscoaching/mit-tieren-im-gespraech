@@ -11,9 +11,9 @@ const { href = '/kontakt', label = 'Tiergespräch anfragen' } = Astro.props;
   .mcta { display: none; }
   @media (max-width: 859px) {
     .mcta { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; padding: 0.6rem var(--gutter) calc(0.6rem + env(safe-area-inset-bottom));
-      background: linear-gradient(to top, rgba(250,246,239,0.98) 60%, rgba(250,246,239,0)); transform: translateY(110%); transition: transform 0.3s ease; pointer-events: none; }
+      background: linear-gradient(to top, rgba(250,248,249,0.98) 60%, rgba(250,248,249,0)); transform: translateY(110%); transition: transform 0.3s ease; pointer-events: none; }
     .mcta.is-visible { transform: none; pointer-events: auto; }
-    .mcta__btn { width: 100%; padding: 1rem; font-size: 1.05rem; box-shadow: 0 10px 30px -10px rgba(163, 79, 46, 0.6); }
+    .mcta__btn { width: 100%; padding: 1rem; font-size: 1.05rem; box-shadow: 0 10px 30px -10px rgba(222, 151, 49, 0.5); }
     body.has-mcta { padding-bottom: 4.5rem; }
   }
 </style>

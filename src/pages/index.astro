@@ -29,14 +29,15 @@ const slides = [
 
 const steps = [
   { title: 'Du schreibst mir', text: 'Ein Foto deines Tieres, sein Name und das, was dich gerade beschäftigt – mehr brauche ich nicht.' },
-  { title: 'Ich verbinde mich', text: 'Ich nehme gedanklich Kontakt zu deinem Tier auf. Wo es gerade ist, spielt keine Rolle.' },
+  { title: 'Ich verbinde mich', text: 'Ich nehme innerlich Kontakt zu deinem Tier auf. Wo es gerade ist, spielt keine Rolle.' },
   { title: 'Wir sprechen am Telefon', text: 'Gemeinsam gehen wir deine Fragen durch – etwa eine Stunde lang, in Ruhe und ohne Zeitdruck.' },
-  { title: 'Du nimmst etwas mit', text: 'Ein klareres Bild davon, wie es deinem Tier geht, was es braucht – und was ihr als Nächstes tun könnt.' },
+  { title: 'Du nimmst etwas mit', text: 'Ein klareres Bild davon, wie es deinem Tier geht, was es braucht – und was ihr als Nächstes tun könnt. Das ganze Gespräch bekommst du danach auch schriftlich.' },
 ];
 
 const faq = [
-  { q: 'Muss mein Tier beim Gespräch dabei sein?', a: 'Nein. Die Kommunikation muss nicht vor Ort stattfinden – sie erfolgt auf einer anderen Ebene, deshalb ist sie mit Tieren auf der ganzen Welt möglich. Ich verbinde mich gedanklich mit deinem Tier; dafür brauche ich nur ein Foto und seinen Namen.' },
-  { q: 'Wie sprechen Tiere überhaupt mit uns?', a: 'Die meisten Tiere kommunizieren über Bilder, Gefühle und Worte. Dabei gibt es – genau wie bei uns Menschen – Unterschiede: Manchen fällt es leichter, Bilder zu senden oder wahrzunehmen, andere verständigen sich eher über Worte oder Gefühle. In den Kursen probieren wir die verschiedenen Möglichkeiten aus und finden heraus, welcher Zugang für dich am besten funktioniert.' },
+  { q: 'Muss mein Tier beim Gespräch dabei sein?', a: 'Nein. Die Kommunikation muss nicht vor Ort stattfinden – sie erfolgt auf einer anderen Ebene, deshalb ist sie mit Tieren auf der ganzen Welt möglich. Ich verbinde mich innerlich mit deinem Tier; dafür brauche ich nur ein Foto und seinen Namen.' },
+  { q: 'Wie sprechen Tiere überhaupt mit uns?', a: 'Die meisten Tiere kommunizieren über Bilder, Gefühle und Worte. Dabei gibt es – genau wie bei uns Menschen – Unterschiede: Manchen fällt es leichter, Bilder zu senden oder wahrzunehmen, andere verständigen sich eher über Worte oder Gefühle. In den Kursen lernst du die verschiedenen Möglichkeiten kennen, und wir schauen, wie es für dich am besten funktioniert.' },
+  { q: 'Wie weiß ich, dass du wirklich mit meinem Tier sprichst?', a: 'Ich frage die Tiere gern, ob sie mir etwas sagen, das ich nicht wissen kann. Das gibt auch mir Sicherheit – und du hörst selbst, ob du dein Tier wiedererkennst.' },
   { q: 'Wann ist ein Tiergespräch sinnvoll?', a: 'Wenn sich im Alltag etwas verändert – ein Umzug, ein neues Familienmitglied – oder wenn es ein Problem gibt, für das ihr bisher keine Lösung gefunden habt, etwa eine Erkrankung oder unerwünschtes Verhalten. Und auch dann, wenn du dein Tier einfach besser kennenlernen und mehr über seine Bedürfnisse und sein Erleben erfahren möchtest.' },
   { q: 'Kann ich Tierkommunikation selbst lernen?', a: 'Ja. Die Fähigkeit zur Telepathie trägt jeder Mensch in sich. Sie ist wie ein Muskel, den wir wieder trainieren können, um in der Kommunikation sicherer und klarer zu werden. Genau das machen wir im Basiskurs – ganz praktisch, mit vielen Übungen und echten Gesprächen.' },
   { q: 'Für wen sind die Kurse geeignet?', a: 'Für alle, die ihre Tiere noch besser verstehen möchten – und für Menschen, die Tierkommunikation später in ihre berufliche Tätigkeit integrieren oder selbstständig Tiergespräche anbieten wollen. Vorkenntnisse brauchst du für den Basiskurs nicht.' },
@@ -54,31 +55,47 @@ const faq = [
   <section class="section">
     <div class="wrap--narrow center">
       <span class="eyebrow">Was ist Tierkommunikation?</span>
-      <h2>Ein Gespräch – nur ohne die Worte, die du kennst.</h2>
+      <h2>Ein Gespräch auf einer anderen Ebene.</h2>
       <p class="lead">Tierkommunikation ist telepathische Kommunikation mit einem Tier. Tiere sprechen in Bildern, Gefühlen und Worten – jedes auf seine eigene Weise, genau wie wir Menschen. Diese Fähigkeit steckt in jedem von uns. Sie ist wie ein Muskel: Man muss ihn nur wieder trainieren.</p>
     </div>
   </section>
 
   <section class="section section--sand section--tight">
     <div class="wrap">
+      <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
+        <span class="eyebrow">Meine Angebote</span>
+        <h2>Wie ich dich und dein Tier begleite</h2>
+      </div>
       <div class="grid grid--2">
-        <article class="card card--img">
+        <article class="card card--img card--farbe" style="--farbe: var(--turq)">
           <Image src={imgPferdekopf} alt="Nahaufnahme eines Schimmels, der über die Felder schaut" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
           <div class="card__body">
-            <span class="eyebrow">Für dein Tier</span>
-            <h3>Ein Tiergespräch</h3>
+            <h3>Tiergespräch</h3>
             <p>Wenn dein Tier krank ist, sich anders verhält, eine Veränderung ansteht – oder du einfach wissen willst, wie es ihm wirklich geht. Wir sprechen gemeinsam mit deinem Tier, am Telefon, etwa eine Stunde lang.</p>
+            <p>Auch im Abschied: Ich begleite dich und dein Tier auf seinem letzten Weg – und auch danach. <a href="/tiergespraech#abschied">Mehr zum Abschied</a></p>
             <a class="btn btn--primary" href="/tiergespraech">Mehr zum Tiergespräch</a>
           </div>
         </article>
-        <article class="card card--img">
+        <article class="card card--img card--farbe" style="--farbe: var(--blue)">
           <Image src={imgFendt} alt="Vier Border Collies sitzen auf dem alten Fendt in der Scheune" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
           <div class="card__body">
-            <span class="eyebrow">Für dich</span>
-            <h3>Tierkommunikation lernen</h3>
-            <p>Vom ersten Wochenende bis zum eigenen Beruf: Im Basis-, Aufbau- und Profikurs lernst du in kleiner Runde, bewusst und klar mit Tieren zu sprechen – mit deinen und mit fremden.</p>
-            <a class="btn btn--primary" href="/kurse">Zu den Kursen</a>
+            <h3>Ausbildung in Tierkommunikation</h3>
+            <p>In drei Stufen vom ersten Wochenende bis zum eigenen Beruf: Im Basis-, Aufbau- und Profikurs lernst du in kleiner Runde, bewusst und klar mit Tieren zu sprechen – mit deinen und mit fremden.</p>
+            <p><a href="/kurse#jugendliche"><strong>Basis- und Aufbaukurs gibt es auch für Jugendliche von 14 bis 18.</strong></a></p>
+            <a class="btn btn--primary" href="/kurse">Zur Ausbildung</a>
           </div>
+        </article>
+      </div>
+      <div class="grid grid--2" style="margin-top:clamp(1.25rem, 3vw, 2.5rem)">
+        <article class="offer" style="--farbe: var(--violet)">
+          <h3>Krafttiere</h3>
+          <p>Krafttierarbeit und Krafttierreisen: Lerne dein Krafttier kennen – und die Kraft, die es dir für deinen Alltag schenkt.</p>
+          <a class="btn btn--ghost" href="/krafttiere">Mehr zu den Krafttieren</a>
+        </article>
+        <article class="offer" style="--farbe: var(--turq)">
+          <h3>Reitunterricht &amp; Beritt</h3>
+          <p>Als Reitlehrerin und Trainerin gebe ich weiter, was mir die Pferde beigebracht haben.</p>
+          <a class="btn btn--ghost" href="/reiten">Mehr zum Reiten</a>
         </article>
       </div>
     </div>
@@ -86,11 +103,11 @@ const faq = [
 
   <QuoteBanner
     image={imgDreiPferde}
-    alt="Drei Pferde galoppieren über die Wiese"
-    quote="Telepathie kann jeder von uns. Sie ist wie ein Muskel, den wir nur wieder trainieren müssen."
+    alt="Vier Pferde galoppieren über die Wiese, darüber ein weiter blauer Himmel"
+    quote="Tierkommunikation ist wie ein Muskel, den man in alle Richtungen trainieren kann."
     author="Steffi"
-    position="center 55%"
-    placeholder
+    position="30% 72%"
+    align="top"
   />
 
   <section class="section">
@@ -98,7 +115,6 @@ const faq = [
       <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
         <span class="eyebrow">Ablauf</span>
         <h2>So läuft ein Tiergespräch ab</h2>
-        <p class="lead">Kein Aufwand für dich, kein Termin vor Ort. Vier Schritte – und ihr seid im Gespräch.</p>
       </div>
       <Steps steps={steps} />
       <div class="center" style="margin-top:2.5rem">
@@ -112,12 +128,13 @@ const faq = [
       <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
         <span class="eyebrow">Kurse am Hof</span>
         <h2>Lerne, mit Tieren zu sprechen.</h2>
-        <p class="lead">Drei Stufen, die aufeinander aufbauen. Kleine Gruppen, viele Übungen, echte Gespräche – und meine Tiere direkt vor der Tür.</p>
+        <p class="lead">Drei Stufen, die aufeinander aufbauen – bei mir am Hof, mit meinen Tieren.</p>
       </div>
       <div class="grid grid--3 scroller" data-scroller>
         {kurse.map((k) => <CourseCard kurs={k} />)}
       </div>
       <div class="scroller__hint" aria-hidden="true">{kurse.map((k, i) => <span class:list={{ 'is-active': i === 0 }}></span>)}</div>
+      <p class="center" style="margin-top:2rem"><a href="/kurse#jugendliche">Basis- und Aufbaukurs auch für Jugendliche</a> · <a href="/kurse#extras">Monatliche Lernabende</a> für alle, die bei mir einen Kurs gemacht haben</p>
     </div>
   </section>
 
@@ -139,10 +156,10 @@ const faq = [
   <QuoteBanner
     image={imgAbendrot}
     alt="Abendrot über dem See, davor die Silhouette eines Hundes"
-    quote="Wenn ich still werde, fangen die Tiere an zu erzählen."
+    quote="Die Tiere wissen oft viel besser, was wir brauchen."
     author="Steffi"
-    position="center 50%"
-    placeholder
+    position="center 66%"
+    align="top"
   />
 
   <section class="section section--sand">

@@ -6,32 +6,37 @@ import { kurse, type Kurs } from '../../data/kurse';
 import { site } from '../../data/site';
 import imgBasis from '../../assets/img/hund-am-winter-see.jpg';
 import imgAufbau from '../../assets/img/pferd-schnee-sonnenuntergang.jpg';
-import imgProfi from '../../assets/img/see-abendrot-mit-hund.jpg';
+import imgProfi from '../../assets/img/smilla-see-gegenlicht-spiegelung.jpg';
 
 export function getStaticPaths() {
   return kurse.map((k) => ({ params: { slug: k.slug }, props: { kurs: k } }));
 }
 const { kurs } = Astro.props as { kurs: Kurs };
 const bild = { basiskurs: imgBasis, aufbaukurs: imgAufbau, profikurs: imgProfi }[kurs.slug];
+const bildInfo = {
+  basiskurs: { alt: 'Smilla steht am Ufer des zugefrorenen Sees', pos: 'center 80%' },
+  aufbaukurs: { alt: 'Aufbaukurs bei Steffi', pos: 'center' },
+  profikurs: { alt: 'Smilla steht im Gegenlicht auf einem Stein im See und spiegelt sich im Wasser', pos: 'center 78%' },
+}[kurs.slug];
 const next = kurse.find((k) => k.stufe === kurs.stufe + 1);
 const prev = kurse.find((k) => k.stufe === kurs.stufe - 1);
 ---
 <Base title={`${kurs.titel} Tierkommunikation`} description={`${kurs.titel} Tierkommunikation in ${site.city} bei Tuttlingen: ${kurs.kurz} ${kurs.preis} €.`}>
-  <section class="section">
+  <section class="section" style={`--kurs: var(--kurs-${kurs.slug})`}>
     <div class="wrap split" style="align-items:start">
       <div>
-        <span class="eyebrow">Tierkommunikation · Stufe {kurs.stufe}</span>
+        <span class="eyebrow kurs-tag">Ausbildung · Stufe {kurs.stufe}</span>
         <h1>{kurs.titel}</h1>
         <p class="lead">{kurs.untertitel}</p>
         {kurs.beschreibung.map((p) => <p>{p}</p>)}
         <div class="btn-row" style="margin-top:1.5rem">
           <a class="btn btn--primary" href={`/kontakt?kurs=${kurs.slug}`}>Platz anfragen</a>
-          <a class="btn btn--ghost" href="/kurse">Alle Kurse</a>
+          <a class="btn btn--ghost" href="/kurse">Zur Ausbildung</a>
         </div>
       </div>
       <div>
         <figure class="photo photo--landscape" style="margin:0 0 1.5rem">
-          <Image src={bild} alt={`${kurs.titel} bei Steffi`} widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
+          <Image src={bild} alt={bildInfo.alt} style={`object-position:${bildInfo.pos}`} widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
         </figure>
         <dl class="facts">
           <div><dt>Dauer</dt><dd>{kurs.dauer}</dd></div>

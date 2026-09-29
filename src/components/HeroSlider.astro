@@ -40,7 +40,7 @@ const { slides, eyebrow, title, text } = Astro.props;
     <p class="hero__text">{text}</p>
     <div class="btn-row">
       <a class="btn btn--light" href="/tiergespraech">Tiergespräch anfragen</a>
-      <a class="btn btn--outline-light" href="/kurse">Kurse entdecken</a>
+      <a class="btn btn--outline-light" href="/kurse">Zur Ausbildung</a>
     </div>
   </div>
 
@@ -63,9 +63,10 @@ const { slides, eyebrow, title, text } = Astro.props;
   .hero__slide.is-active :global(img) { animation: kenburns 9s ease-out forwards; }
   @keyframes kenburns { from { transform: scale(1.02); } to { transform: scale(1.09); } }
   .hero__shade { position: absolute; inset: 0; background:
-    linear-gradient(to top, rgba(26, 30, 22, 0.86) 0%, rgba(26, 30, 22, 0.45) 38%, rgba(26, 30, 22, 0.12) 65%, rgba(26, 30, 22, 0.3) 100%); }
+    linear-gradient(to top, rgba(22, 28, 50, 0.84) 0%, rgba(22, 28, 50, 0.42) 38%, rgba(22, 28, 50, 0.1) 65%, rgba(22, 28, 50, 0.3) 100%); }
+  .hero::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: var(--gradient); }
   .hero__content { padding-block: clamp(6rem, 14vh, 9rem) clamp(4.5rem, 10vh, 7rem); max-width: 760px; margin-left: max(var(--gutter), calc((100% - var(--max)) / 2)); }
-  .hero__eyebrow { display: inline-block; font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 1rem; }
+  .hero__eyebrow { display: inline-block; font-size: 1.0625rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: var(--gold); margin-bottom: 1rem; }
   .hero__title { font-size: var(--fs-hero); color: var(--cream); margin-bottom: 0.4em; text-shadow: 0 2px 30px rgba(0,0,0,0.25); }
   .hero__text { font-size: var(--fs-lead); max-width: 560px; color: rgba(250, 246, 239, 0.92); margin-bottom: 1.75rem; text-wrap: pretty; }
   .hero__dots { position: absolute; right: var(--gutter); bottom: 1.5rem; display: flex; gap: 0.5rem; }

@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import CTA from '../components/CTA.astro';
+---
+<Base title="Krafttiere" description="Krafttierarbeit und Krafttierreisen bei Stephanie-Sophia Himmelstoß: Lerne dein Krafttier kennen – und die Kraft, die es dir für deinen Alltag schenkt.">
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Krafttiere</span>
+        <h1>Dein Krafttier begleitet dich</h1>
+        <p class="lead">Jeder Mensch hat Krafttiere, die ihn begleiten. Auf einer Krafttierreise lernst du deines kennen – in einer ruhigen, geführten Reise nach innen.</p>
+        <p>Wenn du mit deinem Krafttier verbunden bist, spürst du mehr Halt im Alltag: bei Entscheidungen, in schwierigen Momenten, wenn du nicht weiterweißt. Es erinnert dich an deine eigene Kraft und daran, was dir wirklich wichtig ist.</p>
+        <div class="btn-row" style="margin-top:1.5rem">
+          <a class="btn btn--primary" href="/kontakt">Krafttierreise anfragen</a>
+        </div>
+      </div>
+      <div style="display:grid;gap:1.25rem">
+        <blockquote class="testimonial" style="border-left-color: var(--violet)">
+          <p>„Lebe deine ganze Größe. Die Welt braucht dich. Jeder, wirklich jeder, hat etwas, das die Welt braucht.“</p>
+          <footer>Drache, mein Krafttier</footer>
+        </blockquote>
+        <blockquote class="testimonial" style="border-left-color: var(--turq)">
+          <p>„Träume von einer Welt, in der alles möglich ist. Träume sind wichtig. Sie halten uns am Leben. Halte an deinem Traum fest und versuche, ihn Stück für Stück in deine irdische Welt zu integrieren.“</p>
+          <footer>Einhorn, Krafttier</footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <CTA title="Möchtest du dein Krafttier kennenlernen?" text="Schreib mir kurz, was dich gerade beschäftigt. Ich melde mich persönlich bei dir." primary={{ href: '/kontakt', label: 'Krafttierreise anfragen' }} />
+</Base>

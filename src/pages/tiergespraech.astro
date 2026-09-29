@@ -10,9 +10,9 @@ import imgNebel from '../assets/img/spaziergang-mit-pferden-im-nebel.jpg';
 
 const steps = [
   { title: 'Du schreibst mir', text: 'Ein Foto deines Tieres, sein Name und das, was dich gerade beschäftigt. Wir machen einen Telefontermin aus.' },
-  { title: 'Ich verbinde mich', text: 'Ich nehme gedanklich Kontakt zu deinem Tier auf – es muss dafür nicht bei mir sein und auch nicht bei dir.' },
+  { title: 'Ich verbinde mich', text: 'Ich nehme innerlich Kontakt zu deinem Tier auf – es muss dafür nicht bei mir sein und auch nicht bei dir.' },
   { title: 'Wir sprechen gemeinsam', text: 'Am Telefon gehen wir deine Fragen durch, etwa eine Stunde lang. Du hörst, was dein Tier zeigt, fühlt und sagt.' },
-  { title: 'Ihr geht weiter', text: 'Mit mehr Klarheit, oft mit konkreten nächsten Schritten – und mit dem Gefühl, einander besser zu verstehen.' },
+  { title: 'Ihr geht weiter', text: 'Mit mehr Klarheit, oft mit konkreten nächsten Schritten – und mit dem Gefühl, einander besser zu verstehen. Das ganze Gespräch bekommst du danach auch schriftlich.' },
 ];
 ---
 <Base title="Tiergespräch" description="Ein Tiergespräch am Telefon: Ich verbinde mich mit deinem Tier und wir sprechen gemeinsam über das, was euch beschäftigt – Krankheit, Verhalten, Veränderungen oder einfach die Frage, wie es ihm geht.">
@@ -43,12 +43,17 @@ const steps = [
       <div class="grid grid--2">
         <div class="card">
           <h3>Wie nehme ich Kontakt auf?</h3>
-          <p>Ich verbinde mich gedanklich mit dem Tier, mit dem ich sprechen möchte. Bei einem Tier, das ich nicht kenne, brauche ich dafür nur ein Foto und seinen Namen – wo es gerade ist, spielt keine Rolle.</p>
+          <p>Ich verbinde mich innerlich mit dem Tier, mit dem ich sprechen möchte. Bei einem Tier, das ich nicht kenne, brauche ich dafür nur ein Foto und seinen Namen – wo es gerade ist, spielt keine Rolle.</p>
         </div>
         <div class="card">
           <h3>Wie sprechen Tiere mit uns?</h3>
           <p>Die meisten Tiere kommunizieren über Bilder, Gefühle und Worte. Dabei gibt es – genau wie bei uns Menschen – Unterschiede: Manchen fällt es leichter, Bilder zu senden, andere verständigen sich eher über Worte oder Gefühle.</p>
         </div>
+      </div>
+      <div class="wrap--narrow" style="margin-top:clamp(2.5rem, 5vw, 4rem)">
+        <h3>Wie ein Gespräch für mich abläuft</h3>
+        <p>Ich arbeite gern mit einem Foto, aber eigentlich braucht man es nicht. Man kann sich das Tier einfach ins Bewusstsein holen, und dann ist es präsent. Schon wenn ich mit dir rede, ist dein Tier eh da – die Tiere kriegen alles mit.</p>
+        <p>Ich fühle immer erst hinein, und dann ist es ganz unterschiedlich. Tiere haben ihre Charaktere, genau wie wir. Manches Tier muss mir erst etwas zeigen, damit es sich überhaupt öffnen kann. Andere reden sofort drauflos – dann habe ich so viele Wörter, Gedanken und Sätze im Kopf, dass ich erst sortieren muss, weil sie sich so freuen, endlich reden zu dürfen. Bei manchen kommen eher Gefühle. Jedes Tier kommuniziert anders.</p>
       </div>
     </div>
   </section>
@@ -77,13 +82,22 @@ const steps = [
         <div class="facts" style="margin-top:1.5rem">
           <div><dt>Dauer</dt><dd>ca. 1 Stunde am Telefon</dd></div>
           <div><dt>Ort</dt><dd>Egal, wo du und dein Tier seid – die Kommunikation ist nicht an einen Ort gebunden.</dd></div>
-          <div><dt>Preis</dt><dd><strong>Preis folgt</strong> <span class="muted">(wird noch ergänzt)</span></dd></div>
+          <div><dt>Preis</dt><dd><strong>85 €</strong></dd></div>
         </div>
       </div>
     </div>
   </section>
 
-  <QuoteBanner image={imgNebel} alt="Zwei Menschen gehen mit ihren Pferden durch den Morgennebel" quote="Jedes Tier hat etwas zu sagen. Die Frage ist nur, ob wir zuhören." author="Steffi" position="center 60%" placeholder />
+  <section class="section">
+    <div class="wrap--narrow">
+      <span class="eyebrow">Aus meiner Praxis</span>
+      <h2>Das Pferd, das nicht in den Hänger wollte</h2>
+      <p>Ich habe einmal in einem Stall mit einem Trainer gearbeitet. Ein Pferd stand dort in einer Innenbox, ohne Paddock. Ehrlich gesagt hatte ich Vorurteile und dachte: Das ist nicht das Wahre. Dann zog das Pferd um, über die Tierklinik direkt in einen neuen Stall, der eigentlich total schön war. Es hat ewig gedauert, es zu verladen, und im neuen Stall hat es alles zerlegt. Sie haben vieles ausprobiert, auch die Haltung in der Herde.</p>
+      <p>Als gar nichts mehr ging, sollte es zurück in den alten Stall. Die Besitzerin war unsicher, also bin ich zum Verladen mitgekommen. Ich habe dem Pferd gesagt, wohin es geht – und es ist sofort eingestiegen, ohne jede Diskussion. Im alten Stall war es wieder ausgeglichen, ein komplett anderes Pferd. Es brauchte seinen eigenen Raum und seine eigene Sicherheit und wollte sich nicht mit anderen Pferden auseinandersetzen müssen.</p>
+    </div>
+  </section>
+
+  <QuoteBanner image={imgNebel} alt="Zwei Menschen gehen mit ihren Pferden durch den Morgennebel" quote="Wir dürfen uns nicht immer hinstellen und sagen, wir wissen besser, was für die gut ist. Wir dürfen sie ruhig fragen." author="Steffi" position="center 52%" align="top" />
 
   <section class="section">
     <div class="wrap">
@@ -92,6 +106,39 @@ const steps = [
         <h2>In vier Schritten ins Gespräch</h2>
       </div>
       <Steps steps={steps} />
+    </div>
+  </section>
+
+  <section class="section section--sand" id="abschied">
+    <div class="wrap">
+      <div class="center" style="max-width:760px;margin-inline:auto;margin-bottom:2.5rem">
+        <span class="eyebrow">Abschied</span>
+        <h2>Wenn dein Tier geht – und wenn es gegangen ist</h2>
+        <p class="lead">Sterben ist für Tiere oft viel natürlicher als für uns. Ich begleite dich und dein Tier auf diesem Weg – und auch danach.</p>
+      </div>
+      <div class="grid grid--2" style="align-items:start">
+        <article class="offer" style="--farbe: var(--rose); --farbe-text: var(--gold-text)">
+          <h3>Sterbebegleitung</h3>
+          <p>Jedes Tier geht diesen Weg anders. Manche möchten nicht lange leiden und sind froh, dass es die Möglichkeit gibt, eingeschläfert zu werden. Andere sind froh, wenn man sie durch jede Phase begleitet. Und manche wünschen sich, einmal selbst zu bestimmen, wie sie gehen.</p>
+          <p>Im Gespräch frage ich dein Tier, was es sich wünscht, und sage dir, wie es ihm geht. Es gibt kein Richtig oder Falsch. Ich gebe deinem Tier Raum – und dir, mit dem, was du in diesem Moment tragen kannst. Wenn du den Weg nicht bis zum Ende begleiten kannst, ist das auch in Ordnung. Dann sagen wir es deinem Tier.</p>
+        </article>
+        <article class="offer" style="--farbe: var(--violet)">
+          <h3>Gespräch mit einem verstorbenen Tier</h3>
+          <p>Auch wenn dein Tier schon gegangen ist, könnt ihr noch miteinander sprechen. Vielleicht ist etwas offen geblieben: eine Frage, ein Dank, ein letzter Gruß. Im Gespräch hat dein Tier Raum, dir zu sagen, wie es ihm geht – und du hast Raum, dich zu verabschieden.</p>
+        </article>
+      </div>
+      <blockquote class="testimonial" style="margin-top:2.5rem">
+        <p>„Dass Trixi letztendlich selbstbestimmt in meinem Arm gestorben ist, ist auch durch deine Unterstützung möglich gewesen. Diese Begleitung hat mir ganz viel bei meiner Angst vor dem Tod geholfen und meinen Blick auf den Sterbeprozess geändert.“</p>
+        <footer>Katharina mit Trixi</footer>
+        <details>
+          <summary>Ganze Nachricht lesen</summary>
+          <p>Liebe Steffi, heute denke ich besonders an dich und deine Unterstützung zurück. Heute genau vor einem Jahr hat Trixi die Seiten gewechselt. Natürlich fehlt sie mir physisch und dennoch bin ich jeden Tag dankbar, dass ich sie bis zu ihrem letzten Tag begleiten konnte. Dass sie letztendlich selbstbestimmt in meinem Arm gestorben ist, ist auch durch deine Unterstützung möglich gewesen. Natürlich war der Wunsch da und die Bereitschaft, dass sie natürlich sterben darf. Aber es kamen in dieser Zeit auch Ängste und Zweifel, ob ich das Richtige tue. Dadurch, dass du dich mit ihr in diesem Prozess verbunden hast und gefühlt hast, dass sich alles ruhig und stimmig anfühlt, hat mich ermutigt. Du konntest mir die Botschaft überbringen, dass Trixi keine Schmerzen hat und daher hatte ich die Möglichkeit, diese letzten Tage intensiv mit ihr zu kommunizieren und mich direkt zu verabschieden. Diese Begleitung hat mir ganz viel bei meiner Angst vor dem Tod geholfen und meinen Blick auf den Sterbeprozess geändert. Es ging in diesen letzten Tagen nicht mehr darum, etwas aufzuhalten. Sondern darum mich mit ihr zu verbinden und mit ihr diesen letzten natürlichen Weg gemeinsam zu gehen. Ich danke dir, dass du ganz spontan in meiner Not und Angst für mich da warst und dies wandeln konntest.</p>
+          <p>Herzliche Grüße, Katharina</p>
+        </details>
+      </blockquote>
+      <div class="center" style="margin-top:2.5rem">
+        <a class="btn btn--primary" href="/kontakt">Abschiedsgespräch anfragen</a>
+      </div>
     </div>
   </section>
 

@@ -3,7 +3,7 @@ import Base from '../layouts/Base.astro';
 import CTA from '../components/CTA.astro';
 import { Image } from 'astro:assets';
 import { site } from '../data/site';
-import imgReiten from '../assets/img/steffi-reitet-im-nebel.jpg';
+import imgPortrait from '../assets/img/steffi-haengestuhl-lachend-mit-pferden.jpg';
 import imgSchwimmen from '../assets/img/steffi-schwimmt-mit-hunden.jpg';
 import imgEis from '../assets/img/hund-auf-zugefrorenem-see.jpg';
 import imgMaehne from '../assets/img/pferdemaehne-goldenes-licht.jpg';
@@ -18,8 +18,8 @@ import imgTrommel from '../assets/img/rahmentrommel-auf-wiese.jpg';
         <p class="lead">Ich lebe auf einem kleinen Hof in Liptingen, zusammen mit meinen Tieren. Hier habe ich mir mein kleines Paradies erschaffen – und hier darf ich das tun, was ich am meisten liebe: mit Tieren im Gespräch sein.</p>
         <p>Viele unterschiedliche Tiere begleiten mich schon mein ganzes Leben. Sie sind seit langem mein Lebensmittelpunkt – nicht mein Hobby, sondern mein Zuhause.</p>
       </div>
-      <figure class="photo photo--portrait" style="margin:0">
-        <Image src={imgReiten} alt="Steffi reitet im Morgennebel über die Wiese, die Bäume stehen als Silhouetten dahinter" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
+      <figure class="photo photo--landscape" style="margin:0">
+        <Image src={imgPortrait} alt="Steffi sitzt lachend im Hängestuhl unter dem Apfelbaum, zwei Pferde stehen dicht bei ihr, eins schnuppert an ihrer Hand" style="object-position: 45% center" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="eager" />
       </figure>
     </div>
   </section>
@@ -29,9 +29,9 @@ import imgTrommel from '../assets/img/rahmentrommel-auf-wiese.jpg';
       <div>
         <span class="eyebrow">Mein Weg</span>
         <h2>Mit 16 nach Spanien – zu den Pferden.</h2>
-        <p>Mit 16 Jahren bin ich für drei Jahre nach Spanien gegangen, um meinen Traum zu leben: mit Pferden zu leben und von ihnen zu lernen. Danach durfte ich meine Erfahrung als Co-Pferdetrainerin weitergeben und vertiefen. Bis heute bin ich Reitlehrerin und Trainerin.</p>
+        <p>Mit 16 Jahren bin ich für drei Jahre nach Spanien gegangen, um mir einen Traum zu erfüllen: mit Pferden zu leben und von ihnen zu lernen. Danach durfte ich meine Erfahrung als Co-Pferdetrainerin weitergeben und vertiefen. Bis heute bin ich Reitlehrerin und Trainerin.</p>
         <p>2018/2019 habe ich meine Ausbildung in Tierkommunikation bei <strong>Catherin Seib</strong> abgeschlossen – damit ist ein weiterer Traum in Erfüllung gegangen. Seitdem kann ich noch individueller auf jedes Tier-Mensch-Paar eingehen.</p>
-        <p>2020 kam die Ausbildung in <strong>schamanischen Heilmethoden bei Lisa Biritz</strong> dazu. Krafttierarbeit, Krafttierreisen und Energiearbeit für Tiere gehören seither ebenso zu meiner Arbeit wie die Tiergespräche.</p>
+        <p>2020 kam die Ausbildung in <strong>schamanischen Heilmethoden bei Lisa Biritz</strong> auf Hawaii dazu. Krafttierarbeit, Krafttierreisen und Energiearbeit für Tiere gehören seither ebenso zu meiner Arbeit wie die Tiergespräche.</p>
       </div>
       <figure class="photo photo--landscape" style="margin:0">
         <Image src={imgSchwimmen} alt="Steffi schwimmt im See, ihre beiden Hunde schwimmen neben ihr" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
@@ -41,31 +41,28 @@ import imgTrommel from '../assets/img/rahmentrommel-auf-wiese.jpg';
 
   <section class="section">
     <div class="wrap grid grid--3">
-      <div class="card card--img">
+      <div class="card card--img card--farbe" style="--farbe: var(--turq)">
         <Image src={imgEis} alt="Ein Border Collie läuft über den zugefrorenen See, seine Spuren im Schnee" widths={[480, 800]} sizes="(min-width: 860px) 380px, 100vw" loading="lazy" />
         <div class="card__body">
-          <span class="eyebrow">Tierkommunikatorin</span>
           <h3>Tiergespräche</h3>
           <p class="muted">Am Telefon, mit Foto und Namen deines Tieres – für alles, was euch beschäftigt.</p>
           <a class="btn btn--ghost" href="/tiergespraech">Mehr erfahren</a>
         </div>
       </div>
-      <div class="card card--img">
+      <div class="card card--img card--farbe" style="--farbe: var(--blue)">
         <Image src={imgMaehne} alt="Die Mähne eines Schimmels leuchtet im goldenen Abendlicht" widths={[480, 800]} sizes="(min-width: 860px) 380px, 100vw" loading="lazy" />
         <div class="card__body">
-          <span class="eyebrow">Kursleiterin</span>
           <h3>Tierkommunikation lernen</h3>
           <p class="muted">Basis, Aufbau und Profi – hier am Hof, in kleiner Runde, mit meinen Tieren als Lehrern.</p>
-          <a class="btn btn--ghost" href="/kurse">Zu den Kursen</a>
+          <a class="btn btn--ghost" href="/kurse">Zur Ausbildung</a>
         </div>
       </div>
-      <div class="card card--img">
+      <div class="card card--img card--farbe" style="--farbe: var(--violet)">
         <Image src={imgTrommel} alt="Eine Rahmentrommel liegt auf der Sommerwiese" widths={[480, 800]} sizes="(min-width: 860px) 380px, 100vw" loading="lazy" />
         <div class="card__body">
-          <span class="eyebrow">Krafttiere &amp; Energiearbeit</span>
           <h3>Schamanische Heilarbeit</h3>
           <p class="muted">Krafttierreisen, Energiearbeit für Tiere und monatliche Lernabende am Hof.</p>
-          <a class="btn btn--ghost" href="/kontakt">Nachfragen</a>
+          <a class="btn btn--ghost" href="/krafttiere">Mehr erfahren</a>
         </div>
       </div>
     </div>

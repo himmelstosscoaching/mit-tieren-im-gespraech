@@ -4,22 +4,35 @@ import CourseCard from '../../components/CourseCard.astro';
 import CTA from '../../components/CTA.astro';
 import QuoteBanner from '../../components/QuoteBanner.astro';
 import { Image } from 'astro:assets';
-import { kurse, weitereAngebote } from '../../data/kurse';
+import { kurse, weitereAngebote, kombi } from '../../data/kurse';
 import { site } from '../../data/site';
 import imgZweiPferde from '../../assets/img/zwei-pferde-unter-baum-abend.jpg';
 import imgHerde from '../../assets/img/pferdeherde-gegenlicht.jpg';
 import imgSonnenuntergang from '../../assets/img/sonnenuntergang-feld-mit-hunden.jpg';
 import imgSprung from '../../assets/img/hund-springt-ueber-wasser.jpg';
 import imgSpirale from '../../assets/img/spirale-im-schnee.jpg';
+
+const heute = new Date().toISOString().slice(0, 10);
+const lernabendTermine = weitereAngebote.lernabende.termine
+  .filter((d) => d >= heute)
+  .map((d) => new Date(`${d}T12:00:00`).toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }));
 ---
-<Base title="Kurse: Tierkommunikation lernen" description={`Tierkommunikation lernen in drei Stufen – Basiskurs, Aufbaukurs, Profikurs – auf Steffis Hof in ${site.city} bei Tuttlingen. Kleine Gruppen, viele Übungen, echte Gespräche mit Tieren.`}>
+<Base title="Ausbildung in Tierkommunikation" description={`Ausbildung in Tierkommunikation in drei Stufen – Basiskurs, Aufbaukurs, Profikurs – auf Steffis Hof in ${site.city} bei Tuttlingen. Kleine Gruppen, viele Übungen, echte Gespräche mit Tieren.`}>
   <section class="section">
     <div class="wrap split">
       <div>
-        <span class="eyebrow">Kurse</span>
-        <h1>Lerne, mit Tieren zu sprechen.</h1>
-        <p class="lead">Wir alle kommunizieren bereits auf unterschiedliche Weise mit unseren Tieren. In meinen Kursen lernst du, diese Kommunikation bewusster wahrzunehmen und klarer mit deinen eigenen und mit fremden Tieren in Kontakt zu treten.</p>
+        <span class="eyebrow">Ausbildung</span>
+        <h1>Ausbildung in Tierkommunikation</h1>
+        <p class="lead">Wir alle kommunizieren bereits auf unterschiedliche Weise mit unseren Tieren. In meiner Ausbildung lernst du, diese Kommunikation bewusster wahrzunehmen und klarer mit deinen eigenen und mit fremden Tieren in Kontakt zu treten.</p>
         <p>Die Ausbildung eignet sich für alle, die ihre Tiere noch besser verstehen möchten – und für Menschen, die Tierkommunikation später in ihre berufliche Tätigkeit integrieren oder selbstständig Tiergespräche anbieten wollen. Drei Stufen bauen aufeinander auf. Du kannst nach jeder Stufe aufhören – oder bis zum eigenen Beruf weitergehen.</p>
+        <ul class="checklist" style="margin-top:1.25rem">
+          <li><strong>Drei Stufen</strong> – Basis, Aufbau und Profi, bis zum eigenen Beruf</li>
+          <li><strong>Kleine Gruppen</strong> am Hof, mit meinen Tieren</li>
+          <li><strong>Teilnahmebescheinigung</strong> für jede abgeschlossene Stufe</li>
+          <li><strong>Abschlusszertifikat</strong> nach allen drei Stufen und drei dokumentierten Tiergesprächen mit fremden Tieren – jeweils mit Rückmeldung der Tierhalter</li>
+          <li><strong>Begleitung danach</strong> – monatliche Lernabende zum Weiterüben</li>
+          <li><strong>Meine eigene Ausbildung</strong> bei Catherin Seib, seit 2018/2019 als Tierkommunikatorin tätig</li>
+        </ul>
       </div>
       <figure class="photo photo--portrait" style="margin:0">
         <Image src={imgZweiPferde} alt="Zwei Pferde unter einem alten Baum im Abendlicht" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
@@ -42,7 +55,7 @@ import imgSpirale from '../../assets/img/spirale-im-schnee.jpg';
           <tbody>
             {kurse.map((k) => (
               <tr>
-                <td><a href={`/kurse/${k.slug}`}><strong>{k.titel}</strong></a></td>
+                <td><a href={`/kurse/${k.slug}`} style={`color: var(--kurs-${k.slug})`}><strong>{k.titel}</strong></a></td>
                 <td>{k.dauer}</td>
                 <td>{k.voraussetzung}</td>
                 <td>{k.preis} €</td>
@@ -52,33 +65,75 @@ import imgSpirale from '../../assets/img/spirale-im-schnee.jpg';
           </tbody>
         </table>
       </div>
+
+      <div class="youth" id="jugendliche">
+        <Image src={imgSprung} alt="Ein Border Collie springt im Morgenlicht über das Wasser" widths={[480, 800, 1200]} sizes="(min-width: 860px) 480px, 100vw" loading="lazy" />
+        <div class="youth__body">
+          <span class="eyebrow">Für Jugendliche</span>
+          <h3>Basis- und Aufbaukurs für Jugendliche</h3>
+          <p>{weitereAngebote.jugendkurs.text}</p>
+          <p class="youth__facts"><strong>Für 14 bis 18 Jahre</strong> · Jüngere nach Absprache<br /><strong>Basiskurs 250 € · Aufbaukurs 310 €</strong> · Ermäßigung auf Anfrage möglich</p>
+          <a class="btn btn--primary" href="/kontakt">Platz für Jugendliche anfragen</a>
+        </div>
+      </div>
+
+      <div class="gradient-box" style="margin-top:2.5rem">
+        <div>
+          <h3>Die ganze Ausbildung</h3>
+          <p style="margin-top:0.6rem">Alle drei Stufen zusammen – für alle, die schon wissen, dass sie den ganzen Weg gehen möchten. Die Buchung gilt verbindlich für alle drei Kurse.</p>
+        </div>
+        <div>
+          <p class="price-big">{kombi.preis.toLocaleString('de-DE')} € <s>{kombi.einzeln.toLocaleString('de-DE')} €</s></p>
+          <a class="btn btn--light" href="/kontakt" style="margin-top:1rem">Kombiangebot anfragen</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="wrap grid grid--2" style="align-items:start">
-      <div class="card card--img">
-        <Image src={imgSprung} alt="Ein Border Collie springt im Morgenlicht über das Wasser" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
-        <div class="card__body">
-          <span class="eyebrow">Für junge Menschen</span>
-          <h3>{weitereAngebote.jugendkurs.titel}</h3>
-          <p>{weitereAngebote.jugendkurs.text}</p>
-          <a class="btn btn--ghost" href="/kontakt">Anfragen</a>
-        </div>
+  <section class="section" id="extras">
+    <div class="wrap">
+      <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
+        <span class="eyebrow">Extra</span>
+        <h2>Weiter üben</h2>
+        <p class="lead">Nach dem Kurs ist nicht Schluss: An den Lernabenden bleibst du dran.</p>
       </div>
-      <div class="card card--img">
+    <div style="max-width:640px;margin-inline:auto">
+      <div class="card card--img card--farbe" style="--farbe: var(--violet)">
         <Image src={imgSpirale} alt="Eine große Spirale im Schnee, in der Mitte steht ein Mensch mit erhobenen Armen" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
         <div class="card__body">
-          <span class="eyebrow">Monatlich</span>
           <h3>{weitereAngebote.lernabende.titel}</h3>
           <p>{weitereAngebote.lernabende.text}</p>
+          <p class="price" style="font-size:1.15rem">{weitereAngebote.lernabende.info}</p>
+          <details class="termine">
+            <summary>Nächste Termine</summary>
+            <ul>
+              {lernabendTermine.map((t) => <li>{t}</li>)}
+            </ul>
+          </details>
           <a class="btn btn--ghost" href="/kontakt">Ich möchte dabei sein</a>
         </div>
       </div>
     </div>
+    </div>
   </section>
 
-  <QuoteBanner image={imgSonnenuntergang} alt="Sonnenuntergang über dem Feld, die Hunde laufen durchs Gras" quote="Du musst nichts Neues lernen. Du musst dich nur daran erinnern, dass du es schon kannst." author="Steffi" position="center 45%" placeholder />
+
+  <section class="section section--sand">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Kann man das lernen?</span>
+        <h2>Auf jeden Fall.</h2>
+        <p>Im Alltag tun wir das schon viel unbewusst – und können es noch bewusster tun. Wer auch mit fremden Tieren sprechen möchte, kann das bei mir lernen. Dafür ist es wichtig, noch genauer zu unterscheiden: Was sind meine eigenen Gedanken, was sind die Gedanken des Tieres? Und zu lernen, ohne Vorurteile in die Gespräche zu gehen.</p>
+      </div>
+      <div class="card">
+        <h3>So fängst du an</h3>
+        <p>Am Anfang lässt du die Gedanken ruhig werden und erdest dich – ich gehe dafür gern in die Natur. Dann stellst du dir das Tier vor und schreibst auf, was kommt. Wirklich jeden Gedanken, auch wenn er überhaupt keinen Sinn ergibt.</p>
+        <p>Im Moment selbst denkst du oft: Ist ja logisch, ich kenne ja mein Tier. Und ein paar Tage später liest du es und merkst, wie viele Infos von deinem Tier dabei sind. Es ist ein bisschen wie Träumen: Im Traum ist alles klar – und dann vergisst man es, weil es einem selbstverständlich vorkommt.</p>
+      </div>
+    </div>
+  </section>
+
+  <QuoteBanner image={imgSonnenuntergang} alt="Sonnenuntergang über dem Feld, die Hunde laufen durchs Gras" quote="Ich bin ja der Meinung, dass wirklich jeder mit den Tieren reden kann." author="Steffi" position="center 57%" align="top" />
 
   <section class="section section--sand">
     <div class="wrap split split--img-right">
@@ -95,7 +150,7 @@ import imgSpirale from '../../assets/img/spirale-im-schnee.jpg';
     </div>
   </section>
 
-  <CTA title="Unsicher, welcher Kurs passt?" text="Schreib mir kurz, wo du stehst und was du dir wünschst – ich sage dir ehrlich, womit du am besten anfängst." primary={{ href: '/kontakt', label: 'Frage stellen' }} />
+  <CTA title="Unsicher, wo du anfangen sollst?" text="Schreib mir kurz, wo du stehst und was du dir wünschst – ich sage dir ehrlich, womit du am besten anfängst." primary={{ href: '/kontakt', label: 'Frage stellen' }} />
 </Base>
 
 <style>

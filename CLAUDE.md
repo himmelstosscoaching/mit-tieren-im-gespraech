@@ -32,5 +32,5 @@ Profikurs 560 €), Lernabende, Krafttierarbeit. Live: https://www.mit-tieren-im
 - Nach Änderungen: `npm run build`, kurz mobil (375 px) und Desktop ansehen, dann committen und pushen.
 
 ## Offen (Stand 2026-09-29)
-Preis Tiergespräch (fehlt auf `/tiergespraech`), Telefonnummer, Kundenstimmen, eigene Zitate von Steffi, Original des
+Telefonnummer, weitere Kundenstimmen, Original des
 Hängestuhl-Fotos ohne Text, ein Porträtfoto, Impressum-Angaben, Schriften selbst hosten (derzeit Google Fonts).

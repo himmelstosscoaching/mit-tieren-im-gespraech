@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import CTA from '../components/CTA.astro';
+import { Image } from 'astro:assets';
+import imgReiten from '../assets/img/steffi-reitet-im-nebel.jpg';
+---
+<Base title="Reitunterricht und Beritt" description="Reitunterricht und Beritt bei Stephanie-Sophia Himmelstoß in Emmingen-Liptingen – Reitlehrerin und Trainerin, die seit ihrem 16. Lebensjahr von Pferden lernt.">
+  <section class="section">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Reiten</span>
+        <h1>Reitunterricht und Beritt</h1>
+        <!-- Variante A (aktiv). Variante B zur Entscheidung durch Steffi, siehe _SAMMLUNG.md -->
+        <p class="lead">Seit ich 16 bin, lerne ich von Pferden. Heute gebe ich als Reitlehrerin und Trainerin weiter, was sie mir beigebracht haben: zuhören, ehrlich sein, gemeinsam durchgehen.</p>
+        <div class="btn-row" style="margin-top:1.5rem">
+          <a class="btn btn--primary" href="/kontakt">Reitunterricht anfragen</a>
+        </div>
+      </div>
+      <figure class="photo photo--portrait" style="margin:0">
+        <Image src={imgReiten} alt="Steffi reitet im Morgennebel über die Wiese, die Bäume stehen als Silhouetten dahinter" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
+      </figure>
+    </div>
+  </section>
+
+  <CTA title="Du und dein Pferd?" text="Schreib mir, wo ihr gerade steht. Ich melde mich persönlich bei dir." primary={{ href: '/kontakt', label: 'Anfrage senden' }} />
+</Base>

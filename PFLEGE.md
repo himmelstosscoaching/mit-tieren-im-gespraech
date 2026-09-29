@@ -14,6 +14,7 @@ Zwei Dateien enthalten alles, was sich regelmäßig ändert:
 | Was | Datei |
 |---|---|
 | Kurse: Beschreibung, Preis, Zeiten, **Termine** | `src/data/kurse.ts` |
+| **Lernabende-Termine** (Format `'2027-08-13'`, vergangene verschwinden von selbst) | `src/data/kurse.ts`, bei `lernabende` → `termine` |
 | Adresse, E-Mail, Telefon, Instagram | `src/data/site.ts` |
 
 So geht's auf GitHub im Browser:
