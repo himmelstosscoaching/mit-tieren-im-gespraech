@@ -16,7 +16,7 @@ const year = new Date().getFullYear();
         <li><a href="/kurse/aufbaukurs">Aufbaukurs</a></li>
         <li><a href="/kurse/profikurs">Profikurs</a></li>
         <li><a href="/tiergespraech#abschied">Abschied</a></li>
-        <li><a href="/kurse#jugendliche">Für Jugendliche</a></li>
+        <li><a href="/kurse#jugendliche">Jugendkurse</a></li>
         <li><a href="/kurse#extras">Lernabende</a></li>
         <li><a href="/krafttiere">Krafttiere</a></li>
         <li><a href="/reiten">Reitunterricht &amp; Beritt</a></li>
@@ -40,6 +40,7 @@ const year = new Date().getFullYear();
   </div>
   <div class="wrap footer__bottom">
     <p class="muted">© {year} {site.owner} · Tierkommunikation in {site.city}</p>
+    <p class="muted" style="font-size: 0.75rem; margin-top: 0.4rem;">* Ein Tiergespräch ersetzt keine tierärztliche Untersuchung oder Behandlung.</p>
   </div>
 </footer>
 
@@ -51,5 +52,6 @@ const year = new Date().getFullYear();
   .footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
   .footer a { text-decoration: none; }
   .footer a:hover { text-decoration: underline; }
+  .footer ul a::before { content: '›'; display: inline-block; width: 0.9em; font-weight: 700; color: var(--gold-text); }
   .footer__bottom { margin-top: 2.5rem; padding-top: 1.25rem; border-top: 1px solid var(--sand); font-size: 0.85rem; }
 </style>

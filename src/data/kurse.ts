@@ -71,7 +71,7 @@ export const kombi = { preis: 990, einzeln: kurse.reduce((s, k) => s + k.preis, 
 
 export const weitereAngebote = {
   jugendkurs: {
-    titel: 'Basis- und Aufbaukurs für Jugendliche',
+    titel: 'Jugendkurse: Basis- und Aufbaukurs',
     text: 'Jugendliche gehen oft viel weniger verkopft an Tierkommunikation heran – für viele ist sie ganz normal. In eigenen Gruppen lernen sie, bewusst mit Tieren im Gespräch zu sein. Wer beide Stufen gemacht hat, kann später in den Profikurs weitergehen.',
   },
   lernabende: {
