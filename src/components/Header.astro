@@ -107,7 +107,8 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     .sub li { border-bottom: 0 !important; }
     .nav .sub a:not(.btn) { font-family: var(--font-body); font-size: 1.05rem; padding: 0.45rem 0; }
     .nav__cta .btn { width: 100%; padding: 1rem; font-size: 1.05rem; }
-    .header.is-open { background: var(--cream); border-color: var(--sand); }
+    /* Weichzeichner aus, solange das Menü offen ist – sonst wird das feste Menü auf die Höhe der Kopfzeile begrenzt */
+    .header.is-open { background: var(--cream); border-color: var(--sand); backdrop-filter: none; -webkit-backdrop-filter: none; }
     .header.is-open .brand, .header.is-open .brand__sub { color: var(--navy); }
     .header.is-open .burger span:not(.sr-only) { background: var(--navy); }
     .header.is-open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
