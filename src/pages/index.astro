@@ -19,6 +19,7 @@ import imgPferdekopf from '../assets/img/pferdekopf-nahaufnahme.jpg';
 import imgFendt from '../assets/img/vier-hunde-auf-fendt-scheune.jpg';
 import imgDreiPferde from '../assets/img/drei-pferde-galopp-wiese.jpg';
 import imgAbendrot from '../assets/img/see-abendrot-hund-silhouette.jpg';
+import imgAnna from '../assets/img/anna-rex-begegnung.jpg';
 
 const slides = [
   { src: imgStuhl, alt: 'Steffi sitzt im Hängestuhl auf der Wiese, ein Pferd kommt zu ihr, ihr Hund steht daneben – Abendlicht', position: 'center 60%' },
@@ -81,7 +82,7 @@ const faq = [
           <div class="card__body">
             <h3>Ausbildung in Tierkommunikation</h3>
             <p>In drei Stufen vom ersten Wochenende bis zum eigenen Beruf: Im Basis-, Aufbau- und Profikurs lernst du in kleiner Runde, bewusst und klar mit Tieren zu sprechen – mit deinen und mit fremden.</p>
-            <p><a href="/kurse#jugendliche"><strong>Basis- und Aufbaukurs gibt es auch für Jugendliche von 14 bis 18.</strong></a></p>
+            <p><a href="/kurse#jugendliche"><strong>Basis- und Aufbaukurs gibt es auch als Jugendkurs (14 bis 18 Jahre).</strong></a></p>
             <a class="btn btn--primary" href="/kurse">Zur Ausbildung</a>
           </div>
         </article>
@@ -117,6 +118,14 @@ const faq = [
         <h2>So läuft ein Tiergespräch ab</h2>
       </div>
       <Steps steps={steps} />
+      <figure class="stimme">
+        <Image src={imgAnna} alt="Anna beugt sich zu ihrem Hund Rex hinunter und begrüßt ihn auf der Wiese" widths={[400, 800]} sizes="(min-width: 760px) 320px, 100vw" loading="lazy" />
+        <blockquote class="testimonial">
+          <p>„Dass ein Tier mir mein eigenes Thema spiegeln kann, hätte ich nie gedacht.“</p>
+          <p class="stimme__text">Steffi hat aus der Ferne mit meinem geretteten Kettenhund Rex gesprochen. Was sie durchgab, war der Schlüssel zu ihm – und zu mir. Kurz darauf kam er zum ersten Mal freiwillig durchs Tor zurück.</p>
+          <footer style="color: #d42a4c">Anna mit Rex · <a href="/tiergespraech#anna">Ganze Geschichte lesen</a></footer>
+        </blockquote>
+      </figure>
       <div class="center" style="margin-top:2.5rem">
         <a class="btn btn--primary" href="/kontakt">Tiergespräch anfragen</a>
       </div>
@@ -134,7 +143,7 @@ const faq = [
         {kurse.map((k) => <CourseCard kurs={k} />)}
       </div>
       <div class="scroller__hint" aria-hidden="true">{kurse.map((k, i) => <span class:list={{ 'is-active': i === 0 }}></span>)}</div>
-      <p class="center" style="margin-top:2rem"><a href="/kurse#jugendliche">Basis- und Aufbaukurs auch für Jugendliche</a> · <a href="/kurse#extras">Monatliche Lernabende</a> für alle, die bei mir einen Kurs gemacht haben</p>
+      <p class="center" style="margin-top:2rem"><a href="/kurse#jugendliche">Basis- und Aufbaukurs auch als Jugendkurs</a> · <a href="/kurse#extras">Monatliche Lernabende</a> für alle, die bei mir einen Kurs gemacht haben</p>
     </div>
   </section>
 
@@ -158,8 +167,8 @@ const faq = [
     alt="Abendrot über dem See, davor die Silhouette eines Hundes"
     quote="Die Tiere wissen oft viel besser, was wir brauchen."
     author="Steffi"
-    position="center 66%"
-    align="top"
+    position="center 100%"
+    split
   />
 
   <section class="section section--sand">
@@ -174,3 +183,11 @@ const faq = [
 
   <CTA secondary={{ href: '/kurse', label: 'Kurse ansehen' }} />
 </Base>
+
+<style>
+  .stimme { display: grid; gap: 1.5rem; align-items: center; max-width: 900px; margin: 3rem auto 0; }
+  .stimme :global(img) { width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+  .stimme .testimonial { margin: 0; }
+  .stimme__text { font-family: var(--font-body) !important; font-style: normal !important; font-size: 1rem !important; }
+  @media (min-width: 760px) { .stimme { grid-template-columns: 320px 1fr; } }
+</style>

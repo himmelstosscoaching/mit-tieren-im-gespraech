@@ -2,6 +2,13 @@
 interface Item { q: string; a: string }
 interface Props { items: Item[] }
 const { items } = Astro.props;
+// Farbverlauf über die Blöcke: helles Pastellgelb → Orangegold wie der Anfrage-Block darunter
+const from = [0xfd, 0xf8, 0xea];
+const to = [0xf1, 0xbf, 0x72];
+const tone = (i: number) => {
+  const t = items.length > 1 ? i / (items.length - 1) : 0;
+  return 'rgb(' + from.map((c, k) => Math.round(c + (to[k] - c) * t)).join(',') + ')';
+};
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -9,8 +16,8 @@ const schema = {
 };
 ---
 <div class="faq">
-  {items.map((i) => (
-    <details class="faq__item">
+  {items.map((i, n) => (
+    <details class="faq__item" style={`--tone:${tone(n)}`}>
       <summary>{i.q}</summary>
       <p>{i.a}</p>
     </details>
@@ -20,10 +27,10 @@ const schema = {
 
 <style>
   .faq { display: grid; gap: 0.75rem; }
-  .faq__item { background: var(--white); border-radius: var(--radius); padding: 0 1.4rem; box-shadow: var(--shadow); }
+  .faq__item { background: var(--tone, var(--white)); border-radius: var(--radius); padding: 0 1.4rem; box-shadow: var(--shadow); }
   .faq__item summary { cursor: pointer; padding: 1.1rem 2.2rem 1.1rem 0; font-family: var(--font-display); font-size: 1.15rem; font-weight: 500; list-style: none; position: relative; }
   .faq__item summary::-webkit-details-marker { display: none; }
-  .faq__item summary::after { content: '+'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 1.6rem; color: var(--clay); font-family: var(--font-body); font-weight: 300; transition: transform 0.2s ease; }
+  .faq__item summary::after { content: '+'; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 1.6rem; color: var(--navy); font-family: var(--font-body); font-weight: 300; transition: transform 0.2s ease; }
   .faq__item[open] summary::after { transform: translateY(-50%) rotate(45deg); }
   .faq__item p { padding-bottom: 1.2rem; color: var(--ink-soft); }
 </style>

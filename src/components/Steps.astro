@@ -2,10 +2,17 @@
 interface Step { title: string; text: string }
 interface Props { steps: Step[] }
 const { steps } = Astro.props;
+// Zarte Blaustufen im Ton der Überschriften: Pastellblau → bläuliches Creme (erster Block am dunkelsten, bleibt aber zart)
+const from = [0xd3, 0xdf, 0xf0];
+const to = [0xf4, 0xf7, 0xfc];
+const tone = (i: number) => {
+  const t = steps.length > 1 ? i / (steps.length - 1) : 0;
+  return 'rgb(' + from.map((c, k) => Math.round(c + (to[k] - c) * t)).join(',') + ')';
+};
 ---
 <ol class="steps">
   {steps.map((s, i) => (
-    <li class="steps__item">
+    <li class="steps__item" style={`--tone:${tone(i)}`}>
       <span class="steps__num">{i + 1}</span>
       <h3>{s.title}</h3>
       <p class="muted">{s.text}</p>
@@ -15,7 +22,7 @@ const { steps } = Astro.props;
 
 <style>
   .steps { list-style: none; padding: 0; margin: 0; display: grid; gap: clamp(1.25rem, 3vw, 2rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); counter-reset: step; }
-  .steps__item { background: var(--white); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow); position: relative; }
+  .steps__item { background: var(--tone, var(--white)); border-radius: var(--radius-lg); padding: 1.75rem; box-shadow: var(--shadow); position: relative; }
   .steps__num { display: inline-grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%; background: var(--gold-soft); color: var(--on-gold); font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 1rem; }
   .steps__item h3 { font-size: 1.25rem; }
   @media (max-width: 859px) {

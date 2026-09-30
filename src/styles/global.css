@@ -21,8 +21,8 @@
   --cream: #f9fafb;
   --cream-deep: #eef3f8;
   --sand: #dbe4ee;
-  --ink: #23293a;
-  --ink-soft: #535a6b;
+  --ink: #15284a;       /* Fließtext = Schwarzblau wie die Überschriften (30.09.) */
+  --ink-soft: #46557a;  /* gedämpfter Text, schwarzblau aufgehellt (30.09.) */
   --moss: #3d6fb0;
   --moss-deep: #2c5a96;
   --moss-soft: #dce8f4;

@@ -7,6 +7,7 @@ import { Image } from 'astro:assets';
 import { site } from '../data/site';
 import imgKatze from '../assets/img/katze-nahaufnahme.jpg';
 import imgNebel from '../assets/img/spaziergang-mit-pferden-im-nebel.jpg';
+import imgAnna from '../assets/img/anna-rex-collage.jpg';
 
 const steps = [
   { title: 'Du schreibst mir', text: 'Ein Foto deines Tieres, sein Name und das, was dich gerade beschäftigt. Wir machen einen Telefontermin aus.' },
@@ -88,16 +89,50 @@ const steps = [
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" style="background: #fef8f0">
     <div class="wrap--narrow">
       <span class="eyebrow">Aus meiner Praxis</span>
       <h2>Das Pferd, das nicht in den Hänger wollte</h2>
-      <p>Ich habe einmal in einem Stall mit einem Trainer gearbeitet. Ein Pferd stand dort in einer Innenbox, ohne Paddock. Ehrlich gesagt hatte ich Vorurteile und dachte: Das ist nicht das Wahre. Dann zog das Pferd um, über die Tierklinik direkt in einen neuen Stall, der eigentlich total schön war. Es hat ewig gedauert, es zu verladen, und im neuen Stall hat es alles zerlegt. Sie haben vieles ausprobiert, auch die Haltung in der Herde.</p>
-      <p>Als gar nichts mehr ging, sollte es zurück in den alten Stall. Die Besitzerin war unsicher, also bin ich zum Verladen mitgekommen. Ich habe dem Pferd gesagt, wohin es geht – und es ist sofort eingestiegen, ohne jede Diskussion. Im alten Stall war es wieder ausgeglichen, ein komplett anderes Pferd. Es brauchte seinen eigenen Raum und seine eigene Sicherheit und wollte sich nicht mit anderen Pferden auseinandersetzen müssen.</p>
+      <p>Ich habe einmal in einem Stall mit einem Trainer gearbeitet. Ein Pferd stand dort in einer Innenbox, ohne Paddock. Ehrlich gesagt hatte ich Vorurteile und dachte: Das ist nicht das Wahre.</p>
+      <p>Dann zog das Pferd um – über die Tierklinik direkt in einen neuen Stall, der eigentlich total schön war. Es hat ewig gedauert, es zu verladen, und im neuen Stall hat es alles zerlegt. Sie haben vieles ausprobiert, auch die Haltung in der Herde.</p>
+      <p>Als gar nichts mehr ging, sollte es zurück in den alten Stall. Die Besitzerin war unsicher, also bin ich zum Verladen mitgekommen.</p>
+      <blockquote class="testimonial" style="background: none; box-shadow: none; margin: 1.75rem 0;">
+        <p>„Ich habe dem Pferd gesagt, wohin es geht – und es ist sofort eingestiegen, ohne jede Diskussion.“</p>
+      </blockquote>
+      <p>Im alten Stall war es wieder ausgeglichen, ein komplett anderes Pferd.</p>
+      <p><strong>Es brauchte seinen eigenen Raum und seine eigene Sicherheit – und wollte sich nicht mit anderen Pferden auseinandersetzen müssen.</strong></p>
     </div>
   </section>
 
-  <QuoteBanner image={imgNebel} alt="Zwei Menschen gehen mit ihren Pferden durch den Morgennebel" quote="Wir dürfen uns nicht immer hinstellen und sagen, wir wissen besser, was für die gut ist. Wir dürfen sie ruhig fragen." author="Steffi" position="center 52%" align="top" />
+  <section class="section" id="anna" style="background: var(--white)">
+    <div class="wrap">
+    <div class="split anna" style="box-shadow: none; padding-inline: 0">
+      <div>
+        <span class="eyebrow">Das erzählt Anna</span>
+        <h2>„Ich wusste, dass ein Mensch mir mein Thema spiegeln kann. Dass ein Tier das auch kann, hätte ich nie gedacht.“</h2>
+        <p>Ich habe meinen Hund Rex als Kettenhund gerettet. Ein Halsband kann ich ihm nicht anlegen, festhalten lässt er sich nicht – immer wieder ist er tagelang verschwunden. Ich weiß nicht, was tun.</p>
+        <p>Bei einem letzten Versuch, mit ihm rauszugehen, bleibt Rex vor dem Gartentor sitzen und kommt nicht mehr herein. Wir versuchen alles. Nichts hilft.</p>
+        <p>Erst Steffi bringt die Wende. Sie spricht mit ihm – aus der Ferne, sie sieht nur ein Foto. Was sie mir durchgibt, trifft mich:</p>
+        <blockquote class="testimonial" style="background: none; border-left: none; box-shadow: none;">
+          <p>„Ich liebe mein Zuhause und fühle mich da geborgen. Freiheit bedeutet, dass ich immer gehen könnte, wenn ich wollte. Aber tief in mir sitzt die Angst, festgehalten zu werden. Vertrau unserer Beziehung und lass die Kontrolle los.“</p>
+          <footer style="color: #d42a4c">Rex</footer>
+        </blockquote>
+        <details class="anna__mehr">
+          <summary class="btn btn--ghost">Weiterlesen</summary>
+        <p>Darin liegt nicht nur Rex’ Geschichte – da liegt meine eigene. Es geht um meine Freiheit, um mein Kontrollieren. Rex ist mein Spiegel, und Steffi legt mir den Schlüssel dazu in die Hand.</p>
+        <p>Und dann, in dem Moment, in dem ich meine Kontrolle loslasse, steht Rex auf und kommt Schritt für Schritt durch genau das Tor, vor dem er eben noch saß. Ich kann ihn umarmen.</p>
+        <p>Steffi hat etwas in Bewegung gebracht – bei Rex und bei mir. Dafür bin ich dankbar.</p>
+        <p class="anna__name">— Anna</p>
+        </details>
+      </div>
+      <figure class="anna__bild">
+        <Image src={imgAnna} alt="Drei Fotos untereinander: Anna sitzt auf der Wiese und schaut zum offenen Tor – Rex liegt im Grün und wartet – Anna und Rex begegnen sich." widths={[400, 700, 1000]} sizes="(min-width: 860px) 420px, 100vw" loading="lazy" />
+      </figure>
+    </div>
+    </div>
+  </section>
+
+  <QuoteBanner image={imgNebel} alt="Zwei Menschen gehen mit ihren Pferden durch den Morgennebel" quote="Wir dürfen uns nicht immer hinstellen und sagen, wir wissen besser, was für die Tiere gut ist. Wir dürfen sie ruhig fragen." author="Steffi" position="center 52%" align="top" />
 
   <section class="section">
     <div class="wrap">
@@ -144,3 +179,16 @@ const steps = [
 
   <CTA title="Möchtest du wissen, was dein Tier dir sagen will?" text={`Schreib mir kurz, worum es geht. Ich melde mich persönlich bei dir und wir finden einen Termin.`} primary={{ href: '/kontakt', label: 'Tiergespräch anfragen' }} secondary={{ href: '/ueber-mich', label: 'Wer ist Steffi?' }} />
 </Base>
+
+<style>
+  .anna { align-items: start; background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow); padding: clamp(1.5rem, 4vw, 3.5rem); }
+  .anna h2 { font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-style: normal; }
+  .anna .testimonial { margin: 1.25rem 0 1.5rem; box-shadow: none; background: var(--cream-deep); border-left-color: var(--rose); }
+  .anna__name { font-weight: 700; color: #d42a4c; }
+  .anna__mehr summary { list-style: none; cursor: pointer; }
+  .anna__mehr summary::-webkit-details-marker { display: none; }
+  .anna__mehr[open] summary { display: none; }
+  .anna__bild { margin: 0; max-width: 420px; justify-self: center; }
+  .anna__bild :global(img) { width: 100%; height: auto; border-radius: var(--radius); }
+  @media (min-width: 860px) { .anna__bild { position: sticky; top: 110px; } }
+</style>

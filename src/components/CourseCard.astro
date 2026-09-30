@@ -1,16 +1,16 @@
 ---
-import type { Kurs } from '../data/kurse';
+import { kursTon, type Kurs } from '../data/kurse';
 interface Props { kurs: Kurs }
 const { kurs } = Astro.props;
 ---
-<article class="card course" style={`--kurs: var(--kurs-${kurs.slug})`}>
+<article class="card course" style={`--kurs: var(--kurs-${kurs.slug}); background: ${kursTon(kurs.stufe)}`}>
   <span class="course__tag">Stufe {kurs.stufe}</span>
   <h3>{kurs.titel}</h3>
   <p class="muted course__sub">{kurs.untertitel}</p>
   <p>{kurs.kurz}</p>
   <p class="course__meta muted">{kurs.dauer}</p>
   <p class="price">{kurs.preis} € <small>pro Person</small></p>
-  {kurs.slug !== 'profikurs' && <a class="course__youth" href="/kurse#jugendliche">Auch für Jugendliche</a>}
+  {kurs.slug !== 'profikurs' && <a class="course__youth" href="/kurse#jugendliche">Auch als Jugendkurs</a>}
   <a class="btn course__btn" href={`/kurse/${kurs.slug}`}>Zum {kurs.titel}</a>
 </article>
 

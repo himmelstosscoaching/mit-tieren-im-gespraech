@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import CTA from '../../components/CTA.astro';
 import { Image } from 'astro:assets';
-import { kurse, type Kurs } from '../../data/kurse';
+import { kurse, kursTon, type Kurs } from '../../data/kurse';
 import { site } from '../../data/site';
 import imgBasis from '../../assets/img/hund-am-winter-see.jpg';
 import imgAufbau from '../../assets/img/pferd-schnee-sonnenuntergang.jpg';
@@ -38,7 +38,7 @@ const prev = kurse.find((k) => k.stufe === kurs.stufe - 1);
         <figure class="photo photo--landscape" style="margin:0 0 1.5rem">
           <Image src={bild} alt={bildInfo.alt} style={`object-position:${bildInfo.pos}`} widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
         </figure>
-        <dl class="facts">
+        <dl class="facts" style={`background: ${kursTon(kurs.stufe)}`}>
           <div><dt>Dauer</dt><dd>{kurs.dauer}</dd></div>
           <div><dt>Zeiten</dt><dd>{kurs.zeiten.map((z) => <span style="display:block">{z}</span>)}</dd></div>
           <div><dt>Voraussetzung</dt><dd>{kurs.voraussetzung}</dd></div>
@@ -54,7 +54,7 @@ const prev = kurse.find((k) => k.stufe === kurs.stufe - 1);
     <section class="section section--sand section--tight">
       <div class="wrap grid grid--2">
         {prev && (
-          <div class="card">
+          <div class="card" style={`background: ${kursTon(prev.stufe)}`}>
             <span class="eyebrow">Davor</span>
             <h3>{prev.titel}</h3>
             <p class="muted">{prev.kurz}</p>
@@ -62,7 +62,7 @@ const prev = kurse.find((k) => k.stufe === kurs.stufe - 1);
           </div>
         )}
         {next && (
-          <div class="card">
+          <div class="card" style={`background: ${kursTon(next.stufe)}`}>
             <span class="eyebrow">Danach</span>
             <h3>{next.titel}</h3>
             <p class="muted">{next.kurz}</p>

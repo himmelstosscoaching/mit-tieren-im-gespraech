@@ -4,7 +4,7 @@ import CourseCard from '../../components/CourseCard.astro';
 import CTA from '../../components/CTA.astro';
 import QuoteBanner from '../../components/QuoteBanner.astro';
 import { Image } from 'astro:assets';
-import { kurse, weitereAngebote, kombi } from '../../data/kurse';
+import { kurse, weitereAngebote, kombi, kursTon } from '../../data/kurse';
 import { site } from '../../data/site';
 import imgZweiPferde from '../../assets/img/zwei-pferde-unter-baum-abend.jpg';
 import imgHerde from '../../assets/img/pferdeherde-gegenlicht.jpg';
@@ -54,7 +54,7 @@ const lernabendTermine = weitereAngebote.lernabende.termine
           </thead>
           <tbody>
             {kurse.map((k) => (
-              <tr>
+              <tr style={`background: ${kursTon(k.stufe)}`}>
                 <td><a href={`/kurse/${k.slug}`} style={`color: var(--kurs-${k.slug})`}><strong>{k.titel}</strong></a></td>
                 <td>{k.dauer}</td>
                 <td>{k.voraussetzung}</td>
@@ -72,7 +72,7 @@ const lernabendTermine = weitereAngebote.lernabende.termine
           <span class="eyebrow">Für Jugendliche</span>
           <h3>Basis- und Aufbaukurs für Jugendliche</h3>
           <p>{weitereAngebote.jugendkurs.text}</p>
-          <p class="youth__facts"><strong>Für 14 bis 18 Jahre</strong> · Jüngere nach Absprache<br /><strong>Basiskurs 250 € · Aufbaukurs 310 €</strong> · Ermäßigung auf Anfrage möglich</p>
+          <p class="youth__facts"><strong>Für 14 bis 18 Jahre</strong> · Jüngere nach Absprache<br /><strong>Basiskurs 250 € · Aufbaukurs 310 €</strong> · Familien- und Geschwisterpreis auf Anfrage</p>
           <a class="btn btn--primary" href="/kontakt">Platz für Jugendliche anfragen</a>
         </div>
       </div>
@@ -150,7 +150,7 @@ const lernabendTermine = weitereAngebote.lernabende.termine
     </div>
   </section>
 
-  <CTA title="Unsicher, wo du anfangen sollst?" text="Schreib mir kurz, wo du stehst und was du dir wünschst – ich sage dir ehrlich, womit du am besten anfängst." primary={{ href: '/kontakt', label: 'Frage stellen' }} />
+  <CTA title="Unsicher, wo du anfangen sollst?" text="Schreib mir kurz, wo du stehst und was du dir wünschst – ich sage dir, womit du am besten anfängst." primary={{ href: '/kontakt', label: 'Frage stellen' }} />
 </Base>
 
 <style>
