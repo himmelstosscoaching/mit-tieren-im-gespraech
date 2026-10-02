@@ -6,6 +6,9 @@ Profikurs 560 €), Lernabende, Krafttierarbeit. Live: https://www.mit-tieren-im
 
 ## Arbeiten
 - `npm install` · `npm run dev` (http://localhost:4321) · `npm run build` (muss vor jedem Push fehlerfrei sein).
+- **Immer direkt auf `main` arbeiten und pushen.** Netlify baut ausschließlich `main`; ein eigener Branch geht nie online
+  (Vorfall 29./30.09.2026: vier Commits auf `ueberarbeitung-2026-09`, Seite blieb drei Tage alt). Falls doch ein Branch
+  entstanden ist: `git checkout main && git merge <branch> && git push`.
 - Deploy: Push auf `main` → Netlify baut automatisch. Falls das nicht greift: `npx netlify-cli deploy --prod --dir=dist --no-build`.
 - Für Menschen ohne Code-Erfahrung: siehe `PFLEGE.md`.
 

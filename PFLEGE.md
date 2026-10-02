@@ -1,7 +1,8 @@
 # Website pflegen – Anleitung für Steffi, Annette & Herbert
 
 Die Seite **www.mit-tieren-im-gespraech.com** liegt als Code hier auf GitHub. Netlify baut sie daraus automatisch.
-Jede gespeicherte Änderung auf GitHub ist nach etwa einer Minute online.
+Jede gespeicherte Änderung auf GitHub ist nach etwa einer Minute online – **aber nur auf dem Hauptzweig `main`**.
+Wenn Claude fragt oder vorschlägt, einen eigenen Branch anzulegen: „Nein, direkt auf main.“ Sonst bleibt die Seite alt.
 
 ## Der einfachste Weg: Claude bitten
 Repo in Claude Code öffnen (oder den Projektordner) und sagen, was sich ändern soll – z. B. „Der Aufbaukurs kostet
