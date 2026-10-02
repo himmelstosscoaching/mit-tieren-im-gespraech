@@ -19,9 +19,9 @@ import { kurse } from '../data/kurse';
         </dl>
       </div>
 
-      <form class="card form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="firma" action="/danke">
+      <form class="card form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/danke">
         <input type="hidden" name="form-name" value="kontakt" />
-        <p class="hp"><label>Firma <input name="firma" tabindex="-1" autocomplete="off" /></label></p>
+        <p class="hp" aria-hidden="true"><label>Bitte dieses Feld leer lassen <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
 
         <div class="field">
           <label for="anliegen">Worum geht es?</label>
