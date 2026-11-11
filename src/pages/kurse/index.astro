@@ -4,7 +4,7 @@ import CourseCard from '../../components/CourseCard.astro';
 import CTA from '../../components/CTA.astro';
 import QuoteBanner from '../../components/QuoteBanner.astro';
 import { Image } from 'astro:assets';
-import { kurse, weitereAngebote, kombi, kursTon } from '../../data/kurse';
+import { kurse, weitereAngebote, kombi, kursTon, heute, offeneTermine, terminText, terminBis } from '../../data/kurse';
 import { site } from '../../data/site';
 import imgZweiPferde from '../../assets/img/zwei-pferde-unter-baum-abend.jpg';
 import imgHerde from '../../assets/img/pferdeherde-gegenlicht.jpg';
@@ -12,10 +12,10 @@ import imgSonnenuntergang from '../../assets/img/sonnenuntergang-feld-mit-hunden
 import imgSprung from '../../assets/img/hund-springt-ueber-wasser.jpg';
 import imgSpirale from '../../assets/img/spirale-im-schnee.jpg';
 
-const heute = new Date().toISOString().slice(0, 10);
 const lernabendTermine = weitereAngebote.lernabende.termine
-  .filter((d) => d >= heute)
-  .map((d) => new Date(`${d}T12:00:00`).toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }));
+  .filter((d) => d >= heute())
+  .map((d) => ({ bis: d, text: new Date(`${d}T12:00:00`).toLocaleDateString('de-DE', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }) }));
+const jugendTermine = offeneTermine(weitereAngebote.jugendkurs.termine);
 ---
 <Base title="Ausbildung in Tierkommunikation" description={`Ausbildung in Tierkommunikation in drei Stufen – Basiskurs, Aufbaukurs, Profikurs – auf Steffis Hof in ${site.city} bei Tuttlingen. Kleine Gruppen, viele Übungen, echte Gespräche mit Tieren.`}>
   <section class="section">
@@ -59,7 +59,7 @@ const lernabendTermine = weitereAngebote.lernabende.termine
                 <td>{k.dauer}</td>
                 <td>{k.voraussetzung}</td>
                 <td>{k.preis} €</td>
-                <td>{k.termine[0]}</td>
+                <td class="naechster">{offeneTermine(k.termine).map((t) => <span data-bis={terminBis(t)}>{terminText(t)}</span>)}<span>Neue Termine folgen</span></td>
               </tr>
             ))}
           </tbody>
@@ -73,8 +73,8 @@ const lernabendTermine = weitereAngebote.lernabende.termine
           <h3>Basis- und Aufbaukurs als Jugendkurs</h3>
           <p>{weitereAngebote.jugendkurs.text}</p>
           <p class="youth__facts"><strong>Für 14 bis 18 Jahre</strong> · Jüngere nach Absprache<br /><strong>Basiskurs 250 € · Aufbaukurs 310 €</strong> · Familien- und Geschwisterpreis auf Anfrage</p>
-          {weitereAngebote.jugendkurs.termine.length > 0 && (
-            <p class="youth__termine"><strong>Nächster Termin:</strong> {weitereAngebote.jugendkurs.termine.join(' · ')}<br /><span class="muted">Samstag und Sonntag, 11–17 Uhr</span></p>
+          {jugendTermine.length > 0 && (
+            <p class="youth__termine"><strong>Nächster Termin:</strong> <span class="naechster">{jugendTermine.map((t) => <span data-bis={terminBis(t)}>{terminText(t)}</span>)}<span>Neue Termine folgen bald</span></span><br /><span class="muted">Samstag und Sonntag, 11–17 Uhr</span></p>
           )}
           <a class="btn btn--primary" href="/kontakt?kurs=jugendkurs">Platz im Jugendkurs anfragen</a>
         </div>
@@ -110,7 +110,8 @@ const lernabendTermine = weitereAngebote.lernabende.termine
           <details class="termine">
             <summary>Nächste Termine</summary>
             <ul>
-              {lernabendTermine.map((t) => <li>{t}</li>)}
+              {lernabendTermine.map((t) => <li data-bis={t.bis}>{t.text}</li>)}
+              <li class="termin-fallback">Neue Termine folgen</li>
             </ul>
           </details>
           <a class="btn btn--ghost" href="/kontakt">Ich möchte dabei sein</a>

@@ -1,4 +1,17 @@
-// Kurse, Preise, Termine — hier pflegen. Termine als Text, so wie sie gelesen werden sollen.
+// Kurse, Preise, Termine — hier pflegen.
+//
+// TERMINE: { text: 'so wie er gelesen werden soll', bis: 'letzter Kurstag als JJJJ-MM-TT' }
+// Nach dem letzten Kurstag verschwindet der Termin von selbst von der Website (auch ohne neuen Upload).
+// Reiner Text ohne Datum (z. B. 'Weitere Termine 2027 folgen') bleibt immer stehen.
+export type Termin = string | { text: string; bis: string };
+
+/** Heutiges Datum als JJJJ-MM-TT (Ortszeit). */
+export const heute = () => new Date().toLocaleDateString('sv-SE');
+export const terminText = (t: Termin) => (typeof t === 'string' ? t : t.text);
+export const terminBis = (t: Termin) => (typeof t === 'string' ? undefined : t.bis);
+/** Termine, die noch nicht vorbei sind (beim Bauen der Seite). Im Browser blendet Base.astro zusätzlich alles mit data-bis aus, was inzwischen vorbei ist. */
+export const offeneTermine = (ts: Termin[]) => ts.filter((t) => typeof t === 'string' || t.bis >= heute());
+
 export type Kurs = {
   slug: 'basiskurs' | 'aufbaukurs' | 'profikurs';
   titel: string;
@@ -9,7 +22,7 @@ export type Kurs = {
   dauer: string;
   zeiten: string[];
   preis: number;
-  termine: string[];
+  termine: Termin[];
   stufe: number;
 };
 
@@ -29,7 +42,12 @@ export const kurse: Kurs[] = [
     dauer: 'Ein Wochenende (Samstag und Sonntag)',
     zeiten: ['Samstag und Sonntag: 11–17 Uhr'],
     preis: 250,
-    termine: ['14./15. November 2026', '5./6. Dezember 2026', '9./10. Januar 2027', 'Weitere Termine 2027 folgen'],
+    termine: [
+      { text: '14./15. November 2026', bis: '2026-11-15' },
+      { text: '5./6. Dezember 2026', bis: '2026-12-06' },
+      { text: '9./10. Januar 2027', bis: '2027-01-10' },
+      'Weitere Termine 2027 folgen',
+    ],
   },
   {
     slug: 'aufbaukurs',
@@ -45,7 +63,10 @@ export const kurse: Kurs[] = [
     dauer: 'Freitagabend bis Sonntag',
     zeiten: ['Freitag: 18–20:30 Uhr', 'Samstag und Sonntag: 10–16 Uhr'],
     preis: 310,
-    termine: ['15.–17. Januar 2027', 'Weitere Termine 2027 folgen'],
+    termine: [
+      { text: '15.–17. Januar 2027', bis: '2027-01-17' },
+      'Weitere Termine 2027 folgen',
+    ],
   },
   {
     slug: 'profikurs',
@@ -63,7 +84,7 @@ export const kurse: Kurs[] = [
     dauer: 'Fünf Tage (Mittwoch bis Sonntag)',
     zeiten: ['Mittwoch: 17–20 Uhr', 'Donnerstag bis Samstag: 11–17 Uhr', 'Sonntag: 10–13 Uhr'],
     preis: 560,
-    termine: ['3.–7. Februar 2027 (Termin noch zu bestätigen)'],
+    termine: [{ text: '3.–7. Februar 2027 (Termin noch zu bestätigen)', bis: '2027-02-07' }],
   },
 ];
 
@@ -73,13 +94,13 @@ export const weitereAngebote = {
   jugendkurs: {
     titel: 'Jugendkurse: Basis- und Aufbaukurs',
     text: 'Jugendliche gehen oft viel weniger verkopft an Tierkommunikation heran – für viele ist sie ganz normal. In eigenen Gruppen lernen sie, bewusst mit Tieren im Gespräch zu sein. Wer beide Stufen gemacht hat, kann später in den Profikurs weitergehen.',
-    // Termine als Text, so wie sie gelesen werden sollen. Vergangene Termine bitte von Hand löschen.
-    termine: ['Jugend-Basiskurs: 30./31. Januar 2027'],
+    // Format wie bei den Kursen oben – vergangene Termine verschwinden von selbst.
+    termine: [{ text: 'Jugend-Basiskurs: 30./31. Januar 2027', bis: '2027-01-31' }] as Termin[],
   },
   lernabende: {
     titel: 'Lernabende am Hof',
     text: 'Wenn du bei mir einen Kurs gemacht hast, kannst du einmal im Monat zu den Lernabenden am Hof kommen. Hier üben wir weiter – rund um Tierkommunikation und Krafttierarbeit: kranke Tiere, verstorbene Tiere, Krafttierreisen, Energiearbeit und vieles mehr. Jeder Abend hat ein eigenes Thema.',
-    // Termine im Format JJJJ-MM-TT. Vergangene Termine werden beim Bauen der Seite automatisch ausgeblendet.
+    // Termine im Format JJJJ-MM-TT. Vergangene Termine verschwinden von selbst.
     termine: ['2026-12-11', '2027-01-08', '2027-02-12', '2027-03-12', '2027-04-09', '2027-05-14', '2027-06-11', '2027-07-09'],
     info: 'Zweiter Freitag im Monat, 19–20:30 Uhr · in der Gruppe · 50 € pro Abend, Fünferkarte 200 € (40 € pro Abend)',
   },

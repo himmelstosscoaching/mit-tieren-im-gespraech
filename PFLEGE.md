@@ -14,7 +14,8 @@ Zwei Dateien enthalten alles, was sich regelmäßig ändert:
 
 | Was | Datei |
 |---|---|
-| Kurse: Beschreibung, Preis, Zeiten, **Termine** | `src/data/kurse.ts` |
+| Kurse: Beschreibung, Preis, Zeiten, **Termine** (Format `{ text: '9./10. Januar 2027', bis: '2027-01-10' }` – nach dem letzten Kurstag verschwindet der Termin von selbst) | `src/data/kurse.ts` |
+| **Jugendkurs-Termine** (gleiches Format) | `src/data/kurse.ts`, bei `jugendkurs` → `termine` |
 | **Lernabende-Termine** (Format `'2027-08-13'`, vergangene verschwinden von selbst) | `src/data/kurse.ts`, bei `lernabende` → `termine` |
 | Adresse, E-Mail, Telefon, Instagram | `src/data/site.ts` |
 

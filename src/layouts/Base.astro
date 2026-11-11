@@ -40,6 +40,13 @@ const fullTitle = title === site.name ? `${site.name} – ${site.claim}` : `${ti
     </main>
     <Footer />
     {mobileCta && <MobileCta href={mobileCta.href} label={mobileCta.label} />}
+    <script is:inline>
+      // Vergangene Termine sofort entfernen (data-bis = letzter Tag, JJJJ-MM-TT) – so verschwinden sie auch ohne neuen Upload.
+      (function () {
+        var heute = new Date().toLocaleDateString('sv-SE');
+        document.querySelectorAll('[data-bis]').forEach(function (el) { if (el.getAttribute('data-bis') < heute) el.remove(); });
+      })();
+    </script>
     <script>
       // Sanftes Einblenden beim Scrollen (respektiert „Bewegung reduzieren")
       const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

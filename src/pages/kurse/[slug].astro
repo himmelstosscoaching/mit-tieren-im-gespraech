@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import CTA from '../../components/CTA.astro';
 import { Image } from 'astro:assets';
-import { kurse, kursTon, type Kurs } from '../../data/kurse';
+import { kurse, kursTon, offeneTermine, terminText, terminBis, type Kurs } from '../../data/kurse';
 import { site } from '../../data/site';
 import imgBasis from '../../assets/img/hund-am-winter-see.jpg';
 import imgAufbau from '../../assets/img/pferd-schnee-sonnenuntergang.jpg';
@@ -43,7 +43,7 @@ const prev = kurse.find((k) => k.stufe === kurs.stufe - 1);
           <div><dt>Zeiten</dt><dd>{kurs.zeiten.map((z) => <span style="display:block">{z}</span>)}</dd></div>
           <div><dt>Voraussetzung</dt><dd>{kurs.voraussetzung}</dd></div>
           <div><dt>Kosten</dt><dd><span class="price">{kurs.preis} €</span></dd></div>
-          <div><dt>Termine</dt><dd>{kurs.termine.map((t) => <span style="display:block">{t}</span>)}</dd></div>
+          <div><dt>Termine</dt><dd class="termin-liste">{offeneTermine(kurs.termine).map((t) => <span data-bis={terminBis(t)}>{terminText(t)}</span>)}<span class="termin-fallback">Neue Termine folgen</span></dd></div>
           <div><dt>Kursort</dt><dd>{site.street}, {site.zip} {site.city}</dd></div>
         </dl>
       </div>
