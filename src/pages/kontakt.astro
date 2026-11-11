@@ -28,6 +28,7 @@ import { kurse } from '../data/kurse';
           <select id="anliegen" name="anliegen">
             <option value="tiergespraech">Ein Tiergespräch</option>
             {kurse.map((k) => <option value={k.slug}>{k.titel}</option>)}
+            <option value="jugendkurs">Jugendkurs</option>
             <option value="lernabend">Lernabend am Hof</option>
             <option value="sonstiges">Etwas anderes</option>
           </select>

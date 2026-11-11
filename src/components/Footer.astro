@@ -26,6 +26,7 @@ const year = new Date().getFullYear();
       <p class="footer__head">Kontakt</p>
       <ul>
         <li><a href="/kontakt">Anfrage senden</a></li>
+        {site.phone && <li><a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a></li>}
         <li><a href={site.instagram} rel="noopener" target="_blank">Instagram {site.instagramHandle}</a></li>
         <li><a href="/ueber-mich">Über mich</a></li>
       </ul>

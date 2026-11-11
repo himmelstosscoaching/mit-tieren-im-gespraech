@@ -73,7 +73,10 @@ const lernabendTermine = weitereAngebote.lernabende.termine
           <h3>Basis- und Aufbaukurs als Jugendkurs</h3>
           <p>{weitereAngebote.jugendkurs.text}</p>
           <p class="youth__facts"><strong>Für 14 bis 18 Jahre</strong> · Jüngere nach Absprache<br /><strong>Basiskurs 250 € · Aufbaukurs 310 €</strong> · Familien- und Geschwisterpreis auf Anfrage</p>
-          <a class="btn btn--primary" href="/kontakt">Platz im Jugendkurs anfragen</a>
+          {weitereAngebote.jugendkurs.termine.length > 0 && (
+            <p class="youth__termine"><strong>Nächster Termin:</strong> {weitereAngebote.jugendkurs.termine.join(' · ')}<br /><span class="muted">Samstag und Sonntag, 11–17 Uhr</span></p>
+          )}
+          <a class="btn btn--primary" href="/kontakt?kurs=jugendkurs">Platz im Jugendkurs anfragen</a>
         </div>
       </div>
 

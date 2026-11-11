@@ -29,7 +29,7 @@ export const kurse: Kurs[] = [
     dauer: 'Ein Wochenende (Samstag und Sonntag)',
     zeiten: ['Samstag und Sonntag: 11–17 Uhr'],
     preis: 250,
-    termine: ['14./15. November 2026', '5./6. Dezember 2026', 'Weitere Termine 2027 folgen'],
+    termine: ['14./15. November 2026', '5./6. Dezember 2026', '9./10. Januar 2027', 'Weitere Termine 2027 folgen'],
   },
   {
     slug: 'aufbaukurs',
@@ -73,6 +73,8 @@ export const weitereAngebote = {
   jugendkurs: {
     titel: 'Jugendkurse: Basis- und Aufbaukurs',
     text: 'Jugendliche gehen oft viel weniger verkopft an Tierkommunikation heran – für viele ist sie ganz normal. In eigenen Gruppen lernen sie, bewusst mit Tieren im Gespräch zu sein. Wer beide Stufen gemacht hat, kann später in den Profikurs weitergehen.',
+    // Termine als Text, so wie sie gelesen werden sollen. Vergangene Termine bitte von Hand löschen.
+    termine: ['Jugend-Basiskurs: 30./31. Januar 2027'],
   },
   lernabende: {
     titel: 'Lernabende am Hof',
