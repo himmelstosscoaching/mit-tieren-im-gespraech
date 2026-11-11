@@ -63,7 +63,7 @@ export const kurse: Kurs[] = [
     dauer: 'Fünf Tage (Mittwoch bis Sonntag)',
     zeiten: ['Mittwoch: 17–20 Uhr', 'Donnerstag bis Samstag: 11–17 Uhr', 'Sonntag: 10–13 Uhr'],
     preis: 560,
-    termine: ['4.–7. Februar 2027 (Termin noch zu bestätigen)'],
+    termine: ['3.–7. Februar 2027 (Termin noch zu bestätigen)'],
   },
 ];
 
