@@ -21,11 +21,8 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
 <header class:list={['header', { 'header--transparent': transparent }]} data-header>
   <div class="wrap header__inner">
     <a class="brand" href="/" aria-label={`${site.name} – zur Startseite`} title="Zur Startseite">
-      <span class="brand__mark" aria-hidden="true">
-        <svg viewBox="3 3 18 18" width="26" height="26"><g fill="currentColor"><ellipse cx="12" cy="16.2" rx="4.6" ry="3.9"/><ellipse cx="6.2" cy="10.6" rx="1.9" ry="2.4"/><ellipse cx="17.8" cy="10.6" rx="1.9" ry="2.4"/><ellipse cx="9.4" cy="6.6" rx="1.9" ry="2.5"/><ellipse cx="14.6" cy="6.6" rx="1.9" ry="2.5"/></g></svg>
-      </span>
       <span class="brand__text">
-        <span class="brand__name">{site.name}</span>
+        <span class="brand__name" aria-hidden="true"><span class="brand__script">Mit</span> <span class="brand__gold">Tieren</span> <span class="brand__script brand__script--im">im</span> Gespräch</span>
         <span class="brand__sub">{site.owner}</span>
       </span>
     </a>
@@ -63,15 +60,18 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   .header--transparent { position: fixed; left: 0; right: 0; background: transparent; border-color: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .header--transparent.is-scrolled { background: rgba(250, 248, 249, 0.92); border-color: rgba(38, 40, 58, 0.06); backdrop-filter: saturate(140%) blur(10px); -webkit-backdrop-filter: saturate(140%) blur(10px); }
   .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; }
-  .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: var(--navy); line-height: 1.1; }
+  /* Schriftzug-Logo: „Mit“/„im“ Schreibschrift, „Tieren“ gold kursiv, „Gespräch“ kursiv, Name kursiv linksbündig */
+  .brand { display: flex; align-items: center; text-decoration: none; color: var(--navy); }
   .brand__text { display: flex; flex-direction: column; }
-  .brand__mark { flex: none; display: grid; place-items: center; width: 42px; height: 42px; border-radius: 50%; background: var(--rose); color: var(--navy); transition: transform 0.2s ease; }
-  .brand:hover .brand__mark { transform: scale(1.08); }
-  .brand:hover .brand__name { text-decoration: underline; text-decoration-color: var(--rose); text-underline-offset: 4px; }
-  .brand__name { font-family: var(--font-display); font-size: clamp(1.15rem, 2.2vw, 1.45rem); font-weight: 500; letter-spacing: -0.01em; }
-  .brand__sub { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); margin-top: 0.2rem; }
-  .header--transparent:not(.is-scrolled) .brand { color: var(--cream); }
-  .header--transparent:not(.is-scrolled) .brand__sub { color: rgba(250, 246, 239, 0.8); }
+  .brand__name { font-family: var(--font-logo); font-style: italic; font-weight: 400; font-size: clamp(1.5rem, 2.6vw, 1.875rem); line-height: 1; letter-spacing: 0.01em; white-space: nowrap; }
+  .brand__gold { color: var(--logo-gold); font-weight: 500; }
+  .brand__script { font-family: var(--font-script); font-style: normal; font-size: 0.7em; }
+  .brand__script--im { font-size: 0.667em; }
+  .brand__sub { font-family: var(--font-logo); font-style: italic; font-size: 0.875rem; color: var(--ink-soft); margin-top: 0.25rem; padding-left: 2px; line-height: 1.1; }
+  .brand:hover .brand__name { opacity: 0.85; }
+  .header--transparent:not(.is-scrolled) .brand { color: var(--cream); text-shadow: 0 1px 10px rgba(10, 20, 40, 0.45); }
+  .header--transparent:not(.is-scrolled) .brand__gold { color: var(--rose); }
+  .header--transparent:not(.is-scrolled) .brand__sub { color: rgba(250, 246, 239, 0.85); }
 
   .nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2rem); }
   .nav a:not(.btn) { text-decoration: none; font-weight: 600; color: var(--navy); padding: 0.4rem 0; border-bottom: 2px solid transparent; }
@@ -93,6 +93,15 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   .header--transparent:not(.is-scrolled) .burger span:not(.sr-only) { background: var(--cream); }
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
+  /* schmale Desktops/Tablets quer: Schriftzug und Menü passen in eine Zeile */
+  @media (min-width: 860px) and (max-width: 1100px) {
+    .brand__name { font-size: 1.35rem; }
+    .brand__sub { font-size: 0.78rem; }
+    .nav ul { gap: 0.9rem; }
+    .nav a { white-space: nowrap; }
+    .nav .btn { padding: 0.6rem 0.9rem; font-size: 0.9rem; }
+  }
+
   @media (max-width: 859px) {
     .burger { display: flex; }
     .nav { position: fixed; inset: 76px 0 0 0; background: var(--cream); padding: 1.5rem var(--gutter) 2rem; transform: translateX(100%); transition: transform 0.25s ease; overflow: auto; }
@@ -110,6 +119,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     /* Weichzeichner aus, solange das Menü offen ist – sonst wird das feste Menü auf die Höhe der Kopfzeile begrenzt */
     .header.is-open { background: var(--cream); border-color: var(--sand); backdrop-filter: none; -webkit-backdrop-filter: none; }
     .header.is-open .brand, .header.is-open .brand__sub { color: var(--navy); }
+    .header.is-open .brand__gold { color: var(--logo-gold); }
     .header.is-open .burger span:not(.sr-only) { background: var(--navy); }
     .header.is-open .burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .header.is-open .burger span:nth-child(2) { opacity: 0; }

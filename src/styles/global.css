@@ -35,6 +35,10 @@
   --on-gold: var(--navy);
 
   --font-display: 'Fraunces', 'Iowan Old Style', Georgia, serif;
+  /* Schriftzug-Logo (selbst gehostet über @fontsource, siehe Base.astro) */
+  --font-logo: 'Cormorant Garamond', Georgia, serif;
+  --font-script: 'Pinyon Script', cursive;
+  --logo-gold: #c8963e; /* Gold für „Tieren“ auf hellem Grund; auf dunklem Grund var(--rose) */
   --font-body: 'Nunito Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   --radius: 18px;
