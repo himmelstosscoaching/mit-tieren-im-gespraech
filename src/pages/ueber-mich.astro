@@ -10,6 +10,7 @@ import imgMaehne from '../assets/img/pferdemaehne-goldenes-licht.jpg';
 import imgTrommel from '../assets/img/rahmentrommel-auf-wiese.jpg';
 import imgSmilla from '../assets/img/smilla-portrait-schnee.jpg';
 import imgMila from '../assets/img/steffi-mila-wiese.jpg';
+import imgFluss from '../assets/img/steffi-schimmel-hund-im-fluss.jpg';
 ---
 <Base title="Über mich" description={`${site.owner} – Tierkommunikatorin, Reitlehrerin und Trainerin. Mein Weg zu den Tieren, meine Ausbildung und der kleine Hof in ${site.city}, auf dem ich mit meinen Tieren lebe.`}>
   <section class="section section--zeichnung">
@@ -46,8 +47,8 @@ import imgMila from '../assets/img/steffi-mila-wiese.jpg';
       <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
         <span class="logo-zeichnung" aria-hidden="true"></span>
         <span class="eyebrow">Meine Tiere und ich</span>
-        <h2>Meine Hunde Smilla und Mila.</h2>
-        <p class="lead">Die beiden begleiten mich jeden Tag – auf dem Hof, am See und in meinen Kursen. Sie sind meine Gefährtinnen und oft auch meine besten Lehrerinnen.</p>
+        <h2>Hunde, Pferde und ganz viel Nähe.</h2>
+        <p class="lead">Meine Hunde Smilla und Mila begleiten mich jeden Tag – auf dem Hof, am See und in meinen Kursen. Und die Pferde sind seit meiner Jugend meine wichtigsten Lehrer.</p>
       </div>
       <div class="tiere">
         <figure class="tiere__bild">
@@ -55,8 +56,12 @@ import imgMila from '../assets/img/steffi-mila-wiese.jpg';
           <figcaption>Smilla</figcaption>
         </figure>
         <figure class="tiere__bild">
-          <Image src={imgMila} alt="Steffi liegt lachend im Gras und krault Mila, die sich auf dem Rücken räkelt" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+          <Image style="object-position: 62% center" src={imgMila} alt="Steffi liegt lachend im Gras und krault Mila, die sich auf dem Rücken räkelt" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
           <figcaption>Mila und ich</figcaption>
+        </figure>
+        <figure class="tiere__bild">
+          <Image src={imgFluss} alt="Steffi sitzt auf einem Schimmel mitten im Fluss, daneben schwimmt ein schwarzer Hund" widths={[408]} sizes="(min-width: 860px) 360px, 100vw" loading="lazy" style="object-position: 60% 40%" />
+          <figcaption>Zu dritt im Fluss</figcaption>
         </figure>
       </div>
     </div>
@@ -96,8 +101,8 @@ import imgMila from '../assets/img/steffi-mila-wiese.jpg';
 
 <style>
   .tiere { display: grid; gap: clamp(1.25rem, 3vw, 2rem); }
-  @media (min-width: 760px) { .tiere { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 760px) { .tiere { grid-template-columns: repeat(3, 1fr); } }
   .tiere__bild { margin: 0; }
-  .tiere__bild img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 30%; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+  .tiere__bild img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: center 30%; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
   .tiere__bild figcaption { margin-top: 0.75rem; text-align: center; font-family: var(--font-logo); font-style: italic; font-size: 1.35rem; color: var(--ink-soft); }
 </style>
