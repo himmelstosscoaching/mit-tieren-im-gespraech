@@ -290,3 +290,10 @@ em { font-style: italic; }
 /* Linienzeichnung aus dem Logo (Pferd + Mensch) als ruhiges Zeichen über einem Abschnitt */
 .logo-zeichnung { display: block; width: 96px; aspect-ratio: 813 / 900; margin: 0 auto 1.25rem; background: var(--navy); opacity: 0.85;
   -webkit-mask: url('/logo/zeichnung.png') center / contain no-repeat; mask: url('/logo/zeichnung.png') center / contain no-repeat; }
+
+/* Erster Abschnitt einer Unterseite: Logo-Zeichnung als zarter, angeschnittener Hintergrund oben rechts */
+.section--zeichnung { position: relative; overflow: hidden; isolation: isolate; }
+.section--zeichnung::before { content: ''; position: absolute; z-index: -1; pointer-events: none;
+  top: 0.25rem; right: -55px; width: 250px; aspect-ratio: 813 / 900; background: var(--navy); opacity: 0.13;
+  -webkit-mask: url('/logo/zeichnung.png') center / contain no-repeat; mask: url('/logo/zeichnung.png') center / contain no-repeat; }
+@media (min-width: 860px) { .section--zeichnung::before { top: 1.5rem; right: max(-40px, calc(50% - 700px)); width: 420px; opacity: 0.09; } }
