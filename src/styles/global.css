@@ -302,3 +302,6 @@ em { font-style: italic; }
 /* Foto etwa ein Drittel kleiner, mittig in seiner Spalte (z. B. Reiten) */
 .photo--klein { width: 80%; justify-self: center; }
 @media (min-width: 860px) { .photo--klein { width: 68%; } }
+
+/* Angebotskarten mit Hochkant-Fotos: quadratischer Ausschnitt, damit z. B. die Pferdeohren nicht abgeschnitten sind */
+.card--img.card--quadrat img { aspect-ratio: 1 / 1; }
