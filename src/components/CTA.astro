@@ -7,8 +7,7 @@ const {
   secondary,
 } = Astro.props;
 ---
-<section class="section section--moss cta">
-  <span class="cta__zeichnung" aria-hidden="true"></span>
+<section class="section section--moss">
   <div class="wrap--narrow center">
     <h2>{title}</h2>
     <p class="lead">{text}</p>
@@ -18,14 +17,3 @@ const {
     </div>
   </div>
 </section>
-
-<style>
-  /* Logo-Zeichnung als weiche, hellere Fläche im Gold (keine Linien) – ganz sichtbar, nichts abgeschnitten */
-  .cta { position: relative; overflow: hidden; isolation: isolate; }
-  .cta__zeichnung { position: absolute; z-index: -1; pointer-events: none;
-    top: 50%; right: max(16px, calc(50% - 620px)); transform: translateY(-50%);
-    height: min(92%, 520px); aspect-ratio: 710 / 780;
-    background: #fff; opacity: 0.42;
-    -webkit-mask: url('/logo/zeichnung-weich.png') center / contain no-repeat; mask: url('/logo/zeichnung-weich.png') center / contain no-repeat; }
-  @media (max-width: 700px) { .cta__zeichnung { inset: 4% 4%; transform: none; height: auto; aspect-ratio: auto; opacity: 0.4; } }
-</style>
