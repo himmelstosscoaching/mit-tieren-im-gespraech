@@ -4,6 +4,7 @@ interface Props { transparent?: boolean }
 const { transparent = false } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const nav: { href: string; label: string; sub?: { href: string; label: string }[] }[] = [
+  { href: '/', label: 'Startseite' },
   { href: '/tiergespraech', label: 'Tiergespräch' },
   { href: '/kurse', label: 'Ausbildung', sub: [
     { href: '/kurse/basiskurs', label: 'Basiskurs' },
@@ -20,7 +21,8 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
 ---
 <header class:list={['header', { 'header--transparent': transparent }]} data-header>
   <div class="wrap header__inner">
-    <a class="brand" href="/" aria-label={`${site.name} – zur Startseite`} title="Zur Startseite">
+    <div class="brand">
+      <span class="sr-only">{site.name} – {site.owner}</span>
       <span class="brand__mark" aria-hidden="true"></span>
       <span class="brand__text" aria-hidden="true">
         <img class="brand__titel" src="/logo/titel.png" alt="" width="1200" height="122" />
@@ -29,7 +31,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
         <img class="brand__name" src="/logo/name.png" alt="" width="700" height="67" />
         <img class="brand__name brand__name--hell" src="/logo/name-hell.png" alt="" width="700" height="67" />
       </span>
-    </a>
+    </div>
     <button class="burger" type="button" aria-expanded="false" aria-controls="nav" data-burger>
       <span></span><span></span><span></span>
       <span class="sr-only">Menü</span>
@@ -66,7 +68,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; }
   /* Logo (Entwurf „Zeichnung links“, 11/2026): Linienzeichnung Pferd + Mensch, daneben Schriftzug und Name.
      Zeichnung als CSS-Maske → nimmt die Textfarbe an (dunkel auf hell, hell über Fotos). Schriftzug als Bild in zwei Fassungen. */
-  .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; color: #1d1d1f; }
+  .brand { flex: none; display: flex; align-items: center; gap: 0.7rem; color: #1d1d1f; user-select: none; }
   .brand__mark { flex: none; width: 50px; height: 56px; background: currentColor;
     -webkit-mask: url('/logo/zeichnung-klein.png') center / contain no-repeat; mask: url('/logo/zeichnung-klein.png') center / contain no-repeat; }
   .brand__text { display: flex; flex-direction: column; align-items: center; }
@@ -74,7 +76,6 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   .brand__linie { display: block; width: 52%; height: 1px; background: var(--logo-gold); opacity: 0.6; margin: 5px 0 4px; }
   .brand__name { display: block; height: 13px; width: auto; }
   .brand__titel--hell, .brand__name--hell { display: none; }
-  .brand:hover { opacity: 0.85; }
   .header--transparent:not(.is-scrolled):not(.is-open) .brand { color: #fafafa; filter: drop-shadow(0 0 2px rgba(10, 20, 40, 0.55)) drop-shadow(0 1px 10px rgba(10, 20, 40, 0.6)); }
   .header--transparent:not(.is-scrolled):not(.is-open) .brand__titel:not(.brand__titel--hell),
   .header--transparent:not(.is-scrolled):not(.is-open) .brand__name:not(.brand__name--hell) { display: none; }
@@ -82,11 +83,11 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   .header--transparent:not(.is-scrolled):not(.is-open) .brand__name--hell { display: block; }
   .header--transparent:not(.is-scrolled):not(.is-open) .brand__linie { background: var(--rose); }
 
-  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2rem); }
-  .nav a:not(.btn) { text-decoration: none; font-weight: 600; color: var(--navy); padding: 0.4rem 0; border-bottom: 2px solid transparent; }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; align-items: center; gap: clamp(1rem, 2vw, 1.6rem); }
+  .nav a:not(.btn) { white-space: nowrap; text-decoration: none; font-weight: 600; color: var(--navy); padding: 0.4rem 0; border-bottom: 2px solid transparent; }
   .nav a:not(.btn):hover, .nav a[aria-current='page'] { border-bottom-color: var(--clay); color: var(--navy); }
   .header--transparent:not(.is-scrolled) .nav a:not(.btn) { color: var(--cream); }
-  .nav .btn { padding: 0.65rem 1.2rem; font-size: 0.95rem; }
+  .nav .btn { padding: 0.65rem 1.2rem; font-size: 0.95rem; white-space: nowrap; }
   .caret { font-size: 0.75em; }
   .has-sub { position: relative; }
   .sub { position: absolute; top: 100%; left: -1rem; min-width: 210px; padding: 0.6rem 0 !important; margin-top: 0.4rem !important;
@@ -103,7 +104,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
   .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 
   /* schmale Desktops/Tablets quer: Schriftzug und Menü passen in eine Zeile */
-  @media (min-width: 860px) and (max-width: 1100px) {
+  @media (min-width: 1100px) and (max-width: 1320px) {
     .brand__mark { width: 40px; height: 46px; }
     .brand__titel { height: 23px; }
     .brand__name { height: 10px; }
@@ -112,7 +113,7 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     .nav .btn { padding: 0.6rem 0.9rem; font-size: 0.9rem; }
   }
 
-  @media (max-width: 859px) {
+  @media (max-width: 1099px) {
     .burger { display: flex; }
     .nav { position: fixed; inset: 76px 0 0 0; background: var(--cream); padding: 1.5rem var(--gutter) 2rem; transform: translateX(100%); transition: transform 0.25s ease; overflow: auto; }
     .nav.is-open { transform: none; }
