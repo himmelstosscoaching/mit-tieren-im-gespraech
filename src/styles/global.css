@@ -297,3 +297,7 @@ em { font-style: italic; }
   top: 0.25rem; right: -55px; width: 250px; aspect-ratio: 813 / 900; background: var(--navy); opacity: 0.13;
   -webkit-mask: url('/logo/zeichnung.png') center / contain no-repeat; mask: url('/logo/zeichnung.png') center / contain no-repeat; }
 @media (min-width: 860px) { .section--zeichnung::before { top: 1.5rem; right: max(-40px, calc(50% - 700px)); width: 420px; opacity: 0.09; } }
+
+/* Foto etwa ein Drittel kleiner, mittig in seiner Spalte (z. B. Reiten) */
+.photo--klein { width: 80%; justify-self: center; }
+@media (min-width: 860px) { .photo--klein { width: 68%; } }
