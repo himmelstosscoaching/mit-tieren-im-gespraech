@@ -286,3 +286,7 @@ em { font-style: italic; }
   .card--img .card__body { padding: 1.35rem; }
   .card--img img { aspect-ratio: 16 / 11; }
 }
+
+/* Linienzeichnung aus dem Logo (Pferd + Mensch) als ruhiges Zeichen über einem Abschnitt */
+.logo-zeichnung { display: block; width: 96px; aspect-ratio: 813 / 900; margin: 0 auto 1.25rem; background: var(--navy); opacity: 0.85;
+  -webkit-mask: url('/logo/zeichnung.png') center / contain no-repeat; mask: url('/logo/zeichnung.png') center / contain no-repeat; }

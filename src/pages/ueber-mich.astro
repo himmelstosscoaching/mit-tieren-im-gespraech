@@ -8,6 +8,8 @@ import imgSchwimmen from '../assets/img/steffi-schwimmt-mit-hunden.jpg';
 import imgEis from '../assets/img/hund-auf-zugefrorenem-see.jpg';
 import imgMaehne from '../assets/img/pferdemaehne-goldenes-licht.jpg';
 import imgTrommel from '../assets/img/rahmentrommel-auf-wiese.jpg';
+import imgSmilla from '../assets/img/smilla-portrait-schnee.jpg';
+import imgMila from '../assets/img/steffi-mila-wiese.jpg';
 ---
 <Base title="Über mich" description={`${site.owner} – Tierkommunikatorin, Reitlehrerin und Trainerin. Mein Weg zu den Tieren, meine Ausbildung und der kleine Hof in ${site.city}, auf dem ich mit meinen Tieren lebe.`}>
   <section class="section">
@@ -40,6 +42,27 @@ import imgTrommel from '../assets/img/rahmentrommel-auf-wiese.jpg';
   </section>
 
   <section class="section">
+    <div class="wrap">
+      <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
+        <span class="logo-zeichnung" aria-hidden="true"></span>
+        <span class="eyebrow">Meine Tiere und ich</span>
+        <h2>Meine Hunde Smilla und Mila.</h2>
+        <p class="lead">Die beiden begleiten mich jeden Tag – auf dem Hof, am See und in meinen Kursen. Sie sind meine Gefährtinnen und oft auch meine besten Lehrerinnen.</p>
+      </div>
+      <div class="tiere">
+        <figure class="tiere__bild">
+          <Image src={imgSmilla} alt="Porträt von Smilla, schwarz-weiße Hündin mit braunen Abzeichen, im Schnee" widths={[480, 800, 1024]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+          <figcaption>Smilla</figcaption>
+        </figure>
+        <figure class="tiere__bild">
+          <Image src={imgMila} alt="Steffi liegt lachend im Gras und krault Mila, die sich auf dem Rücken räkelt" widths={[480, 800, 1200]} sizes="(min-width: 860px) 560px, 100vw" loading="lazy" />
+          <figcaption>Mila und ich</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
     <div class="wrap grid grid--3">
       <div class="card card--img card--farbe" style="--farbe: var(--turq)">
         <Image src={imgEis} alt="Ein Border Collie läuft über den zugefrorenen See, seine Spuren im Schnee" widths={[480, 800]} sizes="(min-width: 860px) 380px, 100vw" loading="lazy" />
@@ -70,3 +93,11 @@ import imgTrommel from '../assets/img/rahmentrommel-auf-wiese.jpg';
 
   <CTA title="Lust, mich und meine Tiere kennenzulernen?" text="Ob Tiergespräch, Kurs oder Lernabend – schreib mir einfach. Ich freue mich auf dich." />
 </Base>
+
+<style>
+  .tiere { display: grid; gap: clamp(1.25rem, 3vw, 2rem); }
+  @media (min-width: 760px) { .tiere { grid-template-columns: 1fr 1fr; } }
+  .tiere__bild { margin: 0; }
+  .tiere__bild img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 30%; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
+  .tiere__bild figcaption { margin-top: 0.75rem; text-align: center; font-family: var(--font-logo); font-style: italic; font-size: 1.35rem; color: var(--ink-soft); }
+</style>

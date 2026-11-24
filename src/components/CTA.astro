@@ -7,7 +7,8 @@ const {
   secondary,
 } = Astro.props;
 ---
-<section class="section section--moss">
+<section class="section section--moss cta">
+  <span class="cta__zeichnung" aria-hidden="true"></span>
   <div class="wrap--narrow center">
     <h2>{title}</h2>
     <p class="lead">{text}</p>
@@ -17,3 +18,12 @@ const {
     </div>
   </div>
 </section>
+
+<style>
+  /* Linienzeichnung aus dem Logo als zartes Wasserzeichen */
+  .cta { position: relative; overflow: hidden; isolation: isolate; }
+  .cta__zeichnung { position: absolute; z-index: -1; right: max(-40px, calc(50% - 640px)); bottom: -12%; width: clamp(220px, 30vw, 400px); aspect-ratio: 813 / 900;
+    background: var(--navy); opacity: 0.12;
+    -webkit-mask: url('/logo/zeichnung.png') center / contain no-repeat; mask: url('/logo/zeichnung.png') center / contain no-repeat; }
+  @media (max-width: 700px) { .cta__zeichnung { right: -70px; bottom: -40px; opacity: 0.09; } }
+</style>

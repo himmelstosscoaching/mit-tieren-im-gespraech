@@ -21,11 +21,11 @@ Profikurs 560 €), Lernabende, Krafttierarbeit. Live: https://www.mit-tieren-im
 | Bausteine (Hero-Slider, Zitat-Banner, Ablauf-Schritte, FAQ, Kurskarte, Mobile-CTA, Header/Footer) | `src/components/` |
 | Design-System (Farben, Schrift, Abstände, Mobile-Regeln) | `src/styles/global.css` |
 | Fotos (werden beim Build automatisch zu AVIF/WebP verkleinert) | `src/assets/img/` |
-| Logo-Schriftzug als Dateien (SVG/PNG für Zertifikat, Druck) | `branding/logo/` |
+| Logo-Dateien (Designer-Varianten, transparente PNGs, alter Schriftzug) | `branding/logo/` |
 | Netlify-Konfiguration | `netlify.toml` |
 
 ## Regeln
-- **Logo** ist ein reiner Schriftzug (Header: `src/components/Header.astro`), keine Pfote. Schriften Cormorant Garamond + Pinyon Script sind selbst gehostet (`@fontsource`, importiert in `src/layouts/Base.astro`).
+- **Logo** (Designerin, 11/2026): Linienzeichnung Pferd + Mensch mit Schriftzug, vier Varianten in `branding/logo/varianten-2026-11/` (B Emblem, C klassisch hochkant, D Zeichnung links, E Zeichnung rechts). Web-Dateien in `public/logo/`: Header = Variante D (Zeichnung als CSS-Maske + Schriftzug-Bild, helle Fassung über Fotos), Footer = Emblem B auf grauer Fläche, Zeichnung zusätzlich als Wasserzeichen im CTA und über Abschnitten (`.logo-zeichnung`).
 - **Sprache:** Deutsch, die Website **duzt** konsequent. Ton: warm, klar, kurze Sätze, keine Ausrufezeichen-Häufung.
 - **Name:** „Stephanie-Sophia Himmelstoß“ (so schreibt Steffi selbst). Kurzform „Steffi“.
 - **Tierkommunikation wird auf ihren eigenen Begriffen behandelt** – keine ungefragten Skepsis-Hinweise oder Disclaimer.
