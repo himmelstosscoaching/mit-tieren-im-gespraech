@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import CTA from '../components/CTA.astro';
 import { Image } from 'astro:assets';
 import imgReiten from '../assets/img/steffi-reitet-im-nebel.jpg';
+import imgMagan from '../assets/img/magan-portrait.jpg';
 ---
 <Base title="Reitunterricht und Beritt" description="Reitunterricht und Beritt bei Stephanie-Sophia Himmelstoß in Emmingen-Liptingen – Reitlehrerin und Trainerin, die seit ihrem 16. Lebensjahr von Pferden lernt.">
   <section class="section section--zeichnung">
@@ -19,6 +20,20 @@ import imgReiten from '../assets/img/steffi-reitet-im-nebel.jpg';
       <figure class="photo photo--portrait photo--klein" style="margin:0">
         <Image src={imgReiten} alt="Steffi reitet im Morgennebel über die Wiese, die Bäume stehen als Silhouetten dahinter" widths={[480, 800, 1200]} sizes="(min-width: 860px) 380px, 80vw" loading="eager" />
       </figure>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="wrap split">
+      <figure class="photo photo--portrait photo--klein" style="margin:0">
+        <Image src={imgMagan} alt="Porträt von Magan, einem Schimmel, vor schwarzem Hintergrund" widths={[400, 682]} sizes="(min-width: 860px) 380px, 80vw" loading="lazy" />
+      </figure>
+      <div>
+        <span class="eyebrow">Beritt</span>
+        <h2>Fein, ruhig und im Tempo deines Pferdes.</h2>
+        <p class="lead">Im Beritt arbeite ich mit deinem Pferd so, wie ich es selbst von Pferden gelernt habe: mit Zeit, mit Gefühl und mit viel Zuhören.</p>
+        <p class="muted" style="font-size:0.9rem">Im Bild: Magan · Foto: Katharina Dick</p>
+      </div>
     </div>
   </section>
 
