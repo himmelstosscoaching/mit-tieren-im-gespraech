@@ -1,0 +1,187 @@
+---
+import Base from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+import imgSee from '../assets/img/see-abendrot-mit-hund.jpg';
+
+// Angaben zum Kalender – hier ändern, wirkt überall auf dieser Seite.
+const advent = {
+  start: 'Montag, 1. Dezember',
+  preis: '50 €',
+  zugang: 'In unserer WhatsApp-Gruppe oder, wenn du magst, per E-Mail',
+  anmeldeschluss: '1. Dezember, 24 Uhr',
+};
+---
+<Base
+  title="Adventskalender"
+  description="Bewusst mit den Tieren durch den Advent: 24 Tage Stille, Natur und Botschaften der Tiere – mit kleinen Übungen und einer persönlichen Tierbotschaft am 24. Dezember."
+  mobileCta={{ href: '#anmeldung', label: 'Zum Adventskalender anmelden' }}
+>
+  <!-- 1 · Einstieg -->
+  <section class="section section--zeichnung">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Adventskalender 2026</span>
+        <h1>Bewusst mit den Tieren durch den Advent</h1>
+        <p class="lead">24 Tage Stille, Natur und Botschaften der Tiere.</p>
+        <p>Die Adventszeit ist oft laut. Vorbereiten, besorgen, fertig werden, alles im Außen. Der Adventskalender von Mit Tieren im Gespräch lädt dich ein, jeden Tag einen kurzen Moment nach innen zu gehen. Zu dir, zur Natur und zu den Tieren.</p>
+        <p class="advent-start">Start: {advent.start}</p>
+        <div class="btn-row" style="margin-top:1.5rem">
+          <a class="btn btn--primary" href="#anmeldung">Jetzt anmelden</a>
+          <a class="btn btn--ghost" href="#inhalt">Was dich erwartet</a>
+        </div>
+      </div>
+      <figure class="photo photo--portrait advent-foto" style="margin:0">
+        <Image src={imgSee} alt="Ein Border Collie mit rotem Ball am Ufer eines stillen Sees, Bäume und Himmel spiegeln sich im Morgenrot" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" style="object-position: center 60%" />
+      </figure>
+    </div>
+  </section>
+
+  <!-- 2 · Was dich erwartet -->
+  <section class="section section--sand" id="inhalt">
+    <div class="wrap">
+      <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
+        <span class="eyebrow">Was dich erwartet</span>
+        <h2>Jeden Tag ein Türchen nach innen</h2>
+      </div>
+      <div class="grid grid--3">
+        <article class="offer" style="--farbe: var(--turq)">
+          <span class="offer__icon" aria-hidden="true">✦</span>
+          <h3>Botschaften der Tiere</h3>
+          <p>Sie entstehen eigens für diesen Kalender. Es sind Impulse, die die Tiere in unsere Runde geben, für genau die Menschen, die dabei sind.</p>
+        </article>
+        <article class="offer" style="--farbe: var(--blue)">
+          <span class="offer__icon" aria-hidden="true">❋</span>
+          <h3>Kleine Übungen</h3>
+          <p>Geführte Meditationen und Wahrnehmungsübungen. Sie öffnen einen stillen Raum, in dem du Tiere feiner wahrnehmen kannst, und geben dir einen ersten Zugang zur Energiearbeit.</p>
+        </article>
+        <article class="offer" style="--farbe: var(--clay-deep); --farbe-text: var(--gold-text)">
+          <span class="offer__icon" aria-hidden="true">★</span>
+          <h3>Am 24. Dezember: dein Geschenk</h3>
+          <p>Eine persönliche Tierbotschaft. Von deinem eigenen Tier oder, wenn du keines hast, von einem Wunschtier.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · Die 24 Türchen -->
+  <section class="section">
+    <div class="wrap--narrow center">
+      <span class="logo-zeichnung" aria-hidden="true"></span>
+      <span class="eyebrow">Tag für Tag</span>
+      <h2>Ein stiller Innenraum, mitten in der Weihnachtszeit</h2>
+      <ol class="tuerchen" aria-label="24 Tage vom 1. bis 24. Dezember">
+        {Array.from({ length: 24 }, (_, i) => (
+          <li class:list={{ 'tuerchen--geschenk': i === 23 }}>{i === 23 ? <><span>24</span><small>für dich</small></> : i + 1}</li>
+        ))}
+      </ol>
+      <p class="lead">So entsteht Tag für Tag ein stiller Innenraum. Momente, aus denen du Kraft schöpfen kannst, mitten in der Weihnachtszeit. Und vieles davon kannst du auch nach Weihnachten weiter nutzen.</p>
+    </div>
+  </section>
+
+  <!-- 4 · Anmeldung -->
+  <section class="section section--sand" id="anmeldung">
+    <div class="wrap split" style="align-items:start">
+      <div>
+        <span class="eyebrow">Anmeldung</span>
+        <h2>Sei dabei</h2>
+        <p class="lead">Melde dich an, und ab dem 1. Dezember öffnet sich jeden Tag ein Türchen für dich.</p>
+        <dl class="facts" style="margin-top:1.75rem">
+          <div><dt>Zeitraum</dt><dd>1. bis 24. Dezember, jeden Tag ein Türchen</dd></div>
+          <div><dt>So kommt es zu dir</dt><dd>{advent.zugang}</dd></div>
+          <div><dt>Begleitet von</dt><dd>Steffi, Mit Tieren im Gespräch</dd></div>
+          <div><dt>Anmeldung bis</dt><dd>{advent.anmeldeschluss}</dd></div>
+          <div><dt>Preis</dt><dd class="price">{advent.preis}</dd></div>
+        </dl>
+      </div>
+
+      <form class="card form" name="adventskalender" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/danke-adventskalender">
+        <input type="hidden" name="form-name" value="adventskalender" />
+        <p class="hp" aria-hidden="true"><label>Bitte dieses Feld leer lassen <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+
+        <div class="field">
+          <label for="name">Dein Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">E-Mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <fieldset class="field wahl">
+          <legend>Wie möchtest du die Türchen bekommen?</legend>
+          <label class="wahl__option"><input type="radio" name="zustellung" value="WhatsApp-Gruppe" checked /> <span>In der WhatsApp-Gruppe</span></label>
+          <label class="wahl__option"><input type="radio" name="zustellung" value="E-Mail" /> <span>Per E-Mail</span></label>
+        </fieldset>
+        <div class="field" data-handy>
+          <label for="handy">Handynummer für WhatsApp</label>
+          <input id="handy" name="handy" type="tel" autocomplete="tel" inputmode="tel" required />
+        </div>
+        <label class="consent">
+          <input type="checkbox" name="datenschutz" required />
+          <span>Ich bin einverstanden, dass meine Angaben für den Adventskalender gespeichert werden. Mehr dazu in der <a href="/datenschutz">Datenschutzerklärung</a>.</span>
+        </label>
+        <button class="btn btn--primary" type="submit">Verbindlich anmelden</button>
+        <p class="muted form__hinweis">50 € · Nach der Anmeldung bekommst du eine E-Mail mit den Zahlungsinfos.</p>
+      </form>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Handynummer nur zeigen (und verlangen), wenn WhatsApp gewählt ist
+  const feld = document.querySelector<HTMLElement>('[data-handy]');
+  const handy = document.getElementById('handy') as HTMLInputElement | null;
+  const update = () => {
+    const whatsapp = (document.querySelector('input[name="zustellung"]:checked') as HTMLInputElement | null)?.value === 'WhatsApp-Gruppe';
+    if (feld) feld.hidden = !whatsapp;
+    if (handy) handy.required = whatsapp;
+  };
+  document.querySelectorAll('input[name="zustellung"]').forEach((r) => r.addEventListener('change', update));
+  update();
+</script>
+
+<style>
+  .advent-start { display: inline-block; margin-top: 0.5rem; padding: 0.35rem 0.95rem; border-radius: 999px;
+    background: var(--gold-soft); color: var(--navy); font-weight: 700; }
+
+  .offer__icon { font-size: 1.6rem; line-height: 1; color: var(--farbe-text, var(--farbe)); }
+
+  /* 24 Türchen: ruhiges Raster, das 24. leuchtet golden */
+  .tuerchen { list-style: none; padding: 0; margin: 2rem auto 2.25rem; display: grid; grid-template-columns: repeat(6, 1fr);
+    gap: 0.5rem; max-width: 520px; counter-reset: none; }
+  .tuerchen li { aspect-ratio: 1; display: grid; place-items: center; border-radius: 12px; border: 1.5px solid var(--sand);
+    background: var(--white); font-family: var(--font-display); font-size: clamp(1rem, 3.6vw, 1.3rem); color: var(--blue); }
+  .tuerchen li:nth-child(3n+2) { background: var(--cream-deep); }
+  .tuerchen--geschenk { background: var(--rose) !important; border-color: var(--rose) !important; color: var(--navy) !important;
+    align-content: center; gap: 0; line-height: 1.05; box-shadow: 0 10px 24px -12px rgba(222, 151, 49, 0.7); }
+  .tuerchen--geschenk small { font-family: var(--font-body); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
+  @media (min-width: 860px) { .tuerchen { grid-template-columns: repeat(8, 1fr); max-width: 640px; } }
+
+  /* Wahl WhatsApp / E-Mail: große, gut tippbare Felder */
+  .wahl { border: 0; padding: 0; margin: 0; }
+  .wahl legend { font-weight: 700; font-size: 0.95rem; padding: 0; margin-bottom: 0.35rem; }
+  .wahl__option { display: flex; align-items: center; gap: 0.7rem; font-weight: 400; padding: 0.75rem 0.95rem;
+    border: 1.5px solid var(--sand); border-radius: 12px; background: var(--cream); cursor: pointer; }
+  .wahl__option:has(input:checked) { border-color: var(--clay); background: var(--gold-soft); }
+  .wahl__option input { width: 1.15rem; height: 1.15rem; margin: 0; accent-color: var(--clay-deep); }
+  [data-handy][hidden] { display: none; }
+
+  /* Handy: Foto im Einstieg flacher, damit Text und Anmeldung schneller kommen */
+  @media (max-width: 859px) {
+    .advent-foto :global(img) { aspect-ratio: 4 / 3; }
+    .advent-start { font-size: 0.95rem; }
+    .btn-row .btn { flex: 1 1 100%; }
+  }
+
+  /* Formular wie auf der Kontaktseite */
+  .form { gap: 1.1rem; }
+  .field { display: grid; gap: 0.35rem; }
+  label { font-weight: 700; font-size: 0.95rem; }
+  input { font: inherit; padding: 0.8rem 0.95rem; border: 1.5px solid var(--sand); border-radius: 12px; background: var(--cream); color: var(--ink); width: 100%; }
+  input:focus { outline: 3px solid var(--gold); outline-offset: 2px; border-color: var(--moss); }
+  .consent { display: flex; gap: 0.75rem; align-items: flex-start; font-weight: 400; font-size: 0.9rem; color: var(--ink-soft); }
+  .consent input { width: auto; margin-top: 0.3rem; }
+  .hp { position: absolute; left: -9999px; }
+  .form .btn { align-self: flex-start; margin-top: 0; }
+  .form__hinweis { font-size: 0.9rem; margin: 0; }
+  @media (max-width: 859px) { .form .btn { width: 100%; } }
+</style>
