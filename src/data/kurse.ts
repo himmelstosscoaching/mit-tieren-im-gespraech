@@ -44,7 +44,6 @@ export const kurse: Kurs[] = [
     preis: 250,
     termine: [
       { text: '14./15. November 2026', bis: '2026-11-15' },
-      { text: '5./6. Dezember 2026', bis: '2026-12-06' },
       { text: '9./10. Januar 2027', bis: '2027-01-10' },
       'Weitere Termine 2027 folgen',
     ],
