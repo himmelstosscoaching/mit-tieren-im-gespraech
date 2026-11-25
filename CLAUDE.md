@@ -29,7 +29,7 @@ Profikurs 560 €), Lernabende, Krafttierarbeit. Live: https://www.mit-tieren-im
 - **Sprache:** Deutsch, die Website **duzt** konsequent. Ton: warm, klar, kurze Sätze, keine Ausrufezeichen-Häufung.
 - **Name:** „Stephanie-Sophia Himmelstoß“ (so schreibt Steffi selbst). Kurzform „Steffi“.
 - **Tierkommunikation wird auf ihren eigenen Begriffen behandelt** – keine ungefragten Skepsis-Hinweise oder Disclaimer.
-- **Jedes Foto genau einmal** auf der ganzen Website. Ausnahme (Wunsch 25.11.2026): die drei Slider-Fotos Galloway, See, Galopp stehen zusätzlich unter „Hofleben“ auf Über mich. Neue Fotos: max. 2400 px, Metadaten entfernen, in `src/assets/img/`
+- **Jedes Foto genau einmal** auf der ganzen Website. Ausnahme (Wunsch 25.11.2026): die drei Slider-Fotos Hängesessel, Galloway, Galopp stehen zusätzlich unter „Hofleben“ auf Über mich. Neue Fotos: max. 2400 px, Metadaten entfernen, in `src/assets/img/`
   mit sprechendem Namen; alte Verwendung prüfen (`grep -r "img/<name>" src/pages`).
 - Zitat-Banner mit `placeholder`-Prop zeigen „Zitat-Vorschlag“ – sobald Steffi eigene Sätze liefert, Prop entfernen.
 - Kontaktformular ist ein Netlify-Form (`name="kontakt"`), Benachrichtigung an steffi-himmelstoss@hotmail.de. Feldnamen nicht umbenennen.

@@ -15,7 +15,7 @@ import imgKatze from '../assets/img/kaetzchen-in-jacke.jpg';
 import imgFluss from '../assets/img/steffi-magan-kaelbchen-im-fluss.jpg';
 // Diese drei laufen auch im Slider der Startseite – bewusst doppelt (Wunsch Annette, 25.11.2026)
 import imgGalloway from '../assets/img/steffi-hund-galloway-schnee.jpg';
-import imgSee from '../assets/img/hunde-am-see-sonnenaufgang.jpg';
+import imgStuhl from '../assets/img/steffi-haengestuhl-pferde.jpg';
 import imgGalopp from '../assets/img/pferd-galopp-apfelbaum.jpg';
 ---
 <Base title="Über mich" description={`${site.owner} – Tierkommunikatorin, Reitlehrerin und Trainerin. Mein Weg zu den Tieren, meine Ausbildung und der kleine Hof in ${site.city}, auf dem ich mit meinen Tieren lebe.`}>
@@ -86,19 +86,19 @@ import imgGalopp from '../assets/img/pferd-galopp-apfelbaum.jpg';
       <div class="center" style="max-width:720px;margin-inline:auto;margin-bottom:2.5rem">
         <span class="eyebrow">Hofleben</span>
         <h2>Durchs Jahr mit meinen Tieren.</h2>
-        <p class="lead">Ob im tiefen Schnee, beim Sonnenaufgang am See oder abends auf der Wiese: Die schönsten Momente entstehen ganz nebenbei, mitten im Alltag mit den Tieren.</p>
+        <p class="lead">Ob abends im Hängesessel, im tiefen Schnee oder auf der Streuobstwiese: Die schönsten Momente entstehen ganz nebenbei, mitten im Alltag mit den Tieren.</p>
       </div>
       <div class="hof">
-        <figure class="hof__bild hof__bild--gross">
-          <Image src={imgGalloway} alt="Steffi kniet im Schnee, im Arm ihr Border Collie, daneben ein schwarzes Galloway-Rind" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="lazy" style="object-position: 40% center" />
-          <figcaption>Winter mit Hund und Galloway</figcaption>
+        <figure class="hof__bild hof__bild--breit">
+          <Image src={imgStuhl} alt="Steffi sitzt im Hängesessel auf der Wiese, ein Pferd kommt zu ihr, ihr Hund steht daneben – Abendlicht" widths={[600, 1000, 1600, 2400]} sizes="(min-width: 1180px) 1180px, 100vw" loading="lazy" style="object-position: 35% center" />
+          <figcaption>Auszeit im Hängesessel</figcaption>
         </figure>
         <figure class="hof__bild">
-          <Image src={imgSee} alt="Drei Hunde stehen auf Steinen im See, dahinter geht die Sonne auf" widths={[400, 700, 1000]} sizes="(min-width: 860px) 330px, 50vw" loading="lazy" style="object-position: center 70%" />
-          <figcaption>Sonnenaufgang am See</figcaption>
+          <Image src={imgGalloway} alt="Steffi kniet im Schnee, im Arm ihre Hündin Smilla, daneben das schwarze Galloway-Rind Frida" widths={[480, 800, 1200]} sizes="(min-width: 860px) 640px, 50vw" loading="lazy" style="object-position: 40% center" />
+          <figcaption>Winter mit Smilla und Frida</figcaption>
         </figure>
         <figure class="hof__bild">
-          <Image src={imgGalopp} alt="Ein Pferd galoppiert unter den Apfelbäumen, der Himmel leuchtet rosa" widths={[400, 700, 1000]} sizes="(min-width: 860px) 330px, 50vw" loading="lazy" style="object-position: 70% 55%" />
+          <Image src={imgGalopp} alt="Ein Pferd galoppiert unter den Apfelbäumen, der Himmel leuchtet rosa" widths={[400, 700, 1000]} sizes="(min-width: 860px) 420px, 50vw" loading="lazy" style="object-position: 70% 55%" />
           <figcaption>Freiheit auf der Streuobstwiese</figcaption>
         </figure>
       </div>
@@ -146,16 +146,16 @@ import imgGalopp from '../assets/img/pferd-galopp-apfelbaum.jpg';
   .tiere__bild--breit img { aspect-ratio: 16 / 9; object-position: center 60%; }
   @media (max-width: 759px) { .tiere__bild--breit img { aspect-ratio: 4 / 3; } }
   .tiere__bild figcaption { margin-top: 0.75rem; text-align: center; font-family: var(--font-logo); font-style: italic; font-size: clamp(1.05rem, 2.6vw, 1.35rem); color: var(--ink-soft); }
-  /* Hofleben: am Handy oben ein breites Bild, darunter zwei hochkant; am PC drei nebeneinander, gleich hoch */
+  /* Hofleben: oben das breite Hängesessel-Bild, darunter zwei Bilder nebeneinander (am PC gleich hoch) */
   .hof { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(0.9rem, 3vw, 2rem); }
   .hof__bild { margin: 0; }
-  .hof__bild--gross { grid-column: 1 / -1; }
+  .hof__bild--breit { grid-column: 1 / -1; }
   .hof__bild img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius-lg); box-shadow: var(--shadow); }
-  .hof__bild--gross img { aspect-ratio: 3 / 2; }
+  .hof__bild--breit img { aspect-ratio: 2 / 1; }
   @media (min-width: 860px) {
-    .hof { grid-template-columns: 1.6fr 1fr 1fr; }
-    .hof__bild--gross { grid-column: auto; }
-    .hof__bild img, .hof__bild--gross img { aspect-ratio: auto; height: clamp(340px, 34vw, 440px); }
+    .hof { grid-template-columns: 1.5fr 1fr; }
+    .hof__bild--breit img { aspect-ratio: 21 / 9; }
+    .hof__bild:not(.hof__bild--breit) img { aspect-ratio: auto; height: clamp(340px, 34vw, 440px); }
   }
   .hof__bild figcaption { margin-top: 0.75rem; text-align: center; font-family: var(--font-logo); font-style: italic; font-size: clamp(1.05rem, 2.6vw, 1.35rem); color: var(--ink-soft); }
 </style>
