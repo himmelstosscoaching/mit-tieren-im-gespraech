@@ -1,0 +1,79 @@
+---
+/**
+ * Hinweis-Fenster zum Adventskalender.
+ * Erscheint einmal pro Besuch, kurz nach dem Laden, auf allen Seiten außer der Kalenderseite selbst.
+ * Verschwindet automatisch nach dem Anmeldeschluss (BIS = letzter Tag, JJJJ-MM-TT) – auch ohne neuen Upload.
+ * Danach kann der Baustein aus Base.astro entfernt werden.
+ */
+const BIS = '2026-12-01';
+const pfad = Astro.url.pathname;
+const zeigen = !pfad.startsWith('/adventskalender') && !pfad.startsWith('/danke');
+---
+{zeigen && (
+  <div class="apop" data-apop data-bis-popup={BIS} hidden>
+    <div class="apop__fenster" role="dialog" aria-modal="false" aria-labelledby="apop-titel">
+      <button class="apop__zu" type="button" data-apop-zu aria-label="Schließen">×</button>
+      <span class="apop__zeichnung" aria-hidden="true"></span>
+      <span class="apop__eyebrow">Ab 1. Dezember</span>
+      <h2 id="apop-titel">Bewusst mit den Tieren durch den Advent</h2>
+      <p>24 Tage Stille, Natur und Botschaften der Tiere. Am 24. Dezember wartet eine persönliche Tierbotschaft auf dich.</p>
+      <p class="apop__fakten">50 € · Anmeldung bis 1. Dezember</p>
+      <div class="apop__knoepfe">
+        <a class="btn btn--primary" href="/adventskalender">Zum Adventskalender</a>
+        <button class="apop__spaeter" type="button" data-apop-zu>Später</button>
+      </div>
+    </div>
+  </div>
+)}
+
+<style>
+  .apop { position: fixed; inset: auto 0 0 0; z-index: 60; display: flex; justify-content: center; padding: 0 0.75rem calc(0.75rem + env(safe-area-inset-bottom));
+    pointer-events: none; }
+  .apop[hidden] { display: none; }
+  .apop__fenster { pointer-events: auto; position: relative; width: min(100%, 440px); background: #fdf6ec; color: var(--navy);
+    border-radius: 22px; border-top: 6px solid var(--rose); box-shadow: 0 24px 60px -18px rgba(21, 40, 74, 0.45);
+    padding: 1.4rem 1.4rem 1.2rem; text-align: center; transform: translateY(120%); transition: transform 0.45s cubic-bezier(.2,.8,.2,1); }
+  .apop.is-offen .apop__fenster { transform: none; }
+  .apop__zeichnung { display: block; width: 54px; aspect-ratio: 813 / 900; margin: 0 auto 0.4rem; background: var(--navy); opacity: 0.8;
+    -webkit-mask: url('/logo/zeichnung.png') center / contain no-repeat; mask: url('/logo/zeichnung.png') center / contain no-repeat; }
+  .apop__eyebrow { display: block; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: var(--gold-text); margin-bottom: 0.3rem; }
+  .apop h2 { font-size: 1.45rem; margin: 0 0 0.5rem; }
+  .apop p { margin: 0 0 0.6rem; font-size: 0.98rem; line-height: 1.5; color: var(--ink-soft); }
+  .apop .apop__fakten { font-weight: 700; color: var(--navy); }
+  .apop__knoepfe { display: grid; gap: 0.35rem; margin-top: 0.9rem; }
+  .apop__knoepfe .btn { width: 100%; }
+  .apop__spaeter { background: none; border: 0; font: inherit; color: var(--ink-soft); padding: 0.6rem; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .apop__zu { position: absolute; top: 0.5rem; right: 0.6rem; width: 40px; height: 40px; border: 0; background: none; font-size: 1.7rem; line-height: 1;
+    color: var(--ink-soft); cursor: pointer; border-radius: 50%; }
+  .apop__zu:hover { background: rgba(21, 40, 74, 0.06); }
+  @media (min-width: 860px) {
+    .apop { justify-content: flex-end; padding: 0 1.5rem 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) { .apop__fenster { transition: none; } }
+</style>
+
+<script>
+  const pop = document.querySelector<HTMLElement>('[data-apop]');
+  if (pop) {
+    const heute = new Date().toLocaleDateString('sv-SE');
+    const vorbei = heute > (pop.dataset.bisPopup ?? '');
+    let gesehen = false;
+    try { gesehen = sessionStorage.getItem('advent-popup') === '1'; } catch {}
+    if (vorbei || gesehen) {
+      pop.remove();
+    } else {
+      const schliessen = () => {
+        pop.classList.remove('is-offen');
+        try { sessionStorage.setItem('advent-popup', '1'); } catch {}
+        setTimeout(() => pop.remove(), 500);
+      };
+      pop.querySelectorAll('[data-apop-zu]').forEach((b) => b.addEventListener('click', schliessen));
+      pop.querySelector('a')?.addEventListener('click', () => { try { sessionStorage.setItem('advent-popup', '1'); } catch {} });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') schliessen(); });
+      setTimeout(() => {
+        pop.hidden = false;
+        requestAnimationFrame(() => requestAnimationFrame(() => pop.classList.add('is-offen')));
+      }, 3500);
+    }
+  }
+</script>
