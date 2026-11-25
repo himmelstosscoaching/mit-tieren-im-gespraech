@@ -140,6 +140,10 @@ const advent = {
 </script>
 
 <style>
+  /* Nur auf dieser Seite: warmer, zart cremig-oranger Grundton statt Kühlblau-Weiß */
+  :global(body) { --cream: #fdf6ec; --cream-deep: #fbecd8; --sand: #f1dcc0; background: var(--cream); }
+  :global(.header), :global(.header--transparent.is-scrolled) { background: rgba(253, 246, 236, 0.94) !important; }
+
   .advent-start { display: inline-block; margin-top: 0.5rem; padding: 0.35rem 0.95rem; border-radius: 999px;
     background: var(--gold-soft); color: var(--navy); font-weight: 700; }
 
