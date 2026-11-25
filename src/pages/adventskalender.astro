@@ -95,50 +95,15 @@ const advent = {
         </dl>
       </div>
 
-      <form class="card form" name="adventskalender" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/danke-adventskalender">
-        <input type="hidden" name="form-name" value="adventskalender" />
-        <p class="hp" aria-hidden="true"><label>Bitte dieses Feld leer lassen <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
-
-        <div class="field">
-          <label for="name">Dein Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
-        </div>
-        <div class="field">
-          <label for="email">E-Mail</label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
-        </div>
-        <fieldset class="field wahl">
-          <legend>Wie möchtest du die Türchen bekommen?</legend>
-          <label class="wahl__option"><input type="radio" name="zustellung" value="WhatsApp-Gruppe" checked /> <span>In der WhatsApp-Gruppe</span></label>
-          <label class="wahl__option"><input type="radio" name="zustellung" value="E-Mail" /> <span>Per E-Mail</span></label>
-        </fieldset>
-        <div class="field" data-handy>
-          <label for="handy">Handynummer für WhatsApp</label>
-          <input id="handy" name="handy" type="tel" autocomplete="tel" inputmode="tel" required />
-        </div>
-        <label class="consent">
-          <input type="checkbox" name="datenschutz" required />
-          <span>Ich bin einverstanden, dass meine Angaben für den Adventskalender gespeichert werden. Mehr dazu in der <a href="/datenschutz">Datenschutzerklärung</a>.</span>
-        </label>
-        <button class="btn btn--primary" type="submit">Verbindlich anmelden</button>
-        <p class="muted form__hinweis">50 € · Nach der Anmeldung bekommst du eine E-Mail mit den Zahlungsinfos.</p>
-      </form>
+      <!-- Digistore24-Bestellformular: Produkt 773778, Formular 256812 (Konto Himmelstosscoaching) -->
+      <div class="bestellung">
+        <script is:inline src="https://www.checkout-ds24.com/service/digistore.js"></script>
+        <my-order-form product-id="773778" width="100%" base-url="https://www.checkout-ds24.com" order-form-id="256812"></my-order-form>
+        <noscript><a class="btn btn--primary" href="https://www.checkout-ds24.com/product/773778">Zur Bestellung</a></noscript>
+      </div>
     </div>
   </section>
 </Base>
-
-<script>
-  // Handynummer nur zeigen (und verlangen), wenn WhatsApp gewählt ist
-  const feld = document.querySelector<HTMLElement>('[data-handy]');
-  const handy = document.getElementById('handy') as HTMLInputElement | null;
-  const update = () => {
-    const whatsapp = (document.querySelector('input[name="zustellung"]:checked') as HTMLInputElement | null)?.value === 'WhatsApp-Gruppe';
-    if (feld) feld.hidden = !whatsapp;
-    if (handy) handy.required = whatsapp;
-  };
-  document.querySelectorAll('input[name="zustellung"]').forEach((r) => r.addEventListener('change', update));
-  update();
-</script>
 
 <style>
   /* Nur auf dieser Seite: warmer, zart cremig-oranger Grundton statt Kühlblau-Weiß */
@@ -161,15 +126,6 @@ const advent = {
   .tuerchen--geschenk small { font-family: var(--font-body); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }
   @media (min-width: 860px) { .tuerchen { grid-template-columns: repeat(8, 1fr); max-width: 640px; } }
 
-  /* Wahl WhatsApp / E-Mail: große, gut tippbare Felder */
-  .wahl { border: 0; padding: 0; margin: 0; }
-  .wahl legend { font-weight: 700; font-size: 0.95rem; padding: 0; margin-bottom: 0.35rem; }
-  .wahl__option { display: flex; align-items: center; gap: 0.7rem; font-weight: 400; padding: 0.75rem 0.95rem;
-    border: 1.5px solid var(--sand); border-radius: 12px; background: var(--cream); cursor: pointer; }
-  .wahl__option:has(input:checked) { border-color: var(--clay); background: var(--gold-soft); }
-  .wahl__option input { width: 1.15rem; height: 1.15rem; margin: 0; accent-color: var(--clay-deep); }
-  [data-handy][hidden] { display: none; }
-
   .advent-foto :global(img) { object-position: center 100%; }
 
   /* Handy: Foto im Einstieg flacher, damit Text und Anmeldung schneller kommen */
@@ -179,16 +135,6 @@ const advent = {
     .btn-row .btn { flex: 1 1 100%; }
   }
 
-  /* Formular wie auf der Kontaktseite */
-  .form { gap: 1.1rem; }
-  .field { display: grid; gap: 0.35rem; }
-  label { font-weight: 700; font-size: 0.95rem; }
-  input { font: inherit; padding: 0.8rem 0.95rem; border: 1.5px solid var(--sand); border-radius: 12px; background: var(--cream); color: var(--ink); width: 100%; }
-  input:focus { outline: 3px solid var(--gold); outline-offset: 2px; border-color: var(--moss); }
-  .consent { display: flex; gap: 0.75rem; align-items: flex-start; font-weight: 400; font-size: 0.9rem; color: var(--ink-soft); }
-  .consent input { width: auto; margin-top: 0.3rem; }
-  .hp { position: absolute; left: -9999px; }
-  .form .btn { align-self: flex-start; margin-top: 0; }
-  .form__hinweis { font-size: 0.9rem; margin: 0; }
-  @media (max-width: 859px) { .form .btn { width: 100%; } }
+  .bestellung { background: #fff; border-radius: 18px; overflow: hidden; }
+  @media (max-width: 859px) { .bestellung { margin-inline: -0.6rem; } }
 </style>
