@@ -101,7 +101,7 @@ export const weitereAngebote = {
     text: 'Wenn du bei mir einen Kurs gemacht hast, kannst du einmal im Monat zu den Lernabenden am Hof kommen. Hier üben wir weiter – rund um Tierkommunikation und Krafttierarbeit: kranke Tiere, verstorbene Tiere, Krafttierreisen, Energiearbeit und vieles mehr. Jeder Abend hat ein eigenes Thema.',
     // Termine im Format JJJJ-MM-TT. Vergangene Termine verschwinden von selbst.
     termine: ['2026-12-11', '2027-01-08', '2027-02-12', '2027-03-12', '2027-04-09', '2027-05-14', '2027-06-11', '2027-07-09'],
-    info: 'Zweiter Freitag im Monat, 19–20:30 Uhr · in der Gruppe · 50 € pro Abend, Fünferkarte 200 € (40 € pro Abend)',
+    info: 'Zweiter Freitag im Monat, 19–21 Uhr · in der Gruppe · 50 € pro Abend, Fünferkarte 200 € (40 € pro Abend)',
   },
 };
 
