@@ -16,8 +16,10 @@ interface Props {
   mobileCta?: { href: string; label: string } | false;
   /** Vorschaubild für WhatsApp, Facebook & Co. (Pfad in public/) */
   ogImage?: string;
+  /** Seite nicht in Suchmaschinen aufnehmen (z. B. Danke-Seite nach dem Kauf) */
+  noindex?: boolean;
 }
-const { title, description, ogImage, transparentHeader = false, mobileCta = { href: '/kontakt', label: 'Tiergespräch anfragen' } } = Astro.props;
+const { title, description, ogImage, noindex = false, transparentHeader = false, mobileCta = { href: '/kontakt', label: 'Tiergespräch anfragen' } } = Astro.props;
 const fullTitle = title === site.name ? `${site.name} – ${site.claim}` : `${title} · ${site.name}`;
 ---
 <!doctype html>
@@ -35,6 +37,7 @@ const fullTitle = title === site.name ? `${site.name} – ${site.claim}` : `${ti
     {ogImage && <meta property="og:image" content={new URL(ogImage, site.url)} />}
     {ogImage && <meta property="og:image:width" content="1200" />}
     {ogImage && <meta property="og:image:height" content="630" />}
+    {noindex && <meta name="robots" content="noindex" />}
     <link rel="canonical" href={new URL(Astro.url.pathname, site.url)} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <!-- TODO vor Livegang: Schriften selbst hosten (INHALT-08) -->

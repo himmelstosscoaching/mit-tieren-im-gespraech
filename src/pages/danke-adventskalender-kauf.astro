@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+// Danke-Seite nach dem Kauf über Digistore24 (Produkt 773778).
+// Der Satz „Die Abbuchung erfolgt durch Digistore24.“ ist Pflicht – ohne ihn genehmigt Digistore24 das Produkt nicht.
+---
+<Base title="Danke für deine Bestellung" description="Deine Bestellung des Adventskalenders ist angekommen." mobileCta={false} noindex>
+  <section class="section section--zeichnung">
+    <div class="wrap--narrow center">
+      <span class="eyebrow">Adventskalender 2026</span>
+      <h1>Danke, du bist dabei.</h1>
+      <p class="lead">Deine Bestellung ist angekommen. Am Dienstag, 1. Dezember, öffnet sich das erste Türchen.</p>
+      <div class="card danke-karte">
+        <p><strong>Deine Bestätigung</strong><br />Du bekommst gleich eine E-Mail von Digistore24. Schau bitte auch im Spam-Ordner nach.</p>
+        <p><strong>So kommen die Türchen zu dir</strong><br />In unserer WhatsApp-Gruppe oder per E-Mail, so wie du es bei deiner Anmeldung gewählt hast.</p>
+        <p><strong>Etwas ist unklar?</strong><br /><a href="/kontakt">Schreib mir</a>, ich helfe dir gern weiter.</p>
+      </div>
+      <p>Ich freue mich auf die Adventszeit mit dir.<br />Steffi</p>
+      <p class="muted">Die Abbuchung erfolgt durch Digistore24.</p>
+      <a class="btn btn--ghost" href="/" style="margin-top:1rem">Zurück zur Startseite</a>
+    </div>
+  </section>
+</Base>
+<style>
+  .danke-karte { text-align: left; margin: 2rem 0; }
+  .danke-karte p:last-child { margin-bottom: 0; }
+</style>
