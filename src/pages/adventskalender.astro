@@ -32,7 +32,7 @@ const advent = {
         </div>
       </div>
       <figure class="photo photo--portrait advent-foto" style="margin:0">
-        <Image src={imgSee} alt="Ein Border Collie mit rotem Ball am Ufer eines stillen Sees, Bäume und Himmel spiegeln sich im Morgenrot" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" style="object-position: center 60%" />
+        <Image src={imgSee} alt="Ein Border Collie mit rotem Ball am Ufer eines stillen Sees, Bäume und Himmel spiegeln sich im Morgenrot" widths={[480, 800, 1200]} sizes="(min-width: 860px) 520px, 100vw" loading="eager" />
       </figure>
     </div>
   </section>
@@ -170,9 +170,11 @@ const advent = {
   .wahl__option input { width: 1.15rem; height: 1.15rem; margin: 0; accent-color: var(--clay-deep); }
   [data-handy][hidden] { display: none; }
 
+  .advent-foto :global(img) { object-position: center 100%; }
+
   /* Handy: Foto im Einstieg flacher, damit Text und Anmeldung schneller kommen */
   @media (max-width: 859px) {
-    .advent-foto :global(img) { aspect-ratio: 4 / 3; }
+    .advent-foto :global(img) { aspect-ratio: 1 / 1; object-position: center 100%; }
     .advent-start { font-size: 0.95rem; }
     .btn-row .btn { flex: 1 1 100%; }
   }
